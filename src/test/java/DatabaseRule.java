@@ -10,10 +10,14 @@ public class DatabaseRule extends ExternalResource {
 
   protected void after() {
     try(Connection con = DB.sql2o.open()) {
-      String deleteFirstClassQuery = "DELETE FROM first_class *;";
-      String deleteSecondClassQuery = "DELETE FROM second_class *;";
-      con.createQuery(deleteFirstClassQuery).executeUpdate();
-      con.createQuery(deleteSecondClassQuery).executeUpdate();
+      String deleteRecipeQuery = "DELETE FROM recipes *;";
+      String deleteIngredientsQuery = "DELETE FROM ingredients *;";
+      String deleteIngredient_TypesQuery = "DELETE FROM ingredient_types *;";
+      String deleteRecipes_IngredientsQuery = "DELETE FROM recipes_ingredients *;";
+      con.createQuery(deleteRecipeQuery).executeUpdate();
+      con.createQuery(deleteIngredientsQuery).executeUpdate();
+      con.createQuery(deleteRecipes_IngredientsQuery).executeUpdate();
+      con.createQuery(deleteIngredient_TypesQuery).executeUpdate();
     }
   }
 }
