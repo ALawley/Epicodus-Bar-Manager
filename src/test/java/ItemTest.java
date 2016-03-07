@@ -44,4 +44,11 @@ public class ItemTest {
     testItem.save();
     assertEquals(Item.find(testItem.getId()), testItem);
   }
+
+  @Test
+  public void getPricePerOz_returnsPricePerOunce() {
+    Item testItem = new Item("Tanqueray", 2, 4, 28);
+    testItem.save();
+    assertEquals(7.00, testItem.getPricePerOz(), .001);
+  }
 }
