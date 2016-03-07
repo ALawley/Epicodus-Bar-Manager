@@ -53,7 +53,7 @@ public class Ingredient {
   //CREATE
   public void save() {
     try (Connection con = DB.sql2o.open()) {
-    String sql = "INSERT INTO recipes_items(type_id, amount, info) VALUES (:type_id, :amount, :info)";
+    String sql = "INSERT INTO ingredients(type_id, amount, info) VALUES (:type_id, :amount, :info)";
     this.id = (int) con.createQuery(sql, true)
       .addParameter("type_id", type_id)
       .addParameter("amount", amount)
@@ -65,14 +65,14 @@ public class Ingredient {
 
   //READ
   public static List<Ingredient> all() {
-    String sql = "SELECT * FROM recipes_items";
+    String sql = "SELECT * FROM ingredients";
     try (Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Ingredient.class);
     }
   }
 
   public static Ingredient find(int id) {
-    String sql = "SELECT * FROM recipes_items WHERE id = :id";
+    String sql = "SELECT * FROM ingredients WHERE id = :id";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql)
         .addParameter("id", id)
@@ -82,7 +82,7 @@ public class Ingredient {
 
   //UPDATE
   public void update(int newTypeId, double newAmount, String newInfo) {
-    String sql = "UPDATE recipes_items SET type_id = :type_id, amount = :amount, info = :info WHERE id = :id";
+    String sql = "UPDATE ingredients SET type_id = :type_id, amount = :amount, info = :info WHERE id = :id";
     try(Connection con = DB.sql2o.open()) {
       con.createQuery(sql)
         .addParameter("type_id", newTypeId)
@@ -96,7 +96,7 @@ public class Ingredient {
   //DELETE
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM recipes_items WHERE id = :id";
+      String sql = "DELETE FROM ingredients WHERE id = :id";
         con.createQuery(sql)
           .addParameter("id", id)
           .executeUpdate();
