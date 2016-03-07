@@ -21,14 +21,14 @@ public class IngredientTest {
     assertEquals(2, Ingredient.all().size());
   }
 
-  // @Test
-  // public void update_updatesIngredient() {
-  //   Ingredient testIngredient = new Ingredient(2, 3.50, "Tanqueray");
-  //   testIngredient.save();
-  //   testIngredient.update(4, 1.50, "Maker's Mark");
-  //   Ingredient savedIngredient = Ingredient.find(testIngredient.getId());
-  //   assertEquals(1.50, savedIngredient.getAmount(), .001);
-  // }
+  @Test
+  public void update_updatesIngredient() {
+    Ingredient testIngredient = new Ingredient(2, 3.50, "Tanqueray");
+    testIngredient.save();
+    testIngredient.update(4, 1.50, "Maker's Mark");
+    Ingredient savedIngredient = Ingredient.find(testIngredient.getId());
+    assertEquals(1.50, savedIngredient.getAmount(), .001);
+  }
 
   @Test
   public void delete_removesIngredientFromDatabase() {
@@ -38,10 +38,10 @@ public class IngredientTest {
     assertEquals(0, Ingredient.all().size());
   }
 
-  // @Test
-  // public void find_findsInstanceOfIngredientById() {
-  //   Ingredient testIngredient = new Ingredient(2, 3.5, "Tanqueray");
-  //   testIngredient.save();
-  //   assertEquals(Ingredient.find(testIngredient.getId()), testIngredient);
-  // }
+  @Test
+  public void find_findsInstanceOfIngredientById() {
+    Ingredient testIngredient = new Ingredient(2, 3.5, "Tanqueray");
+    testIngredient.save();
+    assertEquals(Ingredient.find(testIngredient.getId()), testIngredient);
+  }
 }

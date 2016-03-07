@@ -129,5 +129,16 @@ public List<Ingredient> getIngredients() {
   }
 }
 
+public void deleteIngredients() {
+  String sql = "DELETE FROM recipes WHERE id=:id;" + "DELETE FROM ingredients WHERE recipe_id=:recipe_id;";
+  try (Connection con = DB.sql2o.open()) {
+    con.createQuery(sql)
+    .addParameter("id", id)
+    .addParameter("recipe_id", this.getId())
+    .executeUpdate();
+  }
+}
+
+
 
 }

@@ -66,4 +66,17 @@ public class RecipeTest {
     assertEquals(savedIngredients.size(), 1);
   }
 
+
+  @Test
+  public void deleteIngredients_DeletesAllIngredientsFromRecipe() {
+    Ingredient itemOne = new Ingredient(1, 36.99, "info1");
+    itemOne.save();
+    Recipe recipeOne = new Recipe("Gin and tonic","good", 5, "Rob Lowe", "5 minutes");
+    recipeOne.save();
+    recipeOne.addIngredient(itemOne.getId());
+    recipeOne.deleteIngredients();
+    assertEquals(recipeOne.getIngredients().size(), 0);
+  }
+
+
 }

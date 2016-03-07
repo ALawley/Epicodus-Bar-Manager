@@ -37,8 +37,8 @@ CREATE TABLE ingredients (
     id integer NOT NULL,
     type_id integer,
     recipe_id integer,
-    amount integer,
-    info character varying
+    info character varying,
+    amount numeric
 );
 
 
@@ -203,7 +203,7 @@ ALTER TABLE ONLY recipes ALTER COLUMN id SET DEFAULT nextval('recipes_id_seq'::r
 -- Data for Name: ingredients; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY ingredients (id, type_id, recipe_id, amount, info) FROM stdin;
+COPY ingredients (id, type_id, recipe_id, info, amount) FROM stdin;
 \.
 
 
