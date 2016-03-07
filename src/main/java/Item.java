@@ -2,16 +2,16 @@ import org.sql2o.*;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Ingredient {
+public class Item {
   private int id;
   private String name;
-  private int typeId;
+  private int type_id;
   private double amount;
   private double price;
 
-  public Ingredient(String name, int typeId, double amount, double price) {
+  public Item(String name, int type_id, double amount, double price) {
     this.name = name;
-    this.typeId = typeId;
+    this.type_id = type_id;
     this.amount = amount;
     this.price = price;
   }
@@ -25,7 +25,7 @@ public class Ingredient {
   }
 
   public int getTypeId() {
-    return typeId()
+    return type_id;
   }
 
   public double getAmount() {
@@ -41,16 +41,16 @@ public class Ingredient {
   }
 
   @Override
-  public boolean equals(Object otherIngredient){
-    if (!(otherIngredient instanceof Ingredient)) {
+  public boolean equals(Object otherItem){
+    if (!(otherItem instanceof Item)) {
       return false;
     } else {
-      Ingredient newIngredient = (Ingredient) otherIngredient;
-      return this.getName().equals(newIngredient.getName()) &&
-        this.getId() == newIngredient.getId() &&
-        this.getTypeId() == newIngredient.getTypeId() &&
-        this.getAmount() == newIngredient.getAmount() &&
-        this.getPrice() == newIngredient.getPrice();
+      Item newItem = (Item) otherItem;
+      return this.getName().equals(newItem.getName()) &&
+        this.getId() == newItem.getId() &&
+        this.getTypeId() == newItem.getTypeId() &&
+        this.getAmount() == newItem.getAmount() &&
+        this.getPrice() == newItem.getPrice();
     }
   }
 
@@ -60,7 +60,7 @@ public class Ingredient {
     String sql = "INSERT INTO ingredients(name, type_id, amount, price) VALUES (:name, :type_id, :amount, :price)";
     this.id = (int) con.createQuery(sql, true)
       .addParameter("name", name)
-      .addParameter("type_id", typeId)
+      .addParameter("type_id", type_id)
       .addParameter("amount", amount)
       .addParameter("price", price)
       .executeUpdate()
@@ -69,19 +69,19 @@ public class Ingredient {
   }
 
   //READ
-  public static List<Ingredient> all() {
+  public static List<Item> all() {
     String sql = "SELECT * FROM ingredients";
     try (Connection con = DB.sql2o.open()) {
-      return con.createQuery(sql).executeAndFetch(Ingredient.class);
+      return con.createQuery(sql).executeAndFetch(Item.class);
     }
   }
 
-  public static Ingredient find(int id) {
+  public static Item find(int id) {
     String sql = "SELECT * FROM ingredients WHERE id = :id";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql)
         .addParameter("id", id)
-        .executeAndFetchFirst(Ingredient.class);
+        .executeAndFetchFirst(Item.class);
     }
   }
 
