@@ -12,4 +12,11 @@ public class RecipeTest {
     assertEquals(0, Recipe.all().size());
   }
 
+  @Test
+  public void equals_returnsIfNamesAreTheSame() {
+    Recipe recipeOne = new Recipe("Gin and tonic","good", 5, "Rob Lowe", "5 minutes");
+    Recipe recipeTwo = new Recipe("Gin and tonic","good", 5, "Rob Lowe", "5 minutes");
+    assertTrue(recipeOne.equals(recipeTwo));
+  }
+
 }

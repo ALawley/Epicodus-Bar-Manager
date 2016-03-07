@@ -18,6 +18,9 @@ public class Recipe {
     this.prep_time = prep_time;
   }
 
+  public int getId() {
+    return id;
+  }
 
   public String getName() {
     return name;
@@ -30,6 +33,7 @@ public class Recipe {
   public int getRating() {
     return rating;
   }
+
   public String getCreator() {
     return creator;
   }
@@ -39,10 +43,25 @@ public class Recipe {
   }
 
   public static List<Recipe> all() {
-  String sql = "SELECT * FROM recipes ORDER BY name";
-  try (Connection con = DB.sql2o.open()) {
-    return con.createQuery(sql).executeAndFetch(Recipe.class);
+    String sql = "SELECT * FROM recipes ORDER BY name";
+    try (Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Recipe.class);
+   }
   }
-}
+
+  @Override
+    public boolean equals(Object otherRecipe) {
+      if(!(otherRecipe instanceof Recipe)) {
+        return false;
+      } else {
+        Recipe newRecipe = (Recipe) otherRecipe;
+        return this.getId() == newRecipe.getId()
+         && this.getName().equals(newRecipe.getName())
+         && this.getNotes().equals(newRecipe.getNotes())
+         && this.getRating() == (newRecipe.getRating())
+         && this.getCreator().equals(newRecipe.getCreator())
+         && this.getPrepTime().equals(newRecipe.getPrepTime());
+      }
+    }
 
 }
