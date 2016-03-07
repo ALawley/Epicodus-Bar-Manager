@@ -4,41 +4,37 @@ import java.util.ArrayList;
 
 public class Ingredient {
   private int id;
-  private String name;
-  private int typeId;
+  private int recipe_id;
+  private int type_id;
   private double amount;
-  private double price;
+  private String info;
 
-  public Ingredient(String name, int typeId, double amount, double price) {
-    this.name = name;
-    this.typeId = typeId;
+  public Ingredient(int type_id, double amount, String info) {
+    this.type_id = type_id;
     this.amount = amount;
-    this.price = price;
+    this.info = info;
   }
 
   public int getId() {
       return id;
   }
 
-  public String getName() {
-    return name;
+  public int getRecipeId() {
+    return recipe_id;
   }
 
   public int getTypeId() {
-    return typeId()
+    return type_id;
   }
 
   public double getAmount() {
     return amount;
   }
 
-  public double getPrice() {
-    return price;
+  public String getInfo() {
+    return info;
   }
 
-  public double getPricePerOz() {
-    return price/amount;
-  }
 
   @Override
   public boolean equals(Object otherIngredient){
@@ -46,23 +42,22 @@ public class Ingredient {
       return false;
     } else {
       Ingredient newIngredient = (Ingredient) otherIngredient;
-      return this.getName().equals(newIngredient.getName()) &&
+      return this.getInfo().equals(newIngredient.getInfo()) &&
         this.getId() == newIngredient.getId() &&
         this.getTypeId() == newIngredient.getTypeId() &&
         this.getAmount() == newIngredient.getAmount() &&
-        this.getPrice() == newIngredient.getPrice();
+        this.getRecipeId() == newIngredient.getRecipeId();
     }
   }
 
   //CREATE
   public void save() {
     try (Connection con = DB.sql2o.open()) {
-    String sql = "INSERT INTO ingredients(name, type_id, amount, price) VALUES (:name, :type_id, :amount, :price)";
+    String sql = "INSERT INTO recipes_items(type_id, amount, info) VALUES (:type_id, :amount, :info)";
     this.id = (int) con.createQuery(sql, true)
-      .addParameter("name", name)
-      .addParameter("type_id", typeId)
+      .addParameter("type_id", type_id)
       .addParameter("amount", amount)
-      .addParameter("price", price)
+      .addParameter("price", info)
       .executeUpdate()
       .getKey();
     }
@@ -70,14 +65,14 @@ public class Ingredient {
 
   //READ
   public static List<Ingredient> all() {
-    String sql = "SELECT * FROM ingredients";
+    String sql = "SELECT * FROM recipes_items";
     try (Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Ingredient.class);
     }
   }
 
   public static Ingredient find(int id) {
-    String sql = "SELECT * FROM ingredients WHERE id = :id";
+    String sql = "SELECT * FROM recipes_items WHERE id = :id";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql)
         .addParameter("id", id)
@@ -86,14 +81,13 @@ public class Ingredient {
   }
 
   //UPDATE
-  public void update(String newName, int newTypeId, double newAmount, double newPrice) {
-    String sql = "UPDATE ingredients SET name = :name, type_id = :type_id, amount = :amount, price = :price WHERE id = :id";
+  public void update(int newTypeId, double newAmount, String newInfo) {
+    String sql = "UPDATE ingredients SET type_id = :type_id, amount = :amount, info = :info WHERE id = :id";
     try(Connection con = DB.sql2o.open()) {
       con.createQuery(sql)
-        .addParameter("name", newName)
         .addParameter("type_id", newTypeId)
         .addParameter("amount", newAmount)
-        .addParameter("price", newPrice)
+        .addParameter("info", newInfo)
         .addParameter("id", id)
         .executeUpdate();
     }
