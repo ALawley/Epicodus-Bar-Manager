@@ -114,7 +114,7 @@ public class Recipe {
   String sql = "INSERT INTO recipes_items (type_id, recipe_id) VALUES (:type_id, :recipe_id);";
   try (Connection con = DB.sql2o.open()) {
     con.createQuery(sql)
-    .addParameter("type_id", type.getId())
+    .addParameter("type_id", this.getId())
     .addParameter("recipe_id", this.getId())
     .executeUpdate();
   }
