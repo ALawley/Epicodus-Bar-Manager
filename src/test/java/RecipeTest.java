@@ -45,25 +45,25 @@ public class RecipeTest {
   }
 
   @Test
-  public void addItem_addsItemToRecipe() {
-    Item itemOne = new Item("vodka", 1, 35.23, 36.99);
+  public void addIngredient_addsIngredientToRecipe() {
+    Ingredient itemOne = new Ingredient(1, 36.99, "info1");
     itemOne.save();
     Recipe recipeOne = new Recipe("Gin and tonic","good", 5, "Rob Lowe", "5 minutes");
     recipeOne.save();
-    recipeOne.addItem(itemOne);
-    Item savedItem = recipeOne.getItems().get(0);
-    assertTrue(itemOne.equals(savedItem));
+    recipeOne.addIngredient(itemOne.getId());
+    Ingredient savedIngredient = recipeOne.getIngredients().get(0);
+    assertTrue(Ingredient.find(itemOne.getId()).equals(savedIngredient));
   }
 
   @Test
-  public void getItems_getsItemsFromRecipe() {
-    Item itemOne = new Item("vodka", 1, 35.23, 36.99);
+  public void getIngredients_getsIngredientsFromRecipe() {
+    Ingredient itemOne = new Ingredient(1, 36.99, "info1");
     itemOne.save();
     Recipe recipeOne = new Recipe("Gin and tonic","good", 5, "Rob Lowe", "5 minutes");
     recipeOne.save();
-    recipeOne.addItem(itemOne);
-    List savedItems = recipeOne.getItems();
-    assertEquals(savedItems.size(), 1);
+    recipeOne.addIngredient(itemOne.getId());
+    List savedIngredients = recipeOne.getIngredients();
+    assertEquals(savedIngredients.size(), 1);
   }
 
 }

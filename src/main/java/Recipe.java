@@ -109,23 +109,23 @@ public class Recipe {
     }
   }
 
-  public void addItem(Item item) {
+  public void addIngredient(int ingredient_id) {
     // not including the amount and info columns from table
-  String sql = "INSERT INTO recipes_items (type_id, recipe_id) VALUES (:type_id, :recipe_id);";
+  String sql = "UPDATE ingredients SET recipe_id=:recipe_id WHERE id=:id;";
   try (Connection con = DB.sql2o.open()) {
     con.createQuery(sql)
-    .addParameter("type_id", this.getId())
     .addParameter("recipe_id", this.getId())
+    .addParameter("id", ingredient_id)
     .executeUpdate();
   }
 }
 
-public List<Item> getItems() {
-  String sql = "SELECT items.* FROM recipes JOIN recipes_items ON (recipes.id = recipes_items.recipe_id) JOIN items ON (recipes_items.item_id = items.id) WHERE recipes.id =:recipe_id;";
+public List<Ingredient> getIngredients() {
+  String sql = "SELECT ingredients.* FROM recipes JOIN ingredients ON (recipes.id = ingredients.recipe_id) WHERE recipes.id =:recipe_id;";
   try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql)
       .addParameter("recipe_id", this.getId())
-      .executeAndFetch(Item.class);
+      .executeAndFetch(Ingredient.class);
   }
 }
 
