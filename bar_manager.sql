@@ -30,22 +30,22 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: ingredient_types; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
+-- Name: item_types; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
 --
 
-CREATE TABLE ingredient_types (
+CREATE TABLE item_types (
     id integer NOT NULL,
     type character varying
 );
 
 
-ALTER TABLE ingredient_types OWNER TO "Guest";
+ALTER TABLE item_types OWNER TO "Guest";
 
 --
--- Name: ingredient_types_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
+-- Name: item_types_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
 --
 
-CREATE SEQUENCE ingredient_types_id_seq
+CREATE SEQUENCE item_types_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -53,20 +53,20 @@ CREATE SEQUENCE ingredient_types_id_seq
     CACHE 1;
 
 
-ALTER TABLE ingredient_types_id_seq OWNER TO "Guest";
+ALTER TABLE item_types_id_seq OWNER TO "Guest";
 
 --
--- Name: ingredient_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
+-- Name: item_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
 --
 
-ALTER SEQUENCE ingredient_types_id_seq OWNED BY ingredient_types.id;
+ALTER SEQUENCE item_types_id_seq OWNED BY item_types.id;
 
 
 --
--- Name: ingredients; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
+-- Name: items; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
 --
 
-CREATE TABLE ingredients (
+CREATE TABLE items (
     id integer NOT NULL,
     name character varying,
     type_id integer,
@@ -75,13 +75,13 @@ CREATE TABLE ingredients (
 );
 
 
-ALTER TABLE ingredients OWNER TO "Guest";
+ALTER TABLE items OWNER TO "Guest";
 
 --
--- Name: ingredients_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
+-- Name: items_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
 --
 
-CREATE SEQUENCE ingredients_id_seq
+CREATE SEQUENCE items_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -89,13 +89,13 @@ CREATE SEQUENCE ingredients_id_seq
     CACHE 1;
 
 
-ALTER TABLE ingredients_id_seq OWNER TO "Guest";
+ALTER TABLE items_id_seq OWNER TO "Guest";
 
 --
--- Name: ingredients_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
+-- Name: items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
 --
 
-ALTER SEQUENCE ingredients_id_seq OWNED BY ingredients.id;
+ALTER SEQUENCE items_id_seq OWNED BY items.id;
 
 
 --
@@ -136,25 +136,25 @@ ALTER SEQUENCE recipes_id_seq OWNED BY recipes.id;
 
 
 --
--- Name: recipes_ingredients; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
+-- Name: recipes_items; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
 --
 
-CREATE TABLE recipes_ingredients (
+CREATE TABLE recipes_items (
     id integer NOT NULL,
     type_id integer,
     recipe_id integer,
-    amount numeric,
+    amount integer,
     info character varying
 );
 
 
-ALTER TABLE recipes_ingredients OWNER TO "Guest";
+ALTER TABLE recipes_items OWNER TO "Guest";
 
 --
--- Name: recipes_ingredients_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
+-- Name: recipes_items_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
 --
 
-CREATE SEQUENCE recipes_ingredients_id_seq
+CREATE SEQUENCE recipes_items_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -162,27 +162,27 @@ CREATE SEQUENCE recipes_ingredients_id_seq
     CACHE 1;
 
 
-ALTER TABLE recipes_ingredients_id_seq OWNER TO "Guest";
+ALTER TABLE recipes_items_id_seq OWNER TO "Guest";
 
 --
--- Name: recipes_ingredients_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
+-- Name: recipes_items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
 --
 
-ALTER SEQUENCE recipes_ingredients_id_seq OWNED BY recipes_ingredients.id;
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
---
-
-ALTER TABLE ONLY ingredient_types ALTER COLUMN id SET DEFAULT nextval('ingredient_types_id_seq'::regclass);
+ALTER SEQUENCE recipes_items_id_seq OWNED BY recipes_items.id;
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
 --
 
-ALTER TABLE ONLY ingredients ALTER COLUMN id SET DEFAULT nextval('ingredients_id_seq'::regclass);
+ALTER TABLE ONLY item_types ALTER COLUMN id SET DEFAULT nextval('item_types_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
+--
+
+ALTER TABLE ONLY items ALTER COLUMN id SET DEFAULT nextval('items_id_seq'::regclass);
 
 
 --
@@ -196,37 +196,37 @@ ALTER TABLE ONLY recipes ALTER COLUMN id SET DEFAULT nextval('recipes_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
 --
 
-ALTER TABLE ONLY recipes_ingredients ALTER COLUMN id SET DEFAULT nextval('recipes_ingredients_id_seq'::regclass);
+ALTER TABLE ONLY recipes_items ALTER COLUMN id SET DEFAULT nextval('recipes_items_id_seq'::regclass);
 
 
 --
--- Data for Name: ingredient_types; Type: TABLE DATA; Schema: public; Owner: Guest
+-- Data for Name: item_types; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY ingredient_types (id, type) FROM stdin;
+COPY item_types (id, type) FROM stdin;
 \.
 
 
 --
--- Name: ingredient_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
+-- Name: item_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('ingredient_types_id_seq', 1, false);
+SELECT pg_catalog.setval('item_types_id_seq', 1, false);
 
 
 --
--- Data for Name: ingredients; Type: TABLE DATA; Schema: public; Owner: Guest
+-- Data for Name: items; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY ingredients (id, name, type_id, amount, price) FROM stdin;
+COPY items (id, name, type_id, amount, price) FROM stdin;
 \.
 
 
 --
--- Name: ingredients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
+-- Name: items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('ingredients_id_seq', 1, false);
+SELECT pg_catalog.setval('items_id_seq', 1, false);
 
 
 --
@@ -245,42 +245,42 @@ SELECT pg_catalog.setval('recipes_id_seq', 1, false);
 
 
 --
--- Data for Name: recipes_ingredients; Type: TABLE DATA; Schema: public; Owner: Guest
+-- Data for Name: recipes_items; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY recipes_ingredients (id, type_id, recipe_id, amount, info) FROM stdin;
+COPY recipes_items (id, type_id, recipe_id, amount, info) FROM stdin;
 \.
 
 
 --
--- Name: recipes_ingredients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
+-- Name: recipes_items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('recipes_ingredients_id_seq', 1, false);
-
-
---
--- Name: ingredient_types_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
---
-
-ALTER TABLE ONLY ingredient_types
-    ADD CONSTRAINT ingredient_types_pkey PRIMARY KEY (id);
+SELECT pg_catalog.setval('recipes_items_id_seq', 1, false);
 
 
 --
--- Name: ingredients_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
+-- Name: item_types_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
 --
 
-ALTER TABLE ONLY ingredients
-    ADD CONSTRAINT ingredients_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY item_types
+    ADD CONSTRAINT item_types_pkey PRIMARY KEY (id);
 
 
 --
--- Name: recipes_ingredients_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
+-- Name: items_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
 --
 
-ALTER TABLE ONLY recipes_ingredients
-    ADD CONSTRAINT recipes_ingredients_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY items
+    ADD CONSTRAINT items_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: recipes_items_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
+--
+
+ALTER TABLE ONLY recipes_items
+    ADD CONSTRAINT recipes_items_pkey PRIMARY KEY (id);
 
 
 --
