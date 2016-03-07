@@ -143,7 +143,8 @@ CREATE TABLE recipes_ingredients (
     id integer NOT NULL,
     type_id integer,
     recipe_id integer,
-    amount numeric
+    amount numeric,
+    info character varying
 );
 
 
@@ -247,7 +248,7 @@ SELECT pg_catalog.setval('recipes_id_seq', 1, false);
 -- Data for Name: recipes_ingredients; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY recipes_ingredients (id, type_id, recipe_id, amount) FROM stdin;
+COPY recipes_ingredients (id, type_id, recipe_id, amount, info) FROM stdin;
 \.
 
 

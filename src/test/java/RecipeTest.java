@@ -19,4 +19,12 @@ public class RecipeTest {
     assertTrue(recipeOne.equals(recipeTwo));
   }
 
+
+  @Test
+  public void save_savesObjectByIdIntoDB() {
+    Recipe recipeOne = new Recipe("Gin and tonic","good", 5, "Rob Lowe", "5 minutes");
+    recipeOne.save();
+    Recipe savedRecipe = Recipe.all().get(0);
+    assertEquals(recipeOne.getId(), savedRecipe.getId());
+  }
 }
