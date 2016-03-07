@@ -57,7 +57,7 @@ public class Item {
   //CREATE
   public void save() {
     try (Connection con = DB.sql2o.open()) {
-    String sql = "INSERT INTO ingredients(name, type_id, amount, price) VALUES (:name, :type_id, :amount, :price)";
+    String sql = "INSERT INTO items(name, type_id, amount, price) VALUES (:name, :type_id, :amount, :price)";
     this.id = (int) con.createQuery(sql, true)
       .addParameter("name", name)
       .addParameter("type_id", type_id)
@@ -70,14 +70,14 @@ public class Item {
 
   //READ
   public static List<Item> all() {
-    String sql = "SELECT * FROM ingredients";
+    String sql = "SELECT * FROM items";
     try (Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Item.class);
     }
   }
 
   public static Item find(int id) {
-    String sql = "SELECT * FROM ingredients WHERE id = :id";
+    String sql = "SELECT * FROM items WHERE id = :id";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql)
         .addParameter("id", id)
@@ -87,7 +87,7 @@ public class Item {
 
   //UPDATE
   public void update(String newName, int newTypeId, double newAmount, double newPrice) {
-    String sql = "UPDATE ingredients SET name = :name, type_id = :type_id, amount = :amount, price = :price WHERE id = :id";
+    String sql = "UPDATE items SET name = :name, type_id = :type_id, amount = :amount, price = :price WHERE id = :id";
     try(Connection con = DB.sql2o.open()) {
       con.createQuery(sql)
         .addParameter("name", newName)
@@ -102,7 +102,7 @@ public class Item {
   //DELETE
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM ingredients WHERE id = :id";
+      String sql = "DELETE FROM items WHERE id = :id";
         con.createQuery(sql)
           .addParameter("id", id)
           .executeUpdate();

@@ -57,7 +57,7 @@ public class Ingredient {
     this.id = (int) con.createQuery(sql, true)
       .addParameter("type_id", type_id)
       .addParameter("amount", amount)
-      .addParameter("price", info)
+      .addParameter("info", info)
       .executeUpdate()
       .getKey();
     }
@@ -82,7 +82,7 @@ public class Ingredient {
 
   //UPDATE
   public void update(int newTypeId, double newAmount, String newInfo) {
-    String sql = "UPDATE ingredients SET type_id = :type_id, amount = :amount, info = :info WHERE id = :id";
+    String sql = "UPDATE recipes_items SET type_id = :type_id, amount = :amount, info = :info WHERE id = :id";
     try(Connection con = DB.sql2o.open()) {
       con.createQuery(sql)
         .addParameter("type_id", newTypeId)
@@ -96,7 +96,7 @@ public class Ingredient {
   //DELETE
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM ingredients WHERE id = :id";
+      String sql = "DELETE FROM recipes_items WHERE id = :id";
         con.createQuery(sql)
           .addParameter("id", id)
           .executeUpdate();

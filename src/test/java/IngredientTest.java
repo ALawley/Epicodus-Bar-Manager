@@ -23,11 +23,11 @@ public class IngredientTest {
 
   @Test
   public void update_updatesIngredient() {
-    Ingredient testIngredient = new Ingredient(2, 3.5, "Tanqueray");
+    Ingredient testIngredient = new Ingredient(2, 3.50, "Tanqueray");
     testIngredient.save();
-    testIngredient.update(4, 1.5, "Maker's Mark");
+    testIngredient.update(4, 1.50, "Maker's Mark");
     Ingredient savedIngredient = Ingredient.find(testIngredient.getId());
-    assertEquals(1.5, savedIngredient.getAmount(), .001);
+    assertEquals(1.50, savedIngredient.getAmount(), .001);
   }
 
   @Test
