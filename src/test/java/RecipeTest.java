@@ -35,4 +35,12 @@ public class RecipeTest {
     Recipe savedRecipe = Recipe.find(recipeOne.getId());
     assertTrue(recipeOne.equals(savedRecipe));
   }
+
+  @Test
+  public void updateRecipe_changesOldValueToNewValue() {
+    Recipe recipeOne = new Recipe("Gin and tonic","good", 5, "Rob Lowe", "5 minutes");
+    recipeOne.save();
+    recipeOne.updateRecipe("Tom Collins","good", 5, "Adam West", "6 minutes");
+    assertEquals("Tom Collins", recipeOne.getName());
+  }
 }
