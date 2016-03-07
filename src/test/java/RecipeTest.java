@@ -27,4 +27,12 @@ public class RecipeTest {
     Recipe savedRecipe = Recipe.all().get(0);
     assertEquals(recipeOne.getId(), savedRecipe.getId());
   }
+
+  @Test
+  public void find_findsObjectByIdFromDB() {
+    Recipe recipeOne = new Recipe("Gin and tonic","good", 5, "Rob Lowe", "5 minutes");
+    recipeOne.save();
+    Recipe savedRecipe = Recipe.find(recipeOne.getId());
+    assertTrue(recipeOne.equals(savedRecipe));
+  }
 }
