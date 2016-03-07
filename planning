@@ -1,0 +1,12 @@
+MVP:
+  -Add recipes
+  -Add ingredients
+  -Calculate Price
+  -Update ingredients when drinks are made.
+
+Extra:
+  1) Search
+  2) Suggestions
+  3) Recipe API
+  4) Price API
+  
