@@ -58,10 +58,25 @@ public class Recipe {
         return this.getId() == newRecipe.getId()
          && this.getName().equals(newRecipe.getName())
          && this.getNotes().equals(newRecipe.getNotes())
-         && this.getRating() == (newRecipe.getRating())
+         && this.getRating() == newRecipe.getRating()
          && this.getCreator().equals(newRecipe.getCreator())
          && this.getPrepTime().equals(newRecipe.getPrepTime());
       }
     }
+
+
+  public void save() {
+    String sql = "INSERT INTO  recipes (name, notes, rating, creator, prep_time) VALUES (:name, :notes, :rating, :creator, :prep_time);";
+    try (Connection con = DB.sql2o.open()) {
+    this.id = (int) con.createQuery(sql, true)
+      .addParameter("name", name)
+      .addParameter("notes", notes)
+      .addParameter("rating", rating)
+      .addParameter("creator", creator)
+      .addParameter("prep_time", prep_time)
+      .executeUpdate()
+      .getKey();
+    }
+  }
 
 }
