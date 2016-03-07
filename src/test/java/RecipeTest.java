@@ -43,4 +43,27 @@ public class RecipeTest {
     recipeOne.updateRecipe("Tom Collins","good", 5, "Adam West", "6 minutes");
     assertEquals("Tom Collins", recipeOne.getName());
   }
+
+  @Test
+  public void addItem_addsItemToRecipe() {
+    Item itemOne = new Item("vodka", 1, 35.23, 36.99);
+    itemOne.save();
+    Recipe recipeOne = new Recipe("Gin and tonic","good", 5, "Rob Lowe", "5 minutes");
+    recipeOne.save();
+    recipeOne.addItem(itemOne);
+    Item savedItem = recipeOne.getItems().get(0);
+    assertTrue(itemOne.equals(savedItem));
+  }
+
+  @Test
+  public void getItems_getsItemsFromRecipe() {
+    Item itemOne = new Item("vodka", 1, 35.23, 36.99);
+    itemOne.save();
+    Recipe recipeOne = new Recipe("Gin and tonic","good", 5, "Rob Lowe", "5 minutes");
+    recipeOne.save();
+    recipeOne.addItem(itemOne);
+    List savedItems = recipeOne.getItems();
+    assertEquals(savedItems.size(), 1);
+  }
+
 }

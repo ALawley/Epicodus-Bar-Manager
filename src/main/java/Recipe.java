@@ -120,4 +120,14 @@ public class Recipe {
   }
 }
 
+public List<Item> getItems() {
+  String sql = "SELECT items.* FROM recipes JOIN recipes_items ON (recipes.id = recipes_items.recipe_id) JOIN items ON (recipes_items.item_id = items.id) WHERE recipes.id =:recipe_id;";
+  try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql)
+      .addParameter("recipe_id", this.getId())
+      .executeAndFetch(Item.class);
+  }
+}
+
+
 }
