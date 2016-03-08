@@ -77,7 +77,7 @@ public class RecipeTest {
 
 
   @Test
-  public void deleteIngredients_DeletesAllIngredientsFromRecipe() {
+  public void delete_DeletesAllIngredientsFromRecipe() {
     Ingredient itemOne = new Ingredient(1, 36.99, "info1");
     itemOne.save();
     Recipe recipeOne = new Recipe("Gin and tonic","good", "Rob Lowe", "5 minutes");
