@@ -10,10 +10,9 @@ public class Recipe {
   private String prep_time;
 
 
-  public Recipe (String name, String notes, int rating, String creator, String prep_time) {
+  public Recipe (String name, String notes, String creator, String prep_time) {
     this.name = name;
     this.notes = notes;
-    this.rating = rating;
     this.creator = creator;
     this.prep_time = prep_time;
   }
@@ -107,6 +106,16 @@ public class Recipe {
       .executeUpdate()
       .getKey();
     }
+  }
+
+  public void addRating(int rating) {
+    String sql = "UPDATE recipes SET rating=:rating WHERE id=:id;";
+    try (Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+        .addParameter("rating", rating)
+        .addParameter("id", id)
+        .executeUpdate();
+      }
   }
 
   public void addIngredient(int ingredient_id) {

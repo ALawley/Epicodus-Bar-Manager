@@ -14,15 +14,15 @@ public class RecipeTest {
 
   @Test
   public void equals_returnsIfNamesAreTheSame() {
-    Recipe recipeOne = new Recipe("Gin and tonic","good", 5, "Rob Lowe", "5 minutes");
-    Recipe recipeTwo = new Recipe("Gin and tonic","good", 5, "Rob Lowe", "5 minutes");
+    Recipe recipeOne = new Recipe("Gin and tonic","good", "Rob Lowe", "5 minutes");
+    Recipe recipeTwo = new Recipe("Gin and tonic","good", "Rob Lowe", "5 minutes");
     assertTrue(recipeOne.equals(recipeTwo));
   }
 
 
   @Test
   public void save_savesObjectByIdIntoDB() {
-    Recipe recipeOne = new Recipe("Gin and tonic","good", 5, "Rob Lowe", "5 minutes");
+    Recipe recipeOne = new Recipe("Gin and tonic","good", "Rob Lowe", "5 minutes");
     recipeOne.save();
     Recipe savedRecipe = Recipe.all().get(0);
     assertEquals(recipeOne.getId(), savedRecipe.getId());
@@ -30,7 +30,7 @@ public class RecipeTest {
 
   @Test
   public void find_findsObjectByIdFromDB() {
-    Recipe recipeOne = new Recipe("Gin and tonic","good", 5, "Rob Lowe", "5 minutes");
+    Recipe recipeOne = new Recipe("Gin and tonic","good", "Rob Lowe", "5 minutes");
     recipeOne.save();
     Recipe savedRecipe = Recipe.find(recipeOne.getId());
     assertTrue(recipeOne.equals(savedRecipe));
@@ -38,7 +38,7 @@ public class RecipeTest {
 
   @Test
   public void updateRecipe_changesOldValueToNewValue() {
-    Recipe recipeOne = new Recipe("Gin and tonic","good", 5, "Rob Lowe", "5 minutes");
+    Recipe recipeOne = new Recipe("Gin and tonic","good", "Rob Lowe", "5 minutes");
     recipeOne.save();
     recipeOne.updateRecipe("Tom Collins","good", 5, "Adam West", "6 minutes");
     assertEquals("Tom Collins", recipeOne.getName());
@@ -48,7 +48,7 @@ public class RecipeTest {
   public void addIngredient_addsIngredientToRecipe() {
     Ingredient itemOne = new Ingredient(1, 36.99, "info1");
     itemOne.save();
-    Recipe recipeOne = new Recipe("Gin and tonic","good", 5, "Rob Lowe", "5 minutes");
+    Recipe recipeOne = new Recipe("Gin and tonic","good", "Rob Lowe", "5 minutes");
     recipeOne.save();
     recipeOne.addIngredient(itemOne.getId());
     Ingredient savedIngredient = recipeOne.getIngredients().get(0);
@@ -56,10 +56,19 @@ public class RecipeTest {
   }
 
   @Test
+  public void addRating_addsRatingToRecipe() {
+    Recipe recipeOne = new Recipe("Gin and tonic","good", "Rob Lowe", "5 minutes");
+    recipeOne.save();
+    recipeOne.addRating(5);
+    Recipe savedRecipe = Recipe.find(recipeOne.getId());
+    assertEquals(5, savedRecipe.getRating());
+  }
+
+  @Test
   public void getIngredients_getsIngredientsFromRecipe() {
     Ingredient itemOne = new Ingredient(1, 36.99, "info1");
     itemOne.save();
-    Recipe recipeOne = new Recipe("Gin and tonic","good", 5, "Rob Lowe", "5 minutes");
+    Recipe recipeOne = new Recipe("Gin and tonic","good", "Rob Lowe", "5 minutes");
     recipeOne.save();
     recipeOne.addIngredient(itemOne.getId());
     List savedIngredients = recipeOne.getIngredients();
@@ -71,7 +80,7 @@ public class RecipeTest {
   public void deleteIngredients_DeletesAllIngredientsFromRecipe() {
     Ingredient itemOne = new Ingredient(1, 36.99, "info1");
     itemOne.save();
-    Recipe recipeOne = new Recipe("Gin and tonic","good", 5, "Rob Lowe", "5 minutes");
+    Recipe recipeOne = new Recipe("Gin and tonic","good", "Rob Lowe", "5 minutes");
     recipeOne.save();
     recipeOne.addIngredient(itemOne.getId());
     recipeOne.deleteIngredients();
