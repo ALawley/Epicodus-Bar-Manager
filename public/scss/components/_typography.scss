@@ -1,0 +1,36 @@
+// @include font-face("building", building);
+// @include font-face("donau", donau);
+// @include font-face("madrasxb", madrasxb);
+// @include font-face("madrasxl", madrasxl);
+// @include font-face("alice", alice);
+// @include font-face("sacramento", sacramento);
+
+
+
+
+
+
+h3 {
+  font-size: 24px;
+  font-family: $font-sec;
+}
+
+h1 {
+  font-size: 86px;
+  font-family: $font-prim;
+  color: $dark-brown;
+}
+
+li {
+font-family:  'Alice',serif;
+font-weight: bold;
+color: $dark-brown;
+}
+
+.big-li {
+font-weight: normal;
+justify-content: center;
+font-size: 32px;
+width: 30vw;
+font-family: $font-prim;
+}
