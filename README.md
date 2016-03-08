@@ -1,8 +1,8 @@
-# _TITLE_
+# Bar Manager
 
-#### _Epicodus Java Exercise, Date_
+#### _Epicodus Group Project, Date_
 
-#### By _**Anna Lawley and **_
+#### By _**Anna Lawley, Alissa Paluska, Polina Nenchev and Wren Withers**_
 
 ## Description
 
@@ -31,9 +31,10 @@ _To contact, leave a comment on Github._
 * _FluentLenium_
 * _Gradle_
 * _Spark_
+* _Bootstrap_
 
 ### License
 
 *MIT License*
 
-Copyright (c) 2016 **_Anna Lawley and_**
+Copyright (c) 2016 **_Anna Lawley, Alissa Paluska, Polina Nenchev and Wren Withers_**

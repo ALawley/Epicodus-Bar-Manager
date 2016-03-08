@@ -51,4 +51,21 @@ public class ItemTest {
     testItem.save();
     assertEquals(7.00, testItem.getPricePerOz(), .001);
   }
+
+  @Test
+  public void decrementItem_decreaseAmountCorrectly() {
+    Item testItem = new Item("Tanqueray", 2, 25.36, 28);
+    testItem.save();
+    testItem.decrementItem(7);
+    assertEquals(18.36, testItem.getAmount(), .001);
+  }
+
+  @Test
+  public void getTypeName_getsNameByType() {
+    Type type = new Type("Whiskey");
+    type.save();
+    Item testItem = new Item ("Federal Reserve", type.getId(), 25.36, 59.99);
+    testItem.save();
+    assertEquals("Whiskey", testItem.getTypeName());
+  }
 }

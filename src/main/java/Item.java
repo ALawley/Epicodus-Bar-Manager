@@ -8,12 +8,14 @@ public class Item {
   private int type_id;
   private double amount;
   private double price;
+  private double pricePerOz;
 
   public Item(String name, int type_id, double amount, double price) {
     this.name = name;
     this.type_id = type_id;
     this.amount = amount;
     this.price = price;
+    this.pricePerOz = price/amount;
   }
 
   public int getId() {
@@ -37,7 +39,17 @@ public class Item {
   }
 
   public double getPricePerOz() {
-    return price/amount;
+    return pricePerOz;
+  }
+
+  public String getTypeName() {
+    String sql = "SELECT * FROM item_types WHERE id=:type_id";
+    try (Connection con = DB.sql2o.open()) {
+      Type type = con.createQuery(sql)
+      .addParameter("type_id", this.getTypeId())
+      .executeAndFetchFirst(Type.class);
+      return type.getType();
+    }
   }
 
   @Override
@@ -106,6 +118,17 @@ public class Item {
         con.createQuery(sql)
           .addParameter("id", id)
           .executeUpdate();
+      }
+    }
+
+    public void decrementItem(double pourAmount) {
+      this.amount -= pourAmount;
+      String sql = "UPDATE items SET amount=:amount WHERE id=:id;";
+      try (Connection con = DB.sql2o.open()) {
+        con.createQuery(sql)
+        .addParameter("id", id)
+        .addParameter("amount", amount)
+        .executeUpdate();
       }
     }
   }
