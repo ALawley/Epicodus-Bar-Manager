@@ -20,7 +20,8 @@
         </th>
       </tr>
       #foreach($type in $types)
-      #foreach($item in $items)
+      #if($type.getAllOf().size() > 0)
+      #foreach($item in $type.getAllOf())
       <tr>
         <td>
           <span>$item.getAmount() <span>oz</span></span>
@@ -35,6 +36,8 @@
           <span><span>$</span>$item.getPrice()</span>
         </td>
       </tr>
+      #end
+      #end
       #end
     </table>
   </div>
