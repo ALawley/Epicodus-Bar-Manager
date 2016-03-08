@@ -8,12 +8,14 @@ public class Item {
   private int type_id;
   private double amount;
   private double price;
+  private double pricePerOz;
 
   public Item(String name, int type_id, double amount, double price) {
     this.name = name;
     this.type_id = type_id;
     this.amount = amount;
     this.price = price;
+    this.pricePerOz = price/amount;
   }
 
   public int getId() {
@@ -37,7 +39,7 @@ public class Item {
   }
 
   public double getPricePerOz() {
-    return price/amount;
+    return pricePerOz;
   }
 
   @Override
