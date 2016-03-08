@@ -10,22 +10,30 @@ public class App {
 
     get("/", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      // model.put("type", )
+      model.put("types", Type.all());
       model.put("items", Item.all());
       model.put("template", "templates/recipe.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/item/added/$item.getId()", (request, response) -> {
+    post("/item/added", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
       int typeId = Integer.parseInt(request.queryParams("typeId"));
       String name = request.queryParams("name");
-      double amount =Integer.parseInt(request.queryParams("amount"));
-      double price =Integer.parseInt(request.queryParams("price"));
+      double amount = Double.parseDouble(request.queryParams("amount"));
+      double price = Double.parseDouble(request.queryParams("price"));
       Item newItem = new Item(name, typeId, amount, price);
       newItem.save();
       response.redirect("/");
       return null;
     });
 
+    get("/item/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("types", Type.all());
+      model.put("items", Item.all());
+      model.put("template", "templates/recipe.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   }
 }

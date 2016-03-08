@@ -19,19 +19,20 @@
           <span>Price</span>
         </th>
       </tr>
+      #foreach($type in $types)
       #foreach($item in $items)
       <tr>
         <td>
-          <span>$item.getAmount()</span>
+          <span>$item.getAmount() <span>oz</span></span>
         </td>
         <td>
-          <span>$type.getType()</span>
+          <a href="/item/$item.getTypeId()"><span>$item.getTypeName()</span></a>
         </td>
         <td>
-          <span>$item.getName()</span>
+          <a href="/item/$item.getId()"><span>$item.getName()</span></a>
         </td>
         <td>
-          <span>$item.getPrice()</span>
+          <span><span>$</span>$item.getPrice()</span>
         </td>
       </tr>
       #end
@@ -67,7 +68,7 @@
 </div>
 <div class="well">
   <h2>Add New Item</h2>
-  <form action="/item/added/$item.getId()" method="post">
+  <form action="/item/added" method="post">
     <label for="">Type</label>
     <select type="text" name="typeId" id="typeId">
       #foreach ($type in $types)
