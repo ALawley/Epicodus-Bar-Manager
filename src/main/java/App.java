@@ -28,11 +28,11 @@ public class App {
       return null;
     });
 
-    get("/item/:id", (request, response) -> {
+    get("/planner/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      model.put("types", Type.all());
-      model.put("items", Item.all());
-      model.put("template", "templates/recipe.vtl");
+      Recipe recipe = Recipe.find(Integer.parseInt(request.params(":id")));
+      model.put("recipe", recipe);
+      model.put("template", "templates/planner.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
   }
