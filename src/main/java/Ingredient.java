@@ -80,6 +80,15 @@ public class Ingredient {
     }
   }
 
+  public Type getType() {
+    String sql = "SELECT item_types.* FROM item_types WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql)
+        .addParameter("id", type_id)
+        .executeAndFetchFirst(Type.class);
+    }
+  }
+
   //UPDATE
   public void update(int newTypeId, double newAmount, String newInfo) {
     String sql = "UPDATE ingredients SET type_id = :type_id, amount = :amount, info = :info WHERE id = :id";

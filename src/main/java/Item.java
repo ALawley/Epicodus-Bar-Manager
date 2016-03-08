@@ -42,6 +42,16 @@ public class Item {
     return pricePerOz;
   }
 
+  public String getTypeName() {
+    String sql = "SELECT * FROM item_types WHERE id=:type_id";
+    try (Connection con = DB.sql2o.open()) {
+      Type type = con.createQuery(sql)
+      .addParameter("type_id", this.getTypeId())
+      .executeAndFetchFirst(Type.class);
+      return type.getType();
+    }
+  }
+
   @Override
   public boolean equals(Object otherItem){
     if (!(otherItem instanceof Item)) {
