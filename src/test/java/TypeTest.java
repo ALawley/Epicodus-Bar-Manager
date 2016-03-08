@@ -30,4 +30,13 @@ public class TypeTest {
     Type savedType = Type.find(typeOne.getId());
     assertTrue(typeOne.equals(savedType));
   }
+
+  @Test
+  public void getAllOf_findsAllIngredientsOfType() {
+    Type testType = new Type("whiskey");
+    testType.save();
+    Item testItem = new Item("Maker's Mark", testType.getId(), 25.36, 31);
+    testItem.save();
+    assertEquals(1, testType.getAllOf().size());
+  }
 }
