@@ -1,0 +1,85 @@
+<div class="jumbotron">
+  <h1>Bar Inventory</h1>
+</div>
+<div class="row">
+  <div class="col-sm-8">
+    <h1>Inventory</h1>
+    <table class="table">
+      <tr>
+        <th>
+          <span>Amount</span>
+        </th>
+        <th>
+          <span>Type</span>
+        </th>
+        <th>
+          <span>Name</span>
+        </th>
+        <th>
+          <span>Price</span>
+        </th>
+      </tr>
+      #foreach($item in $items)
+      <tr>
+        <td>
+          <span>$item.getAmount()</span>
+        </td>
+        <td>
+          <span>$type.getType()</span>
+        </td>
+        <td>
+          <span>$item.getName()</span>
+        </td>
+        <td>
+          <span>$item.getPrice()</span>
+        </td>
+      </tr>
+      #end
+    </table>
+  </div>
+  <div class="col-sm-4">
+    <h3>Conversion</h3>
+    <table class="table">
+      <tr>
+        <th>
+          <span>oz</span>
+        </th>
+        <th>
+          <span>mL</span>
+        </th>
+        <th>
+          <span>L</span>
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <span>1</span>
+        </td>
+        <td>
+          <span>29.57</span>
+        </td>
+        <td>
+          <span>.0296</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="well">
+  <h2>Add New Item</h2>
+  <form action="/item/added/$item.getId()" method="post">
+    <label for="">Type</label>
+    <select type="text" name="typeId" id="typeId">
+      #foreach ($type in $types)
+      <option value="$type.getId()">$type.getType()</option>
+      #end
+    </select>
+    <label for="">Name</label>
+    <input type="text" name="name" placeholder="Maker's Mark">
+    <label for="">Bottle Price</label>
+    <input type="text" name="price" placeholder="39.99">
+    <label for="">Amount On Hand (oz)</label>
+    <input type="text" name="amount" placeholder="48.92">
+    <button type="submit" class="btn btn-success" name="addItem">Add</button>
+  </form>
+</div>
