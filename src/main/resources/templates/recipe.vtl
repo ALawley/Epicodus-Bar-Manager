@@ -72,18 +72,18 @@
 <div class="well">
   <h2>Add New Item</h2>
   <form action="/item/added" method="post">
-    <label for="">Type</label>
+    <label>Type</label>
     <select type="text" name="typeId" id="typeId">
       #foreach ($type in $types)
-      <option value="$type.getId()">$type.getType()</option>
+      <option value="$type.getId()" id="typeIdOption">$type.getType()</option>
       #end
     </select>
-    <label for="">Name</label>
-    <input type="text" name="name" placeholder="Maker's Mark">
-    <label for="">Bottle Price</label>
-    <input type="text" name="price" placeholder="39.99">
-    <label for="">Amount On Hand (oz)</label>
-    <input type="text" name="amount" placeholder="48.92">
-    <button type="submit" class="btn btn-success" name="addItem">Add</button>
+    <label>Name</label>
+    <input required id="name" type="text" name="name" placeholder="Maker's Mark">
+    <label>Bottle Price</label>
+    <input required id="price" type="text" name="price" placeholder="39.99">
+    <label>Amount On Hand (oz)</label>
+    <input required id="amount" type="text" name="amount" placeholder="48.92">
+    <button type="submit" class="btn btn-success" id="addItem">Add</button>
   </form>
 </div>

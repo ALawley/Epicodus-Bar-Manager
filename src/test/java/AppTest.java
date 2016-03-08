@@ -26,4 +26,13 @@ public class AppTest extends FluentTest {
      goTo("http://localhost:4567/");
      assertThat(pageSource()).contains("Bar Inventory");
    }
+   @Test
+  public void itemDisplaysTest() {
+    Type type = new Type("Whiskey");
+    type.save();
+    Item newItem = new Item("Knob Creek", type.getId(), 36.99, 26.53);
+    newItem.save();
+    goTo("http://localhost:4567/item/added");
+    assertThat(pageSource()).contains("Knob Creek");
+  }
 }
