@@ -36,14 +36,14 @@ public class AppTest extends FluentTest {
     goTo("http://localhost:4567/inventory");
     assertThat(pageSource()).contains("Knob Creek");
   }
-  //
-  // @Test
-  // public void recipeIsCreatedTest() {
-  //   Recipe myRecipe = new Recipe ("Gin and tonic","good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
-  //   myRecipe.save();
-  //   goTo("http://localhost:4567/recipes");
-  //   assertThat(pageSource()).contains("Gin and tonic","good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
-  // }
+
+  @Test
+  public void recipeIsCreatedTest() {
+    Recipe myRecipe = new Recipe ("Gin and tonic","good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
+    myRecipe.save();
+    goTo("http://localhost:4567/recipes");
+    assertThat(pageSource()).contains("Gin and tonic");
+  }
 
   // @Test
   // public void addIngredientToRecipe() {
