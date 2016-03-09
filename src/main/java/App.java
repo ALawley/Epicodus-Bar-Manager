@@ -35,5 +35,31 @@ public class App {
       model.put("template", "templates/planner.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/planner/:id/update", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Recipe recipe = Recipe.find(Integer.parseInt(request.params(":id")));
+      int itemId =  Integer.parseInt(request.queryParams("ingredientStated"));
+      Item item = Item.find(itemId);
+
+      //In a for loop to then see how many servings can be made
+      item.decrementItem(item.getAmount());
+
+      //number of times it loops before hitting '0'
+      model.put("numberOfServings", item.getAmount());
+
+      model.put("recipe", recipe);
+      model.put("template", "templates/planner-update.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    //if enough servings decrement from inventory, return to recipe page
+    post("/planner/:id/createdDrink", (request, response) -> {
+
+      //goes to recipe page
+      response.redirect("/");
+      return null;
+    });
   }
 }
+// Item.decrementItem(double pourAmount)
