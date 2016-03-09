@@ -111,6 +111,16 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/recipes/recipe/update/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Recipe recipe = Recipe.find(Integer.parseInt(request.params(":id")));
+      Boolean update = true;
+      model.put("update", update);
+      model.put("recipe", recipe);
+      model.put("template", "templates/planner.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     post("/planner/:id/update", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Recipe recipe = Recipe.find(Integer.parseInt(request.params(":id")));
