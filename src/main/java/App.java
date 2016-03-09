@@ -80,16 +80,16 @@ public class App {
       response.redirect("/inventory");
       return null;
     });
-    // 
+
     // post("/planner/:id/update", (request, response) -> {
     //   HashMap<String, Object> model = new HashMap<String, Object>();
     //   Recipe recipe = Recipe.find(Integer.parseInt(request.params(":id")));
     //
     //   //error: incompatible types: String[] cannot be converted to String
     //   //May have to create String Array to loop through then convert to int to be stored into a diff array
-    //   ArrayList<Integer> itemIds = new ArrayList<Integer>();
+    //   // ArrayList<Integer> itemIds = new ArrayList<Integer>();
     //
-    //   // Integer[] itemIds = Integer.parseInt(request.queryParamsValues("ingredientStated"));
+    //   Integer[] itemIds = Integer.parseInt(request.queryParamsValues("ingredientStated"));
     //
     //   List<Ingredient> ingredients = recipe.getIngredients();
     //   ArrayList<Item> items = new ArrayList<Item>();
@@ -105,16 +105,14 @@ public class App {
     //   int maxServings = Collections.min(servings);
     //
     //   model.put("numberOfServings", maxServings);
-    //   // model.put(); item name
     //   model.put("recipe", recipe);
     //   model.put("template", "templates/planner-update.vtl");
     //   return new ModelAndView(model, layout);
     // }, new VelocityTemplateEngine());
 
-    //if enough servings decrement from inventory, return to recipe page
     post("/planner/:id/createdDrink", (request, response) -> {
 
-      //goes to recipe page
+      //goes to recipes page///
       response.redirect("/recipes");
       return null;
     });

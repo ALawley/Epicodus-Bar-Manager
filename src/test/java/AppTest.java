@@ -26,13 +26,23 @@ public class AppTest extends FluentTest {
      goTo("http://localhost:4567/");
      assertThat(pageSource()).contains("");
    }
-   @Test
+
+  @Test
   public void itemDisplaysTest() {
     Type type = new Type("Whiskey");
     type.save();
     Item newItem = new Item("Knob Creek", type.getId(), 36.99, 26.53);
     newItem.save();
     goTo("http://localhost:4567/item/added");
+    // not created yet, the routing for adding new item ****
     assertThat(pageSource()).contains("Knob Creek");
+  }
+
+  @Test
+  public void recipeIsCreatedTest() {
+    Recipe myRecipe = new Recipe ("Gin and tonic","good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
+    myRecipe.save();
+    goTo("http://localhost:4567/recipes");
+    assertThat(pageSource()).contains("Gin and tonic","good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
   }
 }
