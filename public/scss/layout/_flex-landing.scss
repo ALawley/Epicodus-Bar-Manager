@@ -59,10 +59,6 @@ html, body, .container {
         margin: 0;
       }
 
-body{
-/*position: relative;*/
-}
-
 .container {
   display: flex;
   height: 100vh;
@@ -93,10 +89,7 @@ img[rel="main"] {
 
   }
 
-.mid2 {
-    position: relative;
-    width: 100%;
-}
+
 
 .mid2 h1 {
   height: 11vh;
