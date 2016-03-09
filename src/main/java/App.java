@@ -18,11 +18,11 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/inventory", (request, response) -> {
+    get("/recipes", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       model.put("types", Type.all());
-      model.put("items", Item.all());
-      model.put("template", "templates/inventory.vtl");
+      model.put("recipes", Recipe.all());
+      model.put("template", "templates/recipes.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -44,34 +44,14 @@ public class App {
         String info = request.queryParams(infofield);
         if (amountValue == "" || typeId == 0) {} else {
           Double amount = Double.parseDouble(amountValue);
-            Ingredient newIngredient = new Ingredient(typeId, amount, info);
-            newIngredient.save();
-            newRecipe.addIngredient(newIngredient.getId());
+          Ingredient newIngredient = new Ingredient(typeId, amount, info);
+          newIngredient.save();
+          newRecipe.addIngredient(newIngredient.getId());
         }
       }
-      double amount = Double.parseDouble(request.queryParams("amount"));
-      double price = Double.parseDouble(request.queryParams("price"));
-      Item newItem = new Item(name, typeId, amount, price);
-      newItem.save();
       response.redirect("/recipes");
       return null;
     });
-
-    get("/recipes", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      model.put("types", Type.all());
-      model.put("recipes", Recipe.all());
-      model.put("template", "templates/recipes.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
-    get("/planner/:id", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      Recipe recipe = Recipe.find(Integer.parseInt(request.params(":id")));
-      model.put("recipe", recipe);
-      model.put("template", "templates/planner.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
 
     get("/inventory", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
@@ -92,6 +72,14 @@ public class App {
       response.redirect("/inventory");
       return null;
     });
+
+    get("/planner/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Recipe recipe = Recipe.find(Integer.parseInt(request.params(":id")));
+      model.put("recipe", recipe);
+      model.put("template", "templates/planner.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
     post("/planner/:id/update", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
