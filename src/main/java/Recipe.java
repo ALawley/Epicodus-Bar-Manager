@@ -8,14 +8,15 @@ public class Recipe {
   private int rating;
   private String creator;
   private String prep_time;
+  private String directions;
 
 
-  public Recipe (String name, String notes, int rating, String creator, String prep_time) {
+  public Recipe (String name, String notes, String creator, String prep_time, String directions) {
     this.name = name;
     this.notes = notes;
-    this.rating = rating;
     this.creator = creator;
     this.prep_time = prep_time;
+    this.directions = directions;
   }
 
   public int getId() {
@@ -42,6 +43,10 @@ public class Recipe {
     return prep_time;
   }
 
+  public String getDirections() {
+    return directions;
+  }
+
   public static List<Recipe> all() {
     String sql = "SELECT * FROM recipes ORDER BY name";
     try (Connection con = DB.sql2o.open()) {
@@ -60,13 +65,14 @@ public class Recipe {
          && this.getNotes().equals(newRecipe.getNotes())
          && this.getRating() == newRecipe.getRating()
          && this.getCreator().equals(newRecipe.getCreator())
-         && this.getPrepTime().equals(newRecipe.getPrepTime());
+         && this.getPrepTime().equals(newRecipe.getPrepTime())
+         && this.getDirections().equals(newRecipe.getDirections());
       }
     }
 
 
   public void save() {
-    String sql = "INSERT INTO  recipes (name, notes, rating, creator, prep_time) VALUES (:name, :notes, :rating, :creator, :prep_time);";
+    String sql = "INSERT INTO  recipes (name, notes, rating, creator, prep_time, directions) VALUES (:name, :notes, :rating, :creator, :prep_time, :directions);";
     try (Connection con = DB.sql2o.open()) {
     this.id = (int) con.createQuery(sql, true)
       .addParameter("name", name)
@@ -74,6 +80,7 @@ public class Recipe {
       .addParameter("rating", rating)
       .addParameter("creator", creator)
       .addParameter("prep_time", prep_time)
+      .addParameter("directions", directions)
       .executeUpdate()
       .getKey();
     }
@@ -89,13 +96,14 @@ public class Recipe {
     }
   }
 
-  public void updateRecipe(String newName, String newNotes, int newRating, String newCreator, String newPrepTime) {
+  public void updateRecipe(String newName, String newNotes, int newRating, String newCreator, String newPrepTime, String newDirections) {
   this.name = newName;
   this.notes = newNotes;
   this.rating = newRating;
   this.creator = newCreator;
   this.prep_time = newPrepTime;
-  String sql = "UPDATE recipes SET name=:name, notes=:notes, rating=:rating, creator=:creator, prep_time=:prep_time WHERE id=:id;";
+  this.directions = newDirections;
+  String sql = "UPDATE recipes SET name=:name, notes=:notes, rating=:rating, creator=:creator, prep_time=:prep_time, directions=:directions WHERE id=:id;";
   try (Connection con = DB.sql2o.open()) {
     this.id = (int) con.createQuery(sql, true)
       .addParameter("name", name)
@@ -103,10 +111,21 @@ public class Recipe {
       .addParameter("rating", rating)
       .addParameter("creator", creator)
       .addParameter("prep_time", prep_time)
+      .addParameter("directions", directions)
       .addParameter("id", id)
       .executeUpdate()
       .getKey();
     }
+  }
+
+  public void addRating(int rating) {
+    String sql = "UPDATE recipes SET rating=:rating WHERE id=:id;";
+    try (Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+        .addParameter("rating", rating)
+        .addParameter("id", id)
+        .executeUpdate();
+      }
   }
 
   public void addIngredient(int ingredient_id) {
@@ -129,7 +148,7 @@ public List<Ingredient> getIngredients() {
   }
 }
 
-public void deleteIngredients() {
+public void delete() {
   String sql = "DELETE FROM recipes WHERE id=:id;" + "DELETE FROM ingredients WHERE recipe_id=:recipe_id;";
   try (Connection con = DB.sql2o.open()) {
     con.createQuery(sql)
