@@ -83,7 +83,7 @@ public class RecipeTest {
     Recipe recipeOne = new Recipe("Gin and tonic","good", "Rob Lowe", "5 minutes");
     recipeOne.save();
     recipeOne.addIngredient(itemOne.getId());
-    recipeOne.deleteIngredients();
+    recipeOne.delete();
     assertEquals(recipeOne.getIngredients().size(), 0);
   }
 
