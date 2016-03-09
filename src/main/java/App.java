@@ -117,6 +117,7 @@ public class App {
       Boolean update = true;
       model.put("update", update);
       model.put("recipe", recipe);
+      model.put("types", Type.all());
       model.put("template", "templates/planner.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());

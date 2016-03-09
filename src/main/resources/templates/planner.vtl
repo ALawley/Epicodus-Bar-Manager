@@ -11,7 +11,6 @@
           <li>$item.getAmount() oz - $item.getInfo()</li>
           #end
         </ul>
-        <!-- <a class="btn btn-warning" href="/planner/$recipe.getId()/update">Update drink!</a> -->
         <a class="btn btn-warning" href="/recipes/recipe/update/$recipe.getId()">Update drink!</a>
     </div>
     <div class="well">
@@ -50,7 +49,8 @@
     <input type="number" class="form-control" name="amount1" id="amount1">
     <label for="type1">Ingredient Type</label>
     <select name="type1" id="type1">
-      <option value="0" id="blank1">Select Ingredient Type:</option>
+      <!-- <option value="0" id="blank1">Select Ingredient Type:</option> -->
+      <option disabled selected> -- select an option -- </option>
       #foreach($type in $types)
       <option value="$type.getId()" id="ing1type$type.getId()">$type.getType()</option>
       #end
@@ -64,7 +64,8 @@
     <input type="number" class="form-control" name="amount2" id="amount2">
     <label for="type2">Ingredient Type</label>
     <select name="type2" id="type2">
-      <option value="0" id="blank2">Select Ingredient Type:</option>
+      <!-- <option value="0" id="blank2">Select Ingredient Type:</option> -->
+      <option disabled selected> -- select an option -- </option>
       #foreach($type in $types)
       <option value="$type.getId()" id="ing2type$type.getId()">$type.getType()</option>
       #end
@@ -78,7 +79,8 @@
     <input type="number" class="form-control" name="amount3" id="amount3">
     <label for="type3">Ingredient Type</label>
     <select name="type3" id="type3">
-      <option value="0" id="blank3">Select Ingredient Type:</option>
+      <!-- <option value="0" id="blank3">Select Ingredient Type:</option> -->
+      <option disabled selected> -- select an option -- </option>
       #foreach($type in $types)
       <option value="$type.getId()" id="ing3type$type.getId()">$type.getType()</option>
       #end
@@ -92,7 +94,8 @@
     <input type="number" class="form-control" name="amount4" id="amount4">
     <label for="type4">Ingredient Type</label>
     <select name="type4" id="type4">
-      <option value="0" id="blank4">Select Ingredient Type:</option>
+      <!-- <option value="0" id="blank4">Select Ingredient Type:</option> -->
+      <option disabled selected> -- select an option -- </option>
       #foreach($type in $types)
       <option value="$type.getId()" id="ing4type$type.getId()">$type.getType()</option>
       #end
@@ -106,7 +109,8 @@
     <input type="number" class="form-control" name="amount5" id="amount5">
     <label for="type5">Ingredient Type</label>
     <select name="type5" id="type5">
-      <option value="0" id="blank5">Select Ingredient Type:</option>
+      <!-- <option value="0" id="blank5">Select Ingredient Type:</option> -->
+      <option disabled selected> -- select an option -- </option>
       #foreach($type in $types)
       <option value="$type.getId()" id="ing5type$type.getId()">$type.getType()</option>
       #end
@@ -120,7 +124,8 @@
     <input type="number" class="form-control" name="amount6" id="amount6">
     <label for="type6">Ingredient Type</label>
     <select name="type6" id="type6">
-      <option value="0" id="blank6">Select Ingredient Type:</option>
+      <!-- <option value="0" id="blank6">Select Ingredient Type:</option> -->
+      <option disabled selected> -- select an option -- </option>
       #foreach($type in $types)
       <option value="$type.getId()" id="ing6type$type.getId()">$type.getType()</option>
       #end
@@ -134,7 +139,8 @@
     <input type="number" class="form-control" name="amount7" id="amount7">
     <label for="type7">Ingredient Type</label>
     <select name="type7" id="type7">
-      <option value="0" id="blank7">Select Ingredient Type:</option>
+      <!-- <option value="0" id="blank7">Select Ingredient Type:</option> -->
+      <option disabled selected> -- select an option -- </option>
       #foreach($type in $types)
       <option value="$type.getId()" id="ing7type$type.getId()">$type.getType()</option>
       #end
@@ -148,7 +154,8 @@
     <input type="number" class="form-control" name="amount8" id="amount8">
     <label for="type8">Ingredient Type</label>
     <select name="type8" id="type8">
-      <option value="0" id="blank8">Select Ingredient Type:</option>
+      <!-- <option value="0" id="blank8">Select Ingredient Type:</option> -->
+      <option disabled selected> -- select an option -- </option>
       #foreach($type in $types)
       <option value="$type.getId()" id="ing8type$type.getId()">$type.getType()</option>
       #end
