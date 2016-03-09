@@ -1,28 +1,29 @@
 <div class="jumbotron">
   <h1>Planner</h1>
 </div>
-    <div class="well">
-      <h1>$recipe.getName()</h1>
-      <h2>Created By: $recipe.getCreator()</h2>
-      <h3>Duration: $recipe.getPrepTime()</h3>
-      <h3>$recipe.getNotes()</h3>
-        <ul>
-          #foreach ($item in $recipe.getIngredients())
-          <li>$item.getAmount() oz - $item.getInfo()</li>
-          #end
-        </ul>
-    </div>
-    <div class="well">
-      <h2>Pick Your Poison</h2>
-      <form action="/planner/$recipe.getId()/update" method="post">
-        #foreach ($ingredient in $recipe.getIngredients())
-          <label>$ingredient.getInfo()</label>
-          <select type="text" name="ingredientStated" id="choose$ingredient.getId()">
-            #foreach($item in $ingredient.getType().getAllOf())
-              <option value="$item.getId()" id="$ingredient.getId()use$item.getId()">$item.getName()</option>
-            #end
-          </select>
+<div class="well">
+  <h1>$recipe.getName()</h1>
+  <h2>Created By: $recipe.getCreator()</h2>
+  <h3>Duration: $recipe.getPrepTime()</h3>
+  <h3>$recipe.getNotes()</h3>
+    <ul>
+      #foreach ($item in $recipe.getIngredients())
+      <li>$item.getAmount() oz - $item.getTypeName() - $item.getInfo()</li>
+      #end
+    </ul>
+</div>
+<div class="well">
+  <h2>Pick Your Poison</h2>
+  <form action="" method="post">
+    #foreach ($ingredient in $recipe.getIngredients())
+      <label>$ingredient.getAmount() oz. $ingredient.getTypeName() - $ingredient.getInfo()</label>
+      <select type="text" name="typeId" id="choose$ingredient.getId()">
+        #foreach($item in $ingredient.getType().getAllOf())
+          <option value="$item.getId()" id="$ingredient.getId()use$item.getId()">$item.getName()</option>
         #end
-        <button class="btn btn-success" type="submit" id="addIngredient">Make Drink</button>
-      </form>
-  </div>
+      </select>
+      <br>
+    #end
+    <button class="btn btn-success" type="submit" id="addIngredient">Make Drink</button>
+  </form>
+</div>
