@@ -61,7 +61,7 @@ public class Type {
   }
 
   public List<Item> getAllOf() {
-    String sql = "SELECT items.* FROM items JOIN item_types ON (item_types.id = items.type_id) WHERE item_types.id = :id";
+    String sql = "SELECT items.* FROM items JOIN item_types ON (item_types.id = items.type_id) WHERE item_types.id = :id ORDER BY name,price";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql)
         .addParameter("id", id)

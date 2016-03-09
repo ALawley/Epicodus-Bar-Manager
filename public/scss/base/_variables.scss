@@ -11,14 +11,17 @@ $dark-eggshell  : #FFEAC6;
 $spring-green  : #8AE749;
 $hot-orange  : #FF8A34;
 $vibrant-teal  : #02D9D9;
+$salmon  : salmon;
+$dark-brown  : #42280D;
 
 // Functional color variables
 
 $color-prim     : $vibrant-teal;
 $color-sec       : $french-yellow;
-$color-text-light: $white;
-$color-text-base: $vibrant-teal;
-$color-text-dark: $grey;
+$color-back     : $dark-eggshell;
+$text-light: $white;
+$text-base: $vibrant-teal;
+$text-dark: $grey;
 
 $color-border-light : lighten($grey, 35%);
 $color-border-dark  : $yellow-orange;
@@ -29,11 +32,10 @@ $color-link-visited : $regent-st-blue;
 $color-shadow       : rgba($black,.8);
 $color-body         : $white;
 
-// Font stacks
+// Fonts//
 
-// $stack-sans-serif  : Helvetica, Arial, sans-serif;
-// $stack-helvetica  : "Helvetica Neue", $stack-sans-serif;
-// $stack-abolition  : 'Abolition Regular', $stack-sans-serif;
+$font-prim  : 'Sacramento', cursive;
+$font-sec  : 'Alice', serif;
 
 // Border radius
 
@@ -41,8 +43,8 @@ $color-body         : $white;
 
 // Asset paths
 
-$path-img     : '../img';
-$path-font     : '../fonts';
+$path-img     : '../public/img';
+$path-font     : '../public/fonts';
 
 // Media query breakpoints
 

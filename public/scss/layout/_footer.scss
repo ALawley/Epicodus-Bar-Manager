@@ -1,4 +1,4 @@
-#footer {
+.footer {
     order: 1;
     position: relative;
     display: flex;
@@ -10,8 +10,8 @@
 .footer-content {
   background: #02D9D9;
   width: 100vw;
-  height: 8vh;
-  padding: 3vh;
+  height: 4vh;
+  padding: 1vh;
 }
 
 .footer-content ul {
@@ -24,9 +24,6 @@
 }
 
 .footer-content li {
-  font-family: Courier;
-  font-weight: bold;
-  color: #D910E8;
   display: inline-flex;
   padding: 0 2.5vw;
 }
