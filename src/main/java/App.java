@@ -21,20 +21,14 @@ public class App {
     get("/inventory", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       model.put("types", Type.all());
-<<<<<<< HEAD
-      model.put("recipes", Recipe.all());
-      model.put("template", "templates/recipes.vtl");
-=======
       model.put("items", Item.all());
       model.put("template", "templates/inventory.vtl");
->>>>>>> aa75acf03764d852055fda997090e028f6bbfc5b
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
     post("/recipes/new", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       String name = request.queryParams("name");
-<<<<<<< HEAD
       String notes = request.queryParams("notes");
       String creator = request.queryParams("creator");
       String preptime = request.queryParams("preptime");
@@ -55,7 +49,6 @@ public class App {
             newRecipe.addIngredient(newIngredient.getId());
         }
       }
-=======
       double amount = Double.parseDouble(request.queryParams("amount"));
       double price = Double.parseDouble(request.queryParams("price"));
       Item newItem = new Item(name, typeId, amount, price);
@@ -66,7 +59,6 @@ public class App {
 
     get("/recipes", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
->>>>>>> aa75acf03764d852055fda997090e028f6bbfc5b
       model.put("types", Type.all());
       model.put("recipes", Recipe.all());
       model.put("template", "templates/recipes.vtl");
@@ -81,7 +73,6 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-<<<<<<< HEAD
     get("/inventory", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       model.put("types", Type.all());
@@ -102,12 +93,6 @@ public class App {
       return null;
     });
 
-
-
-
-
-
-=======
     post("/planner/:id/update", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Recipe recipe = Recipe.find(Integer.parseInt(request.params(":id")));
@@ -143,9 +128,5 @@ public class App {
       response.redirect("/");
       return null;
     });
->>>>>>> aa75acf03764d852055fda997090e028f6bbfc5b
   }
-
-
 }
-// Item.decrementItem(double pourAmount)
