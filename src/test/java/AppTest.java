@@ -45,12 +45,15 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Gin and tonic");
   }
 
-  // @Test
-  // public void addIngredientToRecipe() {
-  //   Ingredient testIngredient = new Ingredient(2, 3.5, "Tanqueray");
-  //   testIngredient.save();
-  //   Recipe myRecipe = new Recipe ("Gin and tonic","good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
-  //   myRecipe.save();
-  //   String recipePath = String.format("http://localhost:4567/ingre")
-  // }
+  @Test
+  public void addIngredientToRecipe() {
+    Ingredient testIngredient = new Ingredient(3, 3.5, "Tanqueray");
+    testIngredient.save();
+    Recipe myRecipe = new Recipe ("Gin and tonic","good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
+    myRecipe.save();
+    String recipePath = String.format("http://localhost:4567/planner/%d",
+    myRecipe.getId());
+    goTo(recipePath);
+    assertThat(pageSource()).contains("Gin and tonic");
+  }
 }
