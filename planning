@@ -9,4 +9,63 @@ Extra:
   2) Suggestions
   3) Recipe API
   4) Price API
+
+Page Input/Output Info for Wren:
+
+Index:
+  -Collection of links. No info from us to get or display
+
+Inventory page:
+  Display:
+    -Table of ounce-ml conversions
+    -Table of all items in inventory, with following info:
+      -Amount (oz)
+      -Type
+      -Name
+      -Price ($)
+
+  Form with inputs for:
+    -Type (dropdown)
+    -Name
+    -Amount (oz)
+    -Price ($)
+
+Build your recipes page:
+  Display:
+    List of all recipes as links to their recipe pages
+
+  Form with inputs for
+  -recipe name
+  -notes
+  -created by
+  -prep time
+  -directions (will be long, maybe a bigger (paragraph-sized?)input field?)
+  -The following for 8 ingredients
+    -amount
+    -type (dropdown)
+    -info
+
+Planner page:
+  Display:
+    Recipe Info:
+      -Name
+        -List of Ingredients with:
+          -Amount (oz)
+          -Type
+          -Additional Info
+      -Created By:
+      -Prep Time
+      -Directions
+      -Notes
+      -Rating
+
+  Form with dropdown for each ingredient (just need one dropdown, we will populate the rest, as well as all info)
+
+Update page:
+  Display:
+    -Recipe name
+    -How many they can make
+    -Confirm how many they're making (input & submit)
+    -Error message if they're trying to make too many, w/ link to inventory page
+
   

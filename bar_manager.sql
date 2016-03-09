@@ -144,7 +144,8 @@ CREATE TABLE recipes (
     notes character varying,
     rating integer,
     creator character varying,
-    prep_time character varying
+    prep_time character varying,
+    directions text
 );
 
 
@@ -248,7 +249,7 @@ SELECT pg_catalog.setval('items_id_seq', 1, false);
 -- Data for Name: recipes; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY recipes (id, name, notes, rating, creator, prep_time) FROM stdin;
+COPY recipes (id, name, notes, rating, creator, prep_time, directions) FROM stdin;
 \.
 
 
