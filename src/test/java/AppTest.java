@@ -24,7 +24,7 @@ public class AppTest extends FluentTest {
   @Test
    public void rootTest() {
      goTo("http://localhost:4567/");
-     assertThat(pageSource()).contains("");
+     assertThat(pageSource()).contains("For people who like to drink at home");
    }
 
   @Test
@@ -37,12 +37,21 @@ public class AppTest extends FluentTest {
     // not created yet, the routing for adding new item ****
     assertThat(pageSource()).contains("Knob Creek");
   }
+  //
+  // @Test
+  // public void recipeIsCreatedTest() {
+  //   Recipe myRecipe = new Recipe ("Gin and tonic","good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
+  //   myRecipe.save();
+  //   goTo("http://localhost:4567/recipes");
+  //   assertThat(pageSource()).contains("Gin and tonic","good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
+  // }
 
-  @Test
-  public void recipeIsCreatedTest() {
-    Recipe myRecipe = new Recipe ("Gin and tonic","good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
-    myRecipe.save();
-    goTo("http://localhost:4567/recipes");
-    assertThat(pageSource()).contains("Gin and tonic","good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
-  }
+  // @Test
+  // public void addIngredientToRecipe() {
+  //   Ingredient testIngredient = new Ingredient(2, 3.5, "Tanqueray");
+  //   testIngredient.save();
+  //   Recipe myRecipe = new Recipe ("Gin and tonic","good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
+  //   myRecipe.save();
+  //   String recipePath = String.format("http://localhost:4567/ingre")
+  // }
 }
