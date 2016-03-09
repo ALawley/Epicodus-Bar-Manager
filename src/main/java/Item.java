@@ -69,12 +69,13 @@ public class Item {
   //CREATE
   public void save() {
     try (Connection con = DB.sql2o.open()) {
-    String sql = "INSERT INTO items(name, type_id, amount, price) VALUES (:name, :type_id, :amount, :price)";
+    String sql = "INSERT INTO items(name, type_id, amount, price, priceperoz) VALUES (:name, :type_id, :amount, :price, :priceperoz)";
     this.id = (int) con.createQuery(sql, true)
       .addParameter("name", name)
       .addParameter("type_id", type_id)
       .addParameter("amount", amount)
       .addParameter("price", price)
+      .addParameter("priceperoz", pricePerOz)
       .executeUpdate()
       .getKey();
     }
