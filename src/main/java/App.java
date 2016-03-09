@@ -53,7 +53,7 @@ public class App {
       double price = Double.parseDouble(request.queryParams("price"));
       Item newItem = new Item(name, typeId, amount, price);
       newItem.save();
-      response.redirect("/inventory");
+      response.redirect("/recipes");
       return null;
     });
 
