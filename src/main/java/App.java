@@ -14,9 +14,15 @@ public class App {
 
     get("/", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/index.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/inventory", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
       model.put("types", Type.all());
       model.put("items", Item.all());
-      model.put("template", "templates/recipe.vtl");
+      model.put("template", "templates/inventory.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -28,10 +34,10 @@ public class App {
       double price = Double.parseDouble(request.queryParams("price"));
       Item newItem = new Item(name, typeId, amount, price);
       newItem.save();
-      response.redirect("/");
+      response.redirect("/inventory");
       return null;
     });
-    
+
     get("/recipes", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       model.put("types", Type.all());
@@ -53,22 +59,22 @@ public class App {
 
       //error: incompatible types: String[] cannot be converted to String
       //May have to create String Array to loop through then convert to int to be stored into a diff array
-      Integer[] itemIds = Integer.parseInt(request.queryParamsValues("ingredientStated"));
+      // Integer[] itemIds = Integer.parseInt(request.queryParamsValues("ingredientStated"));
+      //
+      // List<Ingredient> ingredients = recipe.getIngredients();
+      // ArrayList<Item> items = new ArrayList<Item>();
+      // for (int itemId : itemIds) {
+      //   items.add(Item.find(itemId));
+      // }
+      // ArrayList<Integer> servings = new ArrayList<Integer>();
+      // for (int i=0; i<items.size(); i++) {
+      //   int amountCanMake = (int) Math.round(items.get(i).getAmount()/ingredients.get(i).getAmount());
+      //   servings.add(amountCanMake);
+      // }
+      // Item limitingIngredient =  items.get(servings.indexOf(Collections.min(servings)));
+      // int maxServings = Collections.min(servings);
 
-      List<Ingredient> ingredients = recipe.getIngredients();
-      ArrayList<Item> items = new ArrayList<Item>();
-      for (int itemId : itemIds) {
-        items.add(Item.find(itemId));
-      }
-      ArrayList<Integer> servings = new ArrayList<Integer>();
-      for (int i=0; i<items.size(); i++) {
-        int amountCanMake = (int) Math.round(items.get(i).getAmount()/ingredients.get(i).getAmount());
-        servings.add(amountCanMake);
-      }
-      Item limitingIngredient =  items.get(servings.indexOf(Collections.min(servings)));
-      int maxServings = Collections.min(servings);
-
-      model.put("numberOfServings", maxServings);
+      // model.put("numberOfServings", maxServings);
       // model.put(); item name
       model.put("recipe", recipe);
       model.put("template", "templates/planner-update.vtl");
