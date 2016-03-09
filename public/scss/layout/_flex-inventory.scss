@@ -150,6 +150,7 @@ img[rel="conversion"] {
   width: 100%;
   align-items: center;
   justify-content: center;
+  top: 60vh;
 }
 
 form {
@@ -170,12 +171,12 @@ form.buildform {
 
 form.recipe-entry{
   width: 50vw;
-  height: 30vh;
+  height: 20vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  bottom: 50vh;
-  left: 0;
+  left: 25vw;
+  top: 5vw;
 }
 
 /*////////////////////BEGIN GALLERY PAGE/////////////////////*/

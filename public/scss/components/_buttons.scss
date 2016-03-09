@@ -25,8 +25,8 @@
   text-decoration: none;
 }
 
-/* #F93 */
-/* #C60 */
+///////////////DropDown Styling/////////////////////
+
 #cssmenu {
   display: flex;
   border: none;
@@ -45,6 +45,13 @@
 
 .small-ish {
   height: 3.5vh;
+}
+
+.recipe-list {
+  width: 10vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #cssmenu ul {
