@@ -53,6 +53,36 @@ public class App {
       return null;
     });
 
+    post("/recipes/recipe/update/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      String name = request.queryParams("name");
+      String notes = request.queryParams("notes");
+      int rating = Integer.parseInt(request.queryParams("rating"));
+      String creator = request.queryParams("creator");
+      String preptime = request.queryParams("preptime");
+      String directions = request.queryParams("directions");
+      Recipe recipeUpdated = Recipe.find(Integer.parseInt(request.params(":id")));
+
+      recipeUpdated.updateRecipe(name, notes, rating, creator, preptime, directions);
+
+      for (int i = 1; i <= 8; i++) {
+        String amountfield = String.format("amount%d", i);
+        String typefield = String.format("type%d", i);
+        String infofield = String.format("info%d", i);
+        String amountValue = request.queryParams(amountfield);
+        int typeId = Integer.parseInt(request.queryParams(typefield));
+        String info = request.queryParams(infofield);
+        if (amountValue == "" || typeId == 0) {} else {
+          Double amount = Double.parseDouble(amountValue);
+          Ingredient newIngredient = new Ingredient(typeId, amount, info);
+          newIngredient.save();
+          recipeUpdated.addIngredient(newIngredient.getId());
+        }
+      }
+      response.redirect("/recipes");
+      return null;
+    });
+
     get("/inventory", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       model.put("types", Type.all());
