@@ -1,7 +1,7 @@
 recipes.vtl
 
 #foreach($recipe in $recipes)
-  <h3>$recipe.getName(): </h3><h5>$recipe.getNotes()</h5>
+  <h3><a href="/planner/$recipe.getId()">$recipe.getName()</a></h3>
 #end
 
 <h3>Add a new recipe</h3>
@@ -23,6 +23,7 @@ recipes.vtl
     <input type="number" class="form-control" name="amount1" id="amount1">
     <label for="type1">Ingredient Type</label>
     <select name="type1" id="type1">
+      <option value="0" id="blank1">Select Ingredient Type:</option>
       #foreach($type in $types)
       <option value="$type.getId()" id="ing1type$type.getId()">$type.getType()</option>
       #end
@@ -36,6 +37,7 @@ recipes.vtl
     <input type="number" class="form-control" name="amount2" id="amount2">
     <label for="type2">Ingredient Type</label>
     <select name="type2" id="type2">
+      <option value="0" id="blank2">Select Ingredient Type:</option>
       #foreach($type in $types)
       <option value="$type.getId()" id="ing2type$type.getId()">$type.getType()</option>
       #end
@@ -49,6 +51,7 @@ recipes.vtl
     <input type="number" class="form-control" name="amount3" id="amount3">
     <label for="type3">Ingredient Type</label>
     <select name="type3" id="type3">
+      <option value="0" id="blank3">Select Ingredient Type:</option>
       #foreach($type in $types)
       <option value="$type.getId()" id="ing3type$type.getId()">$type.getType()</option>
       #end
@@ -62,6 +65,7 @@ recipes.vtl
     <input type="number" class="form-control" name="amount4" id="amount4">
     <label for="type4">Ingredient Type</label>
     <select name="type4" id="type4">
+      <option value="0" id="blank4">Select Ingredient Type:</option>
       #foreach($type in $types)
       <option value="$type.getId()" id="ing4type$type.getId()">$type.getType()</option>
       #end
@@ -75,6 +79,7 @@ recipes.vtl
     <input type="number" class="form-control" name="amount5" id="amount5">
     <label for="type5">Ingredient Type</label>
     <select name="type5" id="type5">
+      <option value="0" id="blank5">Select Ingredient Type:</option>
       #foreach($type in $types)
       <option value="$type.getId()" id="ing5type$type.getId()">$type.getType()</option>
       #end
@@ -88,6 +93,7 @@ recipes.vtl
     <input type="number" class="form-control" name="amount6" id="amount6">
     <label for="type6">Ingredient Type</label>
     <select name="type6" id="type6">
+      <option value="0" id="blank6">Select Ingredient Type:</option>
       #foreach($type in $types)
       <option value="$type.getId()" id="ing6type$type.getId()">$type.getType()</option>
       #end
@@ -101,6 +107,7 @@ recipes.vtl
     <input type="number" class="form-control" name="amount7" id="amount7">
     <label for="type7">Ingredient Type</label>
     <select name="type7" id="type7">
+      <option value="0" id="blank7">Select Ingredient Type:</option>
       #foreach($type in $types)
       <option value="$type.getId()" id="ing7type$type.getId()">$type.getType()</option>
       #end
@@ -114,6 +121,7 @@ recipes.vtl
     <input type="number" class="form-control" name="amount8" id="amount8">
     <label for="type8">Ingredient Type</label>
     <select name="type8" id="type8">
+      <option value="0" id="blank8">Select Ingredient Type:</option>
       #foreach($type in $types)
       <option value="$type.getId()" id="ing8type$type.getId()">$type.getType()</option>
       #end
@@ -125,242 +133,3 @@ recipes.vtl
   <input id="directions" name="directions" type="text" class="form-control" required>
   <button type="submit" class="btn btn-primary">Add recipe</button>
 </form>
-<!-- <button type="button" class="btn btn-info" id="addIngs" data-toggle="modal" data-target="#addIng1">Add Ingredients</button>
-<div class="modal fade" id="addIng1" role="dialog" aria-labelledby="addIng1">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Ingredient</h4>
-      </div>
-      <div class="modal-body">
-        <form class="form-inline" action="/recipes/new" method="post">
-          <div class="form-group">
-            <input type="number" class="form-control" name="amount1" id="amount1" placeholder="Amount (oz.)">
-          <div class="form-group">
-            <select name="type1" id="type1">
-              #foreach($type in $types)
-              <option value="$type.getId()" id="ing1type$type.getId()">$type.getType()</option>
-              #end
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="sr-only" for="info">Info</label>
-            <input type="text" class="form-control" name="info1" id="info1" placeholder="Info">
-          </div>
-          <button type="button" class="btn btn-default btn-small" data-target="#addIng2" data-toggle="modal">Add another ingredient</button>
-          <button type="submit" class="btn btn-default btn-small">Done adding ingredients</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="addIng2" role="dialog" aria-labelledby="addIng2">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Ingredient</h4>
-      </div>
-      <div class="modal-body">
-        <form class="form-inline" action="/recipes/new" method="post">
-          <div class="form-group">
-            <input type="number" class="form-control" name="amount2" id="amount2" placeholder="Amount (oz.)">
-          </div>
-          <div class="form-group">
-            <select name="type2" id="type2">
-              #foreach($type in $types)
-              <option value="$type.getId()" id="ing2type$type.getId()">$type.getType()</option>
-              #end
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="sr-only" for="info">Info</label>
-            <input type="text" class="form-control" name="info2" id="info2" placeholder="Info">
-          </div>
-          <button type="button" class="btn btn-default btn-small" data-toggle="modal" data-target="#addIng3">Add another ingredient</button>
-          <button type="submit" class="btn btn-default btn-small">Done adding ingredients</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="addIng3" role="dialog" aria-labelledby="addIng3">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Ingredient</h4>
-      </div>
-      <div class="modal-body">
-        <form class="form-inline" action="/recipes/new" method="post">
-          <div class="form-group">
-            <input type="number" class="form-control" name="amount3" id="amount3" placeholder="Amount (oz.)">
-          </div>
-          <div class="form-group">
-            <select name="type3" id="type3">
-              #foreach($type in $types)
-              <option value="$type.getId()" id="ing3type$type.getId()">$type.getType()</option>
-              #end
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="sr-only" for="info">Info</label>
-            <input type="text" class="form-control" name="info3" id="info3" placeholder="Info">
-          </div>
-          <button type="button" class="btn btn-default btn-small" data-toggle="modal" data-target="#addIng4">Add another ingredient</button>
-          <button type="submit" class="btn btn-default btn-small">Done adding ingredients</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="addIng4" role="dialog" aria-labelledby="addIng4">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Ingredient</h4>
-      </div>
-      <div class="modal-body">
-        <form class="form-inline" action="/recipes/new" method="post">
-          <div class="form-group">
-            <input type="number" class="form-control" name="amount4" id="amount4" placeholder="Amount (oz.)">
-          </div>
-          <div class="form-group">
-            <select name="type4" id="type4">
-              #foreach($type in $types)
-              <option value="$type.getId()" id="ing4type$type.getId()">$type.getType()</option>
-              #end
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="sr-only" for="info">Info</label>
-            <input type="text" class="form-control" name="info4" id="info4" placeholder="Info">
-          </div>
-          <button type="button" class="btn btn-default btn-small" data-toggle="modal" data-target="#addIng5">Add another ingredient</button>
-          <button type="submit" class="btn btn-default btn-small">Done adding ingredients</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="addIng5" role="dialog" aria-labelledby="addIng5">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Ingredient</h4>
-      </div>
-      <div class="modal-body">
-        <form class="form-inline" action="/recipes/new" method="post">
-          <div class="form-group">
-            <input type="number" class="form-control" name="amount5" id="amount5" placeholder="Amount (oz.)">
-          </div>
-          <div class="form-group">
-            <select name="type5" id="type5">
-              #foreach($type in $types)
-              <option value="$type.getId()" id="ing5type$type.getId()">$type.getType()</option>
-              #end
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="sr-only" for="info">Info</label>
-            <input type="text" class="form-control" name="info5" id="info5" placeholder="Info">
-          </div>
-          <button type="button" class="btn btn-default btn-small" data-toggle="modal" data-target="#addIng6">Add another ingredient</button>
-          <button type="submit" class="btn btn-default btn-small">Done adding ingredients</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="addIng6" role="dialog" aria-labelledby="addIng6">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Ingredient</h4>
-      </div>
-      <div class="modal-body">
-        <form class="form-inline" action="/recipes/new" method="post">
-          <div class="form-group">
-            <input type="number" class="form-control" name="amount6" id="amount6" placeholder="Amount (oz.)">
-          </div>
-          <div class="form-group">
-            <select name="type6" id="type6">
-              #foreach($type in $types)
-              <option value="$type.getId()" id="ing6type$type.getId()">$type.getType()</option>
-              #end
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="sr-only" for="info">Info</label>
-            <input type="text" class="form-control" name="info6" id="info6" placeholder="Info">
-          </div>
-          <button type="button" class="btn btn-default btn-small" data-toggle="modal" data-target="#addIng7">Add another ingredient</button>
-          <button type="submit" class="btn btn-default btn-small">Done adding ingredients</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="addIng7" role="dialog" aria-labelledby="addIng7">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Ingredient</h4>
-      </div>
-      <div class="modal-body">
-        <form class="form-inline" action="/recipes/new" method="post">
-          <div class="form-group">
-            <input type="number" class="form-control" name="amount7" id="amount7" placeholder="Amount (oz.)">
-          </div>
-          <div class="form-group">
-            <select name="type7" id="type7">
-              #foreach($type in $types)
-              <option value="$type.getId()" id="ing7type$type.getId()">$type.getType()</option>
-              #end
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="sr-only" for="info">Info</label>
-            <input type="text" class="form-control" name="info7" id="info7" placeholder="Info">
-          </div>
-          <button type="button" class="btn btn-default btn-small" data-toggle="modal" data-target="#addIng8">Add another ingredient</button>
-          <button type="submit" class="btn btn-default btn-small">Done adding ingredients</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="addIng8" role="dialog" aria-labelledby="addIng8">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Ingredient</h4>
-      </div>
-      <div class="modal-body">
-        <form class="form-inline" action="/recipes/new" method="post">
-          <div class="form-group">
-            <input type="number" class="form-control" name="amount8" id="amount8" placeholder="Amount (oz.)">
-          </div>
-          <div class="form-group">
-            <select name="type8" id="type8">
-              #foreach($type in $types)
-              <option value="$type.getId()" id="ing8type$type.getId()">$type.getName()</option>
-              #end
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="sr-only" for="info">Info</label>
-            <input type="text" class="form-control" name="info8" id="info8" placeholder="Info">
-          </div>
-          <button type="submit" class="btn btn-default btn-small">Done adding ingredients</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div> -->
