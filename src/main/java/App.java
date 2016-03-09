@@ -1,4 +1,6 @@
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.HashMap;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -39,11 +41,21 @@ public class App {
     post("/planner/:id/update", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Recipe recipe = Recipe.find(Integer.parseInt(request.params(":id")));
-      int itemId =  Integer.parseInt(request.queryParams("ingredientStated"));
-      Item item = Item.find(itemId);
+      Integer[] itemIds =  Integer.parseInt(request.queryParamsValues("ingredientStated"));
+      List<Ingredient> ingredients = recipe.getIngredients();
+      ArrayList<Item> items = new ArrayList<Item>();
+      ArrayList<Integer> servings = new ArrayList<Integer>();
 
-      //In a for loop to then see how many servings can be made
-      item.decrementItem(item.getAmount());
+      for (int i=0; i<items.size(); i++) {
+         servings.add(items.get(i).getAmount()/ingredients.get(i).getAmount())
+      }
+
+      if(item.getAmount() > 0) {
+        for (int i=0; i < item.getAmount(); i++) {
+          //In a for loop to then see how many servings can be made
+          item.decrementItem(item.getAmount());
+        }
+      }
 
       //number of times it loops before hitting '0'
       model.put("numberOfServings", item.getAmount());
