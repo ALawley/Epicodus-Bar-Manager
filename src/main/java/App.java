@@ -118,7 +118,7 @@ public class App {
     post("/planner/:id/createdDrink", (request, response) -> {
 
       //goes to recipe page
-      response.redirect("/");
+      response.redirect("/recipe");
       return null;
     });
   }
