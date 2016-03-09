@@ -107,7 +107,8 @@ CREATE TABLE items (
     name character varying,
     type_id integer,
     amount numeric,
-    price double precision
+    price double precision,
+    priceperoz numeric
 );
 
 
@@ -205,6 +206,20 @@ ALTER TABLE ONLY recipes ALTER COLUMN id SET DEFAULT nextval('recipes_id_seq'::r
 --
 
 COPY ingredients (id, type_id, recipe_id, amount, info) FROM stdin;
+1	1	0	2	a
+2	2	0	3	
+3	1	0	3	b
+4	2	0	2	
+5	2	1	3	dfg
+6	4	1	2	
+7	4	2	3	sdfsdf
+8	2	2	3	
+9	1	3	2	df
+10	2	3	3	dfg
+11	1	4	3	Rye
+12	2	4	2	London Dry
+13	5	5	3	
+14	2	5	6	
 \.
 
 
@@ -212,7 +227,7 @@ COPY ingredients (id, type_id, recipe_id, amount, info) FROM stdin;
 -- Name: ingredients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('ingredients_id_seq', 1, false);
+SELECT pg_catalog.setval('ingredients_id_seq', 14, true);
 
 
 --
@@ -220,6 +235,11 @@ SELECT pg_catalog.setval('ingredients_id_seq', 1, false);
 --
 
 COPY item_types (id, type) FROM stdin;
+1	Whiskey
+2	Gin
+3	Vodka
+4	Rum
+5	Tequila
 \.
 
 
@@ -227,14 +247,21 @@ COPY item_types (id, type) FROM stdin;
 -- Name: item_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('item_types_id_seq', 1, false);
+SELECT pg_catalog.setval('item_types_id_seq', 5, true);
 
 
 --
 -- Data for Name: items; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY items (id, name, type_id, amount, price) FROM stdin;
+COPY items (id, name, type_id, amount, price, priceperoz) FROM stdin;
+1	Maker's Mark	1	25.36	38	\N
+2	Blanton's	1	25.36	52	\N
+3	Knob Creek	1	25.36	36	\N
+5	Sauza	5	19.36	27	\N
+4	Tanqueray	2	13.36	28	\N
+6	Aviation	2	25.36	32	1.26182965299685
+7	Bulleit	1	25.36	26	1.02523659305994
 \.
 
 
@@ -242,7 +269,7 @@ COPY items (id, name, type_id, amount, price) FROM stdin;
 -- Name: items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('items_id_seq', 1, false);
+SELECT pg_catalog.setval('items_id_seq', 7, true);
 
 
 --
@@ -250,6 +277,11 @@ SELECT pg_catalog.setval('items_id_seq', 1, false);
 --
 
 COPY recipes (id, name, notes, rating, creator, prep_time, directions) FROM stdin;
+1	aaa		0			gfdfg
+2	bbb	dgdfg	0			sdfsf
+3	a		0			dfsdf
+4	Whiskey & Gin	notes	0	created by	prep time	directions
+5	Tequila & Gin		0			sfdvs
 \.
 
 
@@ -257,7 +289,7 @@ COPY recipes (id, name, notes, rating, creator, prep_time, directions) FROM stdi
 -- Name: recipes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('recipes_id_seq', 1, false);
+SELECT pg_catalog.setval('recipes_id_seq', 5, true);
 
 
 --

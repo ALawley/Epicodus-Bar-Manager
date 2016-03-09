@@ -21,19 +21,18 @@ public class AppTest extends FluentTest {
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
-  // @Test
-  //  public void rootTest() {
-  //    goTo("http://localhost:4567/");
-  //    assertThat(pageSource()).contains("For people who like to drink at home");
-  //  }
-  //
-  //  @Test
-  //   public void itemDisplaysTest() {
-  //     Type type = new Type("Whiskey");
-  //     type.save();
-  //     Item newItem = new Item("Knob Creek", type.getId(), 36.99, 26.53);
-  //     newItem.save();
-  //     goTo("http://localhost:4567/inventory");
-  //     assertThat(pageSource()).contains("Knob Creek");
-  //   }
+  @Test
+   public void rootTest() {
+     goTo("http://localhost:4567/");
+     assertThat(pageSource()).contains("");
+   }
+   @Test
+  public void itemDisplaysTest() {
+    Type type = new Type("Whiskey");
+    type.save();
+    Item newItem = new Item("Knob Creek", type.getId(), 36.99, 26.53);
+    newItem.save();
+    goTo("http://localhost:4567/item/added");
+    assertThat(pageSource()).contains("Knob Creek");
+  }
 }
