@@ -17,8 +17,8 @@ __
 * _Open localhost:4567 in a browser._
 
 ## Description
-This is a bar manager application that will allow the user to pick the recipe of cocktail desired. After the recipe is chosen, the program goes to the Inventory page where checks if all the ingredients are on hand.
- 
+This is a bar manager application that will allow the user to pick the recipe of cocktail desired. After the recipe is chosen, the program goes to the Inventory page where checks if all the ingredients are on hand. If all the ingredients are available, the drink is made.
+
 ## Known Bugs
 
 _No current known bugs._
