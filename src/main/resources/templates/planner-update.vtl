@@ -1,0 +1,23 @@
+<div class="jumbotron">
+  <h1>Planner Update</h1>
+</div>
+<div class="well">
+  <h1>$recipe.getName()</h1>
+  <h2>You can make $numberOfServings servings at ___ per/drink</h2>
+</div>
+<div class="well">
+  <h2>Confirm Make</h2>
+  <form  action="/planner/$recipe.getId()" method="post">
+    <label for="servingNumber">How many servings?</label>
+    <input type="number" name="servingNumber">
+    <button class="btn btn-success" type="submit" id="completeRecipe">Serving Confirmation</button>
+  </form>
+</div>
+
+##wrapped in if statement
+<div class="well">
+<h2>Hey, you don't have enough ingredients!</h2>
+<h2>You need _______ amount to complete your recipe.</h2>
+<br>
+  <a class="btn btn-primary" href="/">Go here once you come back from the store!</a>
+</div>

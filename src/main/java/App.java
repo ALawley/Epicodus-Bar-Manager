@@ -1,7 +1,10 @@
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.HashMap;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
+import java.util.Collections;
 import static spark.Spark.*;
 
 public class App {
@@ -11,15 +14,27 @@ public class App {
 
     get("/", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/index.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/inventory", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
       model.put("types", Type.all());
+<<<<<<< HEAD
       model.put("recipes", Recipe.all());
       model.put("template", "templates/recipes.vtl");
+=======
+      model.put("items", Item.all());
+      model.put("template", "templates/inventory.vtl");
+>>>>>>> aa75acf03764d852055fda997090e028f6bbfc5b
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
     post("/recipes/new", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       String name = request.queryParams("name");
+<<<<<<< HEAD
       String notes = request.queryParams("notes");
       String creator = request.queryParams("creator");
       String preptime = request.queryParams("preptime");
@@ -40,6 +55,18 @@ public class App {
             newRecipe.addIngredient(newIngredient.getId());
         }
       }
+=======
+      double amount = Double.parseDouble(request.queryParams("amount"));
+      double price = Double.parseDouble(request.queryParams("price"));
+      Item newItem = new Item(name, typeId, amount, price);
+      newItem.save();
+      response.redirect("/inventory");
+      return null;
+    });
+
+    get("/recipes", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+>>>>>>> aa75acf03764d852055fda997090e028f6bbfc5b
       model.put("types", Type.all());
       model.put("recipes", Recipe.all());
       model.put("template", "templates/recipes.vtl");
@@ -54,6 +81,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+<<<<<<< HEAD
     get("/inventory", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       model.put("types", Type.all());
@@ -79,7 +107,45 @@ public class App {
 
 
 
+=======
+    post("/planner/:id/update", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Recipe recipe = Recipe.find(Integer.parseInt(request.params(":id")));
+
+      //error: incompatible types: String[] cannot be converted to String
+      //May have to create String Array to loop through then convert to int to be stored into a diff array
+      // Integer[] itemIds = Integer.parseInt(request.queryParamsValues("ingredientStated"));
+      //
+      // List<Ingredient> ingredients = recipe.getIngredients();
+      // ArrayList<Item> items = new ArrayList<Item>();
+      // for (int itemId : itemIds) {
+      //   items.add(Item.find(itemId));
+      // }
+      // ArrayList<Integer> servings = new ArrayList<Integer>();
+      // for (int i=0; i<items.size(); i++) {
+      //   int amountCanMake = (int) Math.round(items.get(i).getAmount()/ingredients.get(i).getAmount());
+      //   servings.add(amountCanMake);
+      // }
+      // Item limitingIngredient =  items.get(servings.indexOf(Collections.min(servings)));
+      // int maxServings = Collections.min(servings);
+
+      // model.put("numberOfServings", maxServings);
+      // model.put(); item name
+      model.put("recipe", recipe);
+      model.put("template", "templates/planner-update.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    //if enough servings decrement from inventory, return to recipe page
+    post("/planner/:id/createdDrink", (request, response) -> {
+
+      //goes to recipe page
+      response.redirect("/");
+      return null;
+    });
+>>>>>>> aa75acf03764d852055fda997090e028f6bbfc5b
   }
 
 
 }
+// Item.decrementItem(double pourAmount)
