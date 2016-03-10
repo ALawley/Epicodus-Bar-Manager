@@ -51,7 +51,7 @@ color: $dark-brown;
 font-weight: normal;
 justify-content: center;
 font-size: 46px;
-width: 30vw;
+width: 10vw;
 font-family: $font-prim;
 padding-left: 5vw;
 padding-right: 60vw;
@@ -64,4 +64,18 @@ font-size: 32px;
 width: 30vw;
 font-family: $font-prim;
 padding-left: 5vw;
+}
+
+.two {
+  font-weight: normal;
+  justify-content: center;
+  font-size: 32px;
+  width: 5vw;
+  font-family: $font-prim;
+  padding-left: 5vw;
+  text-decoration: none;
+}
+
+a:link {
+    text-decoration: none;
 }
