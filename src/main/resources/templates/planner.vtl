@@ -26,4 +26,144 @@
       #end
     <button class="btn btn-success" type="submit" id="addIngredient">Make Drink</button>
   </form>
+  <a href="/recipes/recipe/update/$recipe.getId()">Update Recipe</a>
 </div>
+#if ($update)
+<form action="/recipes/recipe/update/$recipe.getId()" method="post" class="form-inline">
+  <div class="row">
+    <label for="name">Name:</label>
+    <input id="name" name="name" type="text" class="form-control" required>
+    <label for="notes">Notes:</label>
+    <input id="notes" name="notes" type="text" class="form-control">
+    <label for="rating">Recipe Rating:</label>
+    <input id="rating" name="rating" type="text" class="form-control">
+    <label for="creator">Created By:</label>
+    <input id="creator" name="creator" type="text" class="form-control">
+    <label for="preptime">Prep Time:</label>
+    <input id="preptime" name="preptime" type="text" class="form-control">
+  </div>
+  <div class="row">
+    <label>Ingredient 1</label>
+    <label for="amount1">Amount (oz.):</label>
+    <input type="number" class="form-control" name="amount1" id="amount1">
+    <label for="type1">Ingredient Type</label>
+    <select name="type1" id="type1">
+      <!-- <option value="0" id="blank1">Select Ingredient Type:</option> -->
+      <option disabled selected> -- select an option -- </option>
+      #foreach($type in $types)
+      <option value="$type.getId()" id="ing1type$type.getId()">$type.getType()</option>
+      #end
+    </select>
+    <label for="info1">Info</label>
+    <input type="text" class="form-control" name="info1" id="info1">
+  </div>
+  <div class="row">
+    <label>Ingredient 2</label>
+    <label for="amount2">Amount (oz.):</label>
+    <input type="number" class="form-control" name="amount2" id="amount2">
+    <label for="type2">Ingredient Type</label>
+    <select name="type2" id="type2">
+      <!-- <option value="0" id="blank2">Select Ingredient Type:</option> -->
+      <option disabled selected> -- select an option -- </option>
+      #foreach($type in $types)
+      <option value="$type.getId()" id="ing2type$type.getId()">$type.getType()</option>
+      #end
+    </select>
+    <label for="info2">Info</label>
+    <input type="text" class="form-control" name="info2" id="info2">
+  </div>
+  <div class="row">
+    <label>Ingredient 3</label>
+    <label for="amount3">Amount (oz.):</label>
+    <input type="number" class="form-control" name="amount3" id="amount3">
+    <label for="type3">Ingredient Type</label>
+    <select name="type3" id="type3">
+      <!-- <option value="0" id="blank3">Select Ingredient Type:</option> -->
+      <option disabled selected> -- select an option -- </option>
+      #foreach($type in $types)
+      <option value="$type.getId()" id="ing3type$type.getId()">$type.getType()</option>
+      #end
+    </select>
+    <label for="info3">Info</label>
+    <input type="text" class="form-control" name="info3" id="info3">
+  </div>
+  <div class="row">
+    <label>Ingredient 4</label>
+    <label for="amount4">Amount (oz.):</label>
+    <input type="number" class="form-control" name="amount4" id="amount4">
+    <label for="type4">Ingredient Type</label>
+    <select name="type4" id="type4">
+      <!-- <option value="0" id="blank4">Select Ingredient Type:</option> -->
+      <option disabled selected> -- select an option -- </option>
+      #foreach($type in $types)
+      <option value="$type.getId()" id="ing4type$type.getId()">$type.getType()</option>
+      #end
+    </select>
+    <label for="info4">Info</label>
+    <input type="text" class="form-control" name="info4" id="info4">
+  </div>
+  <div class="row">
+    <label>Ingredient 5</label>
+    <label for="amount5">Amount (oz.):</label>
+    <input type="number" class="form-control" name="amount5" id="amount5">
+    <label for="type5">Ingredient Type</label>
+    <select name="type5" id="type5">
+      <!-- <option value="0" id="blank5">Select Ingredient Type:</option> -->
+      <option disabled selected> -- select an option -- </option>
+      #foreach($type in $types)
+      <option value="$type.getId()" id="ing5type$type.getId()">$type.getType()</option>
+      #end
+    </select>
+    <label for="info5">Info</label>
+    <input type="text" class="form-control" name="info5" id="info5">
+  </div>
+  <div class="row">
+    <label>Ingredient 6</label>
+    <label for="amount6">Amount (oz.):</label>
+    <input type="number" class="form-control" name="amount6" id="amount6">
+    <label for="type6">Ingredient Type</label>
+    <select name="type6" id="type6">
+      <!-- <option value="0" id="blank6">Select Ingredient Type:</option> -->
+      <option disabled selected> -- select an option -- </option>
+      #foreach($type in $types)
+      <option value="$type.getId()" id="ing6type$type.getId()">$type.getType()</option>
+      #end
+    </select>
+    <label for="info6">Info</label>
+    <input type="text" class="form-control" name="info6" id="info6">
+  </div>
+  <div class="row">
+    <label>Ingredient 7</label>
+    <label for="amount7">Amount (oz.):</label>
+    <input type="number" class="form-control" name="amount7" id="amount7">
+    <label for="type7">Ingredient Type</label>
+    <select name="type7" id="type7">
+      <!-- <option value="0" id="blank7">Select Ingredient Type:</option> -->
+      <option disabled selected> -- select an option -- </option>
+      #foreach($type in $types)
+      <option value="$type.getId()" id="ing7type$type.getId()">$type.getType()</option>
+      #end
+    </select>
+    <label for="info7">Info</label>
+    <input type="text" class="form-control" name="info7" id="info7">
+  </div>
+  <div class="row">
+    <label>Ingredient 8</label>
+    <label for="amount8">Amount (oz.):</label>
+    <input type="number" class="form-control" name="amount8" id="amount8">
+    <label for="type8">Ingredient Type</label>
+    <select name="type8" id="type8">
+      <!-- <option value="0" id="blank8">Select Ingredient Type:</option> -->
+      <option disabled selected> -- select an option -- </option>
+      #foreach($type in $types)
+      <option value="$type.getId()" id="ing8type$type.getId()">$type.getType()</option>
+      #end
+    </select>
+    <label for="info8">Info</label>
+    <input type="text" class="form-control" name="info8" id="info8">
+  </div>
+  <label for="directions">Directions:</label>
+  <input id="directions" name="directions" type="textbox" class="form-control" required>
+  <button type="submit" class="btn btn-primary">Add recipe</button>
+</form>
+#end

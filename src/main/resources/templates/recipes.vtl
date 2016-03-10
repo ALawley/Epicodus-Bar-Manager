@@ -1,6 +1,6 @@
         <div class="container">
 
-          <img rel="main" src="img/mainimg3.jpg"/>
+          <img rel="main" src="/img/mainimg3.jpg"/>
 
           <header class="header">
             <div class="header-content center-inflex">
@@ -17,7 +17,7 @@
                       #foreach ($recipe in $recipes)
                        <li><a href='/planner/$recipe.getId()'><span>$recipe.getName()</span></a></li>
                       #end
-                       <!-- <li class='last'><a href='#'><span>Product 3</span></a></li>
+                       <!-- TODO: <li class='last'><a href='#'><span>Product 3</span></a></li>
                       CANT APPLY LAST CLASS (Alissa)-->
                     </ul>
                  </li>
@@ -60,7 +60,7 @@
                   <label for="info1">Info</label>
                   <input type="text" class="form-control" name="info1" id="info1">
                 </div>
-
+    <!-- TODO: possibly add spacing between each entry so user can select per input -Alissa -->
               <div class='dropdown-btn small' >
                 <ul class="small">
                     <li class='has-sub'><a href='#'><span>Products</span></a>
@@ -235,7 +235,6 @@
                       <li><div class="big-li">Bar-Manager</div></li>
                       <a href="/recipes"><li>Recipes</li></a>
                       <a href="/inventory"><li>Inventory</li></a>
-                      <li>Planner</li>
                       <li>Search</li>
                     </ul>
                   </div>

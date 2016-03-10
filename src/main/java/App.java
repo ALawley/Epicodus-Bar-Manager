@@ -22,6 +22,7 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
       model.put("types", Type.all());
       model.put("recipes", Recipe.all());
+      model.put("items", Item.all());
       model.put("template", "templates/recipes.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -52,6 +53,17 @@ public class App {
       response.redirect("/recipes");
       return null;
     });
+
+    get("/recipes/recipe/update/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Recipe recipe = Recipe.find(Integer.parseInt(request.params(":id")));
+      Boolean update = true;
+      model.put("update", update);
+      model.put("recipe", recipe);
+      model.put("types", Type.all());
+      model.put("template", "templates/planner.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
     post("/recipes/recipe/update/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
@@ -154,6 +166,7 @@ public class App {
       System.out.println("max servings: " + maxServings);
       ArrayList<Integer> itemIds = new ArrayList<Integer>();
       String[] itemIdStrings = request.queryParamsValues("itemid");
+
       for (String itemIdString : itemIdStrings) {
         itemIds.add(Integer.parseInt(itemIdString));
       }
@@ -164,7 +177,7 @@ public class App {
         model.put("notenough", notEnough);
         model.put("maxservings", maxServings);
         model.put("drinkcost", price);
-        model.put("itemids", itemIds);
+        model.put("itemIds", itemIds);
         model.put("limitingItem", limitingItem);
         model.put("recipe", recipe);
         model.put("template", "templates/planner-update.vtl");

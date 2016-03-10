@@ -1,7 +1,5 @@
 <div class="container">
-
-  <img rel="main" src="img/mainimg3.jpg"/>
-
+  <img rel="main" src="/img/mainimg3.jpg"/>
   <header class="header">
     <div class="header-content center-inflex">
       <h1>Planner Update</h1>
@@ -13,22 +11,25 @@
      <h2 class="drink-name">$recipe.getName()</h2>
 
      <h3 class="servings">You can make $maxservings servings, at a cost of $ $drinkcost per drink. Don't forget an extra one for me, I'm definitely coming over!</h3>
-    <h3 class="servings">You need more $limitingItem.getName() to make more than that.</h3>
+     <h3 class="servings">You need more $limitingItem.getName() to make more than that.</h3>
 
      #if($notenough)
-     <div class="well">
-       <h2>Hey, you don't have enough ingredients!</h2>
-       <h2>Go and buy more $limitingItem.getName() to make these.</h2>
+
+     <!--TODO: Too large of a spacing between text and the button - Alissa -->
+     <div class="partial-container">
+       <h3>Hey, you don't have enough ingredients!</h3>
+       <h3>Go and buy more $limitingItem.getName() to make these.</h3>
        <br>
        <a class="btn btn-primary" href="/inventory">Update Inventory</a>
      </div>
      #end
 
      #if($notenough)
-       <h2>Or Make Fewer</h2>
+       <h4>Or Make Fewer</h4>
      #else
-       <h2>Confirm Make</h2>
+       <h4>Confirm Make</h4>
      #end
+
      <form action="/planner/$recipe.getId()/confirm" class="drink-number" method="post">
        <label for="servingNumber">How many servings?</label>
        <input type="number" name="servingNumber" required>
@@ -43,16 +44,13 @@
      </form>
   </div>
  </div>
-      <footer class="footer">
-        <div class="footer-content">
-            <ul>
-              <li><div class="big-li">Bar-Manager</div></li>
-              <a href="/recipes"><li>Recipes</li></a>
-              <a href="/inventory"><li>Inventory</li></a>
-              <li>Planner</li>
-              <li>Search</li>
-            </ul>
-          </div>
-      </footer>
+<footer class="footer">
+  <div class="footer-content">
+      <ul>
+        <li><div class="big-li">Bar-Manager</div></li>
+        <a href="/recipes"><li>Recipes</li></a>
+        <a href="/inventory"><li>Inventory</li></a>
+        <li>Search</li>
+      </ul>
     </div>
-  </div>
+</footer>
