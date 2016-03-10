@@ -56,7 +56,8 @@ public class ItemTest {
   public void find_findsInstanceOfItemById() {
     Item testItem = new Item("Tanqueray", 2, 25.36, 28);
     testItem.save();
-    assertEquals(Item.find(testItem.getId()), testItem);
+    Item savedItem = Item.find(testItem.getId());
+    assertTrue(savedItem.equals(Item.find(testItem.getId())));
   }
 
   @Test

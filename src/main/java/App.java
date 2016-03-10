@@ -20,6 +20,15 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/recipes", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("types", Type.all());
+      model.put("recipes", Recipe.all());
+      model.put("template", "templates/recipes.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+
     post("/recipes/new", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       String name = request.queryParams("name");
@@ -47,11 +56,12 @@ public class App {
       return null;
     });
 
-    get("/recipes", (request, response) -> {
+    get("/planner/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      model.put("types", Type.all());
-      model.put("recipes", Recipe.all());
-      model.put("template", "templates/recipes.vtl");
+      Recipe recipe = Recipe.find(Integer.parseInt(request.params(":id")));
+      model.put("recipe", recipe);
+      model.put("formatter", formatter);
+      model.put("template", "templates/planner.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -94,50 +104,6 @@ public class App {
         }
       }
       response.redirect("/recipes");
-      return null;
-    });
-
-    get("/planner/:id", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      Recipe recipe = Recipe.find(Integer.parseInt(request.params(":id")));
-      model.put("recipe", recipe);
-      model.put("formatter", formatter);
-      model.put("template", "templates/planner.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
-    get("/inventory", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      model.put("types", Type.all());
-      model.put("items", Item.all());
-      model.put("formatter", formatter);
-      model.put("template", "templates/inventory.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
-    post("/inventory/update", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      for (Item updateItem : Item.all()) {
-        String formname = String.format("amount%d", updateItem.getId());
-        double newAmount = Double.parseDouble(request.queryParams(formname));
-        updateItem.amountSet(newAmount);
-      }
-      model.put("types", Type.all());
-      model.put("items", Item.all());
-      model.put("formatter", formatter);
-      model.put("template", "templates/inventory.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
-    post("/item/added", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      int typeId = Integer.parseInt(request.queryParams("typeId"));
-      String name = request.queryParams("name");
-      double amount = Double.parseDouble(request.queryParams("amount"));
-      double price = Double.parseDouble(request.queryParams("price"));
-      Item newItem = new Item(name, typeId, amount, price);
-      newItem.save();
-      response.redirect("/inventory");
       return null;
     });
 
@@ -218,5 +184,40 @@ public class App {
         return new ModelAndView(model, layout);
       }
     }, new VelocityTemplateEngine());
+
+    get("/inventory", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("types", Type.all());
+      model.put("items", Item.all());
+      model.put("formatter", formatter);
+      model.put("template", "templates/inventory.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/inventory/update", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      for (Item updateItem : Item.all()) {
+        String formname = String.format("amount%d", updateItem.getId());
+        double newAmount = Double.parseDouble(request.queryParams(formname));
+        updateItem.amountSet(newAmount);
+      }
+      model.put("types", Type.all());
+      model.put("items", Item.all());
+      model.put("formatter", formatter);
+      model.put("template", "templates/inventory.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/item/added", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int typeId = Integer.parseInt(request.queryParams("typeId"));
+      String name = request.queryParams("name");
+      double amount = Double.parseDouble(request.queryParams("amount"));
+      double price = Double.parseDouble(request.queryParams("price"));
+      Item newItem = new Item(name, typeId, amount, price);
+      newItem.save();
+      response.redirect("/inventory");
+      return null;
+    });
   }
 }

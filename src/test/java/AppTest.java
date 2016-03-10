@@ -123,6 +123,20 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Maker's Mark");
   }
 
+  @Test
+  public void updateRecipe_changesRecipeDetails() {
+    Recipe myRecipe = new Recipe("Gin and tonic", "good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
+    myRecipe.save();
+    String recipeupdate = String.format("http://localhost:4567/planner/%d/update", myRecipe.getId());
+    goTo(recipeupdate);
+    fill("#name").with("Better Gin and Tonic");
+    fill("#notes").with("You have to try it this way");
+    fill("#creator").with("A wizard");
+    fill("#preptime").with("10 minutes");
+    fill("#directions").with("Stir ingredients and a lime twist, then strain over ice.");
+    submit("#updaterecipe");
+    assertThat(pageSource().contains("Better Gin and Tonic"));
+  }
   // test to get to planner update page
   // once clicked, then need to do test for how many is needed to create the drink
 }

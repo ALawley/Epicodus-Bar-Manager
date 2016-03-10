@@ -152,7 +152,7 @@
   </div>
   <label for="directions">Directions:</label>
   <input id="directions" name="directions" type="textbox" class="form-control" value="$recipe.getDirections()" required>
-  <button type="submit" class="btn btn-primary">Update recipe</button>
+  <button type="submit" class="btn btn-primary" id="updaterecipe">Update recipe</button>
 </form>
 #else
 #if ($recipe.getIngredients().size() == 0)
@@ -170,7 +170,7 @@
     </select>
     <br>
     #end
-    <button class="btn btn-success" type="submit" id="addIngredient">Make Drink</button>
+    <button class="btn btn-success" type="submit" id="makedrink">Make Drink</button>
   </form>
 </div>
 #end
