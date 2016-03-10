@@ -36,6 +36,18 @@ public class AppTest extends FluentTest {
     goTo("http://localhost:4567/inventory");
     assertThat(pageSource()).contains("Knob Creek");
   }
+
+  @Test
+  public void updateItemTest() {
+    Type type = new Type("Whiskey");
+    type.save();
+    Item newItem = new Item("Knob Creek", type.getId(), 25.36, 28);
+    newItem.save();
+    newItem.update("Maker's Mark" , type.getId(), 25.36, 38);
+    String itempage = String.format("http://localhost:4567/inventory");
+    goTo(itempage);
+    assertThat(pageSource()).contains("Whiskey");
+  }
 // item update and item delete
   @Test
   public void recipeIsCreatedTest() {
@@ -57,9 +69,6 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Gin and tonic");
   }
 
-  // update Ingredient to Recipe
-
-
   @Test
   public void updateIngredientTest() {
     Type type = new Type("Gin");
@@ -74,19 +83,18 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Gin");
   }
 
-  //  delete Ingredient from Recipe
   @Test
   public void deleteIngredientTest() {
     Type type = new Type("Gin");
     type.save();
     Recipe myRecipe = new Recipe("Gin and tonic", "good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
     myRecipe.save();
-    Ingredient testIngredient = new ingredient (3, 3.5, "Tanqueray");
+    Ingredient testIngredient = new Ingredient (3, 3.5, "Tanqueray");
     testIngredient.save();
-    String ingredientpage = String.format("http://localhost:4567/ingredient/%d", testIngredient.getId()); *****maybe remove %d testIngredient.getId()
+    testIngredient.delete();
+    String ingredientpage = String.format("http://localhost:4567/planner/%d", myRecipe.getId());
     goTo(ingredientpage);
-    submit(".deleteIngredient");
-    assertThat(pageSource()).doesNotcontain(3, 3.5, "Tanqueray");
+    assertThat(!(pageSource()).contains("Gin"));
   }
 
 
