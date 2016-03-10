@@ -50,7 +50,18 @@ color: $dark-brown;
 .big-li {
 font-weight: normal;
 justify-content: center;
+font-size: 46px;
+width: 30vw;
+font-family: $font-prim;
+padding-left: 5vw;
+padding-right: 60vw;
+}
+
+.big-inventory {
+font-weight: normal;
+justify-content: center;
 font-size: 32px;
 width: 30vw;
 font-family: $font-prim;
+padding-left: 5vw;
 }

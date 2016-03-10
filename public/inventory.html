@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width">
     <link href='https://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Alice' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/application.css">
-    <meta name="viewport" content="width=device-width">
     <title>Bar-Inventory</title>
   </head>
     <body>
@@ -40,6 +40,7 @@
                           <td>Fox</td>
                           <td>Slytherin</td>
                           <td>$1,907,675,678</td>
+                          <td><input type="submit" value="Submit" class="sm-inv-btn ex-pad"/></td>
                       </tr>
 
                     </tbody>
@@ -52,31 +53,31 @@
 
                     <form action="#" method="post" class="inventory-input">
 
-                       <div class="encompass">
-                         <div class='dropdown-btn small' >
-                           <ul class="small">
-                               <li class='has-sub'><a href='#'><span>Products</span></a>
-                                  <ul>
-                                     <li><a href='#'><span>Product 1</span></a></li>
-                                     <li><a href='#'><span>Product 2</span></a></li>
-                                     <li class='last'><a href='#'><span>Product 3</span></a></li>
-                                  </ul>
-                               </li>
-                           </ul>
-                           Brand: <input type="text" placeholder="Jack"/>
-                           Price: <input type="text" placeholder="00.00"/>
-                           Current Amount Avalable: <input type="textarea" placeholder="Ounces"/>
-                         </div>
-                     <input type="submit" value="Submit"/>
+                       <!-- <div class="encompass"> -->
+                         <div class='dropdown-btn small dropdown-btn small' >
+                                 <select name="type1" id="type1" class="ex-mar">
+                                   <option value="0" id="blank1">Select Ingredient Type:</option>
+                                   #foreach($type in $types)
+                                   <option value="$type.getId()" id="ing1type$type.getId()">$type.getType()</option>
+                                   #end
+                                 </select>
+                        </div>
 
-              </div>
-            </form>
+                           <div class="ex-mar">Brand: <input type="text" placeholder="Jack"/></div>
+                         <div class="ex-mar">Price: <input type="text" placeholder="00.00"/></div>
+                           <div class="ex-mar">Current Amount Available: <input type="textarea" placeholder="Ounces"/></div>
+
+                           <input type="submit" value="Submit" class="sm-inv-btn"/>
+
+
+
+    </form>
 
 
               <footer class="footer">
                 <div class="footer-content">
                     <ul>
-  <li><div class="big-li">Bar-Manager</div></li>
+  <li><div class="big-inventory">Bar-Manager</div></li>
                       <li>Recipes</li>
                       <li>Builder</li>
                       <li>Planner</li>
@@ -87,5 +88,7 @@
 
               </footer>
               </div>
+
+
     </body>
 </html>

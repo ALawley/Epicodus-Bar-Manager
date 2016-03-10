@@ -25,7 +25,7 @@
           #foreach($item in $type.getAllOf())
           <tr>
             <td>
-              <span><input type="number" step="any" value="$item.getAmount()" id="amount$item.getId()" name="amount$item.getId()"> <span>oz</span></span>
+              <span><input type="number" step="any" value="$formatter.format($item.getAmount())" id="amount$item.getId()" name="amount$item.getId()"> <span>oz</span></span>
             </td>
             <td>
               <span>$item.getTypeName()</span>
@@ -34,7 +34,7 @@
               <span>$item.getName()</span>
             </td>
             <td>
-              <span><span>$</span>$item.getPrice()</span>
+              <span><span>$</span>$formatter.format($item.getPrice())</span>
             </td>
           </tr>
           #end
@@ -71,6 +71,39 @@
         </td>
         <td>
           <span>.0296</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>25.36</span>
+        </td>
+        <td>
+          <span>750</span>
+        </td>
+        <td>
+          <span>.75</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>33.81</span>
+        </td>
+        <td>
+          <span>1000</span>
+        </td>
+        <td>
+          <span>1</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>50.72</span>
+        </td>
+        <td>
+          <span>1500</span>
+        </td>
+        <td>
+          <span>1.5</span>
         </td>
       </tr>
     </table>

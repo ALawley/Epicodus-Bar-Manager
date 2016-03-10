@@ -13,6 +13,20 @@ public class ItemTest {
   }
 
   @Test
+  public void getAmount_returnsAmountFromItemLocally() {
+    Item testItem = new Item("Tanqueray", 2, 25.36, 28);
+    assertEquals(25.36, testItem.getAmount(), .01);
+  }
+
+  @Test
+  public void getAmount_returnsAmountFromItemInDatabase() {
+    Item testItem = new Item("Tanqueray", 2, 25.36, 28);
+    testItem.save();
+    Item savedItem = Item.find(testItem.getId());
+    assertEquals(25.36, savedItem.getAmount(), .01);
+  }
+
+  @Test
   public void save_addsInstanceOfItemToList() {
     Item testItem = new Item("Tanqueray", 2, 25.36, 28);
     Item testItem1 = new Item("Maker's Mark", 1, 25.36, 31);
@@ -42,7 +56,8 @@ public class ItemTest {
   public void find_findsInstanceOfItemById() {
     Item testItem = new Item("Tanqueray", 2, 25.36, 28);
     testItem.save();
-    assertEquals(Item.find(testItem.getId()), testItem);
+    Item savedItem = Item.find(testItem.getId());
+    assertTrue(savedItem.equals(Item.find(testItem.getId())));
   }
 
   @Test

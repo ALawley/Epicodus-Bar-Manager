@@ -135,25 +135,17 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Rob Lowe");
   }
 
-  // @Test
-  // public void updateADrinkTest() {
-  //   Type type = new Type("Gin");
-  //   type.save();
-  //   Item testItem = new Item("Aviation", type.getId(), 25.36, 29);
-  //   testItem.save();
-  //   Ingredient testIngredient = new Ingredient (3, 3.5, "Tanqueray");
-  //   testIngredient.save();
-  //   Recipe myRecipe = new Recipe("Gin and tonic", "good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
-  //   myRecipe.save();
-  //   Recipe secondRecipe = new Recipe("Jack on rocks", "good", "John Roll", "3 minutes", "add jack over ice");
-  //   goTo("http://localhost:4567/planner/");
-  //   fill("#name").with("Gin and tonic");
-  //   fill("#notes").with("good");
-  //   fill("#creator").with("John Roll");
-  //   fill("#preptime").with("3 minutes");
-  //   fill("#direction").with("add jack over ice");
-  //   submit(".btn btn-primary");
-  //   click("a", withText("Add recipe"));
-  //   assertThat(pageSource()).contains("Jack and Coke");
-  // }
+  public void updateRecipe_changesRecipeDetails() {
+    Recipe myRecipe = new Recipe("Gin and tonic", "good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
+    myRecipe.save();
+    String recipeupdate = String.format("http://localhost:4567/planner/%d/update", myRecipe.getId());
+    goTo(recipeupdate);
+    fill("#name").with("Better Gin and Tonic");
+    fill("#notes").with("You have to try it this way");
+    fill("#creator").with("A wizard");
+    fill("#preptime").with("10 minutes");
+    fill("#directions").with("Stir ingredients and a lime twist, then strain over ice.");
+    submit("#updaterecipe");
+    assertThat(pageSource().contains("Better Gin and Tonic"));
+  }
 }
