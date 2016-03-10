@@ -37,6 +37,7 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Knob Creek");
   }
 
+// update item
   @Test
   public void updateItemTest() {
     Type type = new Type("Whiskey");
@@ -46,9 +47,22 @@ public class AppTest extends FluentTest {
     newItem.update("Maker's Mark" , type.getId(), 25.36, 38);
     String itempage = String.format("http://localhost:4567/inventory");
     goTo(itempage);
-    assertThat(pageSource()).contains("Whiskey");
+    assertThat(pageSource()).contains("Maker's Mark");
   }
-// item update and item delete
+
+  // delete item
+  @Test
+  public void deleteItemTest() {
+    Type type = new Type("Whiskey");
+    type.save();
+    Item newItem = new Item("Knob Creek", type.getId(), 25.36, 28);
+    newItem.save();
+    newItem.delete();
+    String itempage = String.format("http://localhost:4567/inventory");
+    goTo(itempage);
+    assertThat(!(pageSource()).contains("Knob Creek"));
+  }
+
   @Test
   public void recipeIsCreatedTest() {
     Recipe myRecipe = new Recipe ("Gin and tonic","good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
