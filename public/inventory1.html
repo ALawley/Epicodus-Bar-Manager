@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <link href='https://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Alice' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/application.css">
+    <title>Bar-Inventory</title>
+  </head>
+    <body>
+
+      <div class="container">
+       <img rel="main" src="img/mainimg3.jpg"/>
+           <header class="header">
+             <div class="header-content center-inflex">
+                 <h1>Inventory</h1>
+             </div>
+           </header>
+           <div class="partial-container">
+               <div class="mid1 inventory-table" >
+                   <table>
+                 <thead>
+                   <tr>
+                       <th>Amount</th>
+                       <th>Type</th>
+                       <th>Name</th>
+                       <th>Price</th>
+                   </tr>
+                 </thead>
+                  <tbody>
+                    #foreach($type in $types)
+                    #if($type.getAllOf().size() > 0)
+                    #foreach($item in $type.getAllOf())
+                    <tr>
+                      <td>
+                        <span>$item.getAmount() oz</span>
+                      </td>
+                      <td>
+                      <span>$item.getTypeName()</span>
+                      </td>
+                      <td>
+                        <span>$item.getName()</span>
+                      </td>
+                      <td>
+                        <span><span>$</span>$item.getPrice()</span>
+                      </td>
+                    </tr>
+                    #end
+                    #end
+                    #end
+                  </tbody>
+                </table>
+                <img rel="conversion" src="img/conversion-holder.jpg"/>
+                </div>
+              </div>
+              <div class="mid2 mid-inventory">
+
+                  <div id='cssmenu'>
+                      <ul>
+                         <li class='has-sub'><a href='#'><span>Products</span></a>
+                            <ul>
+                               <li><a href='#'><span>Product 1</span></a></li>
+                               <li><a href='#'><span>Product 2</span></a></li>
+                               <li class='last'><a href='#'><span>Product 3</span></a></li>
+                            </ul>
+                         </li>
+                      </ul>
+                      </div>
+                  </div>
+             <div class="mid3">
+               <form action="/item/added" method="post">
+                 <label>Type</label>
+                 <select type="text" name="typeId" id="typeId">
+                   #foreach ($type in $types)
+                   <option value="$type.getId()" id="typeIdOption">$type.getType()</option>
+                   #end
+                 </select>
+                 <label>Name</label>
+                 <input required id="name" type="text" name="name" placeholder="Maker's Mark">
+                 <label>Bottle Price</label>
+                 <input required id="price" type="text" name="price" placeholder="39.99">
+                 <label>Amount On Hand (oz)</label>
+                 <input required id="amount" type="text" name="amount" placeholder="48.92">
+                 <button type="submit" class="btn btn-success" id="addItem">Add</button>
+               </form>
+            </div>
+
+
+            <footer class="footer">
+              <div class="footer-content">
+                  <ul>
+<li><div class="big-inventory">Bar-Manager</div></li>
+                    <a href="/recipes"><li>Recipes</li></a>
+                    <a href="/inventory"><li>Inventory</li></a>
+                    <li>Planner</li>
+                    <li>Search</li>
+                  </ul>
+                </div>
+            </footer>
+              </div>
+
+
+    </body>
+</html>
