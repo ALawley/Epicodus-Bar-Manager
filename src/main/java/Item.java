@@ -115,7 +115,7 @@ public class Item {
     }
   }
 
-  public void setAmount(double newAmount) {
+  public void amountSet(double newAmount) {
     String sql = "UPDATE items SET amount = :amount WHERE id = :id";
     try(Connection con = DB.sql2o.open()) {
       con.createQuery(sql)

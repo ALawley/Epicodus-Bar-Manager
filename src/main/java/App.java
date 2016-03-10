@@ -74,7 +74,7 @@ public class App {
       for (Item updateItem : Item.all()) {
         String formname = String.format("amount%d", updateItem.getId());
         double newAmount = Double.parseDouble(request.queryParams(formname));
-        updateItem.setAmount(newAmount);
+        updateItem.amountSet(newAmount);
       }
       model.put("types", Type.all());
       model.put("items", Item.all());
