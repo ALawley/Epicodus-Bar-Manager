@@ -103,6 +103,19 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/inventory/update", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      for (Item updateItem : Item.all()) {
+        String formname = String.format("amount%d", updateItem.getId());
+        double newAmount = Double.parseDouble(request.queryParams(formname));
+        updateItem.setAmount(newAmount);
+      }
+      model.put("types", Type.all());
+      model.put("items", Item.all());
+      model.put("template", "templates/inventory.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     post("/item/added", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       int typeId = Integer.parseInt(request.queryParams("typeId"));

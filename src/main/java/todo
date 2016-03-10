@@ -1,0 +1,6 @@
+- Integrate vtls with Wren's stuff
+- Integration test
+- Allow updating item amounts
+- Delete items/recipes?
+- Format money (Decimal Format/Big Decimal)
+- Prestock database

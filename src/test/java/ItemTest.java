@@ -27,7 +27,7 @@ public class ItemTest {
     testItem.save();
     testItem.update("Maker's Mark", 1, 25.36, 31);
     Item savedItem = Item.find(testItem.getId());
-    assertEquals(25.36, savedItem.getAmount(), .001);
+    assertEquals("Maker's Mark", savedItem.getName());
   }
 
   @Test

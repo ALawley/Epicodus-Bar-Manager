@@ -6,11 +6,13 @@
   <h2>Created By: $recipe.getCreator()</h2>
   <h3>Duration: $recipe.getPrepTime()</h3>
   <h3>$recipe.getNotes()</h3>
+
     <ul>
       #foreach ($item in $recipe.getIngredients())
       <li>$item.getAmount() oz - $item.getTypeName() - $item.getInfo()</li>
       #end
     </ul>
+    <a class="btn btn-success" href="/planner/recipe.getId()/update">Update drink!</a>
 </div>
 <div class="well">
   <h2>Pick Your Poison</h2>
