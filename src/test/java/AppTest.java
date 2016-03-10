@@ -31,12 +31,38 @@ public class AppTest extends FluentTest {
   public void itemDisplaysTest() {
     Type type = new Type("Whiskey");
     type.save();
-    Item newItem = new Item("Knob Creek", type.getId(), 36.99, 26.53);
+    Item newItem = new Item("Knob Creek", type.getId(), 25.36, 28);
     newItem.save();
     goTo("http://localhost:4567/inventory");
     assertThat(pageSource()).contains("Knob Creek");
   }
-// item update and item delete
+
+// update item
+  @Test
+  public void updateItemTest() {
+    Type type = new Type("Whiskey");
+    type.save();
+    Item newItem = new Item("Knob Creek", type.getId(), 25.36, 28);
+    newItem.save();
+    newItem.update("Maker's Mark" , type.getId(), 25.36, 38);
+    String itempage = String.format("http://localhost:4567/inventory");
+    goTo(itempage);
+    assertThat(pageSource()).contains("Maker's Mark");
+  }
+
+  // delete item
+  @Test
+  public void deleteItemTest() {
+    Type type = new Type("Whiskey");
+    type.save();
+    Item newItem = new Item("Knob Creek", type.getId(), 25.36, 28);
+    newItem.save();
+    newItem.delete();
+    String itempage = String.format("http://localhost:4567/inventory");
+    goTo(itempage);
+    assertThat(!(pageSource()).contains("Knob Creek"));
+  }
+
   @Test
   public void recipeIsCreatedTest() {
     Recipe myRecipe = new Recipe ("Gin and tonic","good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
@@ -57,28 +83,33 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Gin and tonic");
   }
 
-  // update Ingredient to Recipe
-  // @Test
-  // public void updateIngredientTest() {
-  //   Ingredient testIngredient = new Ingredient (3, 3.5, "Tanqueray");
-  //   testIngredient.save();
-  //   String ingredientpage = String.format("http://localhost:4567/ingredient/%d", testIngredient.getId());
-  //   goTo(ingredientpage);
-  //   fill("#updateIngredient").with(4, 3.5, "Tanqueray");
-  //   submit(".updateIngredient");
-  //   assertThat(pageSource()).contains(4, 3.5, "Tanqueray");
-  // }
+  @Test
+  public void updateIngredientTest() {
+    Type type = new Type("Gin");
+    type.save();
+    Recipe myRecipe = new Recipe("Gin and tonic", "good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
+    myRecipe.save();
+    Ingredient testIngredient = new Ingredient (3, 3.5, "Tanqueray");
+    testIngredient.save();
+    testIngredient.update(4, 5.5, "Tequilla");
+    String ingredientpage = String.format("http://localhost:4567/planner/%d", myRecipe.getId());
+    goTo(ingredientpage);
+    assertThat(pageSource()).contains("Gin");
+  }
 
-  //  delete Ingredient from Recipe
-  // @Test
-  // public void deleteIngredientTest() {
-  //   ingredient testIngredient = new ingredient (3, 3.5, "Tanqueray");
-  //   testIngredient.save();
-  //   String ingredientpage = String.format("http://localhost:4567/ingredient/%d", testIngredient.getId()); *****maybe remove %d testIngredient.getId()
-  //   goTo(ingredientpage);
-  //   submit(".deleteIngredient");
-  //   assertThat(pageSource()).doesNotcontain(3, 3.5, "Tanqueray");
-  // }
+  @Test
+  public void deleteIngredientTest() {
+    Type type = new Type("Gin");
+    type.save();
+    Recipe myRecipe = new Recipe("Gin and tonic", "good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
+    myRecipe.save();
+    Ingredient testIngredient = new Ingredient (3, 3.5, "Tanqueray");
+    testIngredient.save();
+    testIngredient.delete();
+    String ingredientpage = String.format("http://localhost:4567/planner/%d", myRecipe.getId());
+    goTo(ingredientpage);
+    assertThat(!(pageSource()).contains("Gin"));
+  }
 
 
   @Test
