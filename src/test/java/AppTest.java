@@ -92,8 +92,8 @@ public class AppTest extends FluentTest {
     Ingredient testIngredient = new Ingredient (3, 3.5, "Tanqueray");
     testIngredient.save();
     testIngredient.update(4, 5.5, "Tequilla");
-    String ingredientpage = String.format("http://localhost:4567/planner/%d", myRecipe.getId());
-    goTo(ingredientpage);
+    String ingredientPage = String.format("http://localhost:4567/planner/%d", myRecipe.getId());
+    goTo(ingredientPage);
     assertThat(pageSource()).contains("Gin");
   }
 
@@ -106,11 +106,10 @@ public class AppTest extends FluentTest {
     Ingredient testIngredient = new Ingredient (3, 3.5, "Tanqueray");
     testIngredient.save();
     testIngredient.delete();
-    String ingredientpage = String.format("http://localhost:4567/planner/%d", myRecipe.getId());
-    goTo(ingredientpage);
+    String ingredientPage = String.format("http://localhost:4567/planner/%d", myRecipe.getId());
+    goTo(ingredientPage);
     assertThat(!(pageSource()).contains("Gin"));
   }
-
 
   @Test
   public void getAllOfType_allIngredientsOfType() {
@@ -122,6 +121,22 @@ public class AppTest extends FluentTest {
     goTo(typePath);
     assertThat(pageSource()).contains("Maker's Mark");
   }
+
+  @Test
+  public void displaysRecipeOnPlannerPageTest() {
+    Type type = new Type("Gin");
+    type.save();
+    Item testItem = new Item("Aviation", type.getId(), 25.36, 29);
+    testItem.save();
+    Recipe myRecipe = new Recipe("Gin and tonic", "good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
+    myRecipe.save();
+    Ingredient testIngredient = new Ingredient (3, 3.5, "Tanqueray");
+    testIngredient.save();
+    String plannerPage= String.format("http://localhost:4567/planner/%d", myRecipe.getId());
+    goTo(plannerPage);
+    assertThat(pageSource()).contains("Rob Lowe");
+  }
+
 
   // test to get to planner update page
   // once clicked, then need to do test for how many is needed to create the drink
