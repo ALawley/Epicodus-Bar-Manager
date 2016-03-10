@@ -74,7 +74,7 @@ public class AppTest extends FluentTest {
   // public void deleteIngredientTest() {
   //   ingredient testIngredient = new ingredient (3, 3.5, "Tanqueray");
   //   testIngredient.save();
-  //   String ingredientpage = String.format("http://localhost:4567/ingredient/%d", testIngredient.getId());
+  //   String ingredientpage = String.format("http://localhost:4567/ingredient/%d", testIngredient.getId()); *****maybe remove %d testIngredient.getId()
   //   goTo(ingredientpage);
   //   submit(".deleteIngredient");
   //   assertThat(pageSource()).doesNotcontain(3, 3.5, "Tanqueray");
@@ -87,7 +87,7 @@ public class AppTest extends FluentTest {
     testType.save();
     Item testItem = new Item("Maker's Mark", testType.getId(), 25.36, 31);
     testItem.save();
-    String typePath = String.format("http://localhost:4567/inventory/%d", testItem.getId());
+    String typePath = String.format("http://localhost:4567/inventory");
     goTo(typePath);
     assertThat(pageSource()).contains("Maker's Mark");
   }
