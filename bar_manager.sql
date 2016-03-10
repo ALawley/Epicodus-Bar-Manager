@@ -206,20 +206,6 @@ ALTER TABLE ONLY recipes ALTER COLUMN id SET DEFAULT nextval('recipes_id_seq'::r
 --
 
 COPY ingredients (id, type_id, recipe_id, amount, info) FROM stdin;
-1	1	0	2	a
-2	2	0	3	
-3	1	0	3	b
-4	2	0	2	
-5	2	1	3	dfg
-6	4	1	2	
-7	4	2	3	sdfsdf
-8	2	2	3	
-9	1	3	2	df
-10	2	3	3	dfg
-11	1	4	3	Rye
-12	2	4	2	London Dry
-13	5	5	3	
-14	2	5	6	
 \.
 
 
@@ -240,6 +226,11 @@ COPY item_types (id, type) FROM stdin;
 3	Vodka
 4	Rum
 5	Tequila
+6	Wine
+7	Beer
+8	Brandy
+9	Scotch
+10	Liqueur
 \.
 
 
@@ -247,7 +238,7 @@ COPY item_types (id, type) FROM stdin;
 -- Name: item_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('item_types_id_seq', 5, true);
+SELECT pg_catalog.setval('item_types_id_seq', 10, true);
 
 
 --
@@ -255,13 +246,20 @@ SELECT pg_catalog.setval('item_types_id_seq', 5, true);
 --
 
 COPY items (id, name, type_id, amount, price, priceperoz) FROM stdin;
-1	Maker's Mark	1	25.36	38	\N
-2	Blanton's	1	25.36	52	\N
-3	Knob Creek	1	25.36	36	\N
-5	Sauza	5	19.36	27	\N
-4	Tanqueray	2	13.36	28	\N
-6	Aviation	2	25.36	32	1.26182965299685
-7	Bulleit	1	25.36	26	1.02523659305994
+11	Johnnie Walker Black Label	1	33.81	49.9699999999999989	1.477965
+12	Johnnie Walker Blue Label	1	25.36	199.969999999999999	7.885252
+13	Johnnie Walker Green Label	9	25.36	59.9699999999999989	2.364747
+14	Smirnoff No.21	3	59.17	20.9899999999999984	0.35474
+16	Grey Goose	3	59.17	59.990000000000002	0.986331
+17	Grey Goose La Poire	3	59.17	59.990000000000002	0.986331
+20	Roca Patron Silver	5	25.36	59.990000000000002	2.364747
+21	Patron Tequila Gran Patron Platinum	5	25.36	199.990000000000009	7.886041
+19	Captain Morgan White Rum	4	25.36	16.9899999999999984	0.669953
+18	Original Spiced Rum Captain Morgan	4	25.36	13.9900000000000002	0.551656
+15	Smirnoff Raspberry	3	25.36	13.9900000000000002	0.551656
+22	Jose Cuervo Especial Gold	5	59.17	29.9699999999999989	0.506507
+23	Jose Cuervo Especial Silver	5	25.36	19.9899999999999984	0.788249
+24	Fireball Cinnamon Whiskey	10	25.36	19.9899999999999984	0.788249
 \.
 
 
@@ -269,7 +267,7 @@ COPY items (id, name, type_id, amount, price, priceperoz) FROM stdin;
 -- Name: items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('items_id_seq', 7, true);
+SELECT pg_catalog.setval('items_id_seq', 24, true);
 
 
 --
@@ -277,11 +275,6 @@ SELECT pg_catalog.setval('items_id_seq', 7, true);
 --
 
 COPY recipes (id, name, notes, rating, creator, prep_time, directions) FROM stdin;
-1	aaa		0			gfdfg
-2	bbb	dgdfg	0			sdfsf
-3	a		0			dfsdf
-4	Whiskey & Gin	notes	0	created by	prep time	directions
-5	Tequila & Gin		0			sfdvs
 \.
 
 
