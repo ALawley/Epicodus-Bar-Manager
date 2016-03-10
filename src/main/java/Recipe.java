@@ -96,19 +96,17 @@ public class Recipe {
     }
   }
 
-  public void updateRecipe(String newName, String newNotes, int newRating, String newCreator, String newPrepTime, String newDirections) {
+  public void updateRecipe(String newName, String newNotes, String newCreator, String newPrepTime, String newDirections) {
   this.name = newName;
   this.notes = newNotes;
-  this.rating = newRating;
   this.creator = newCreator;
   this.prep_time = newPrepTime;
   this.directions = newDirections;
-  String sql = "UPDATE recipes SET name=:name, notes=:notes, rating=:rating, creator=:creator, prep_time=:prep_time, directions=:directions WHERE id=:id;";
+  String sql = "UPDATE recipes SET name=:name, notes=:notes, creator=:creator, prep_time=:prep_time, directions=:directions WHERE id=:id;";
   try (Connection con = DB.sql2o.open()) {
     this.id = (int) con.createQuery(sql, true)
       .addParameter("name", name)
       .addParameter("notes", notes)
-      .addParameter("rating", rating)
       .addParameter("creator", creator)
       .addParameter("prep_time", prep_time)
       .addParameter("directions", directions)

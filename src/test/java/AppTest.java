@@ -22,9 +22,9 @@ public class AppTest extends FluentTest {
   public DatabaseRule database = new DatabaseRule();
 
   @Test
-   public void rootTest() {
-     goTo("http://localhost:4567/");
-     assertThat(pageSource()).contains("For people who like to drink at home");
+    public void rootTest() {
+      goTo("http://localhost:4567/");
+      assertThat(pageSource()).contains("For people who like to drink at home");
    }
 
   @Test
@@ -37,7 +37,6 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Knob Creek");
   }
 
-// update item
   @Test
   public void updateItemTest() {
     Type type = new Type("Whiskey");
@@ -50,7 +49,6 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Maker's Mark");
   }
 
-  // delete item
   @Test
   public void deleteItemTest() {
     Type type = new Type("Whiskey");
@@ -137,7 +135,25 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Rob Lowe");
   }
 
-
-  // test to get to planner update page
-  // once clicked, then need to do test for how many is needed to create the drink
+  // @Test
+  // public void updateADrinkTest() {
+  //   Type type = new Type("Gin");
+  //   type.save();
+  //   Item testItem = new Item("Aviation", type.getId(), 25.36, 29);
+  //   testItem.save();
+  //   Ingredient testIngredient = new Ingredient (3, 3.5, "Tanqueray");
+  //   testIngredient.save();
+  //   Recipe myRecipe = new Recipe("Gin and tonic", "good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
+  //   myRecipe.save();
+  //   Recipe secondRecipe = new Recipe("Jack on rocks", "good", "John Roll", "3 minutes", "add jack over ice");
+  //   goTo("http://localhost:4567/planner/");
+  //   fill("#name").with("Gin and tonic");
+  //   fill("#notes").with("good");
+  //   fill("#creator").with("John Roll");
+  //   fill("#preptime").with("3 minutes");
+  //   fill("#direction").with("add jack over ice");
+  //   submit(".btn btn-primary");
+  //   click("a", withText("Add recipe"));
+  //   assertThat(pageSource()).contains("Jack and Coke");
+  // }
 }
