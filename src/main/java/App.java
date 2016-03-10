@@ -122,10 +122,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/planner/:id/update", (request, response) -> {
-// =======
-//     get("/planner/:id/make", (request, response) -> {
-// >>>>>>> caab81ba744fff8c64c6173cdfdbb1a948e4c692
+    get("/planner/:id/make", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Recipe recipe = Recipe.find(Integer.parseInt(request.params(":id")));
       double price = 0;
