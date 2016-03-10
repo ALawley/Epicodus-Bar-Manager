@@ -38,7 +38,7 @@
   font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: bold;
-  width: 8vw;
+  width: 100%;
   bottom: 10vw;
 }
 .small {
@@ -141,6 +141,10 @@
   box-shadow: inset 0px 0px 7px 2px rgba(0, 0, 0, 0.3);
 }
 
+.rec-list-btn {
+  width: 10vw;
+}
+
 form {
   position: relative;
   display: flex;
@@ -153,7 +157,7 @@ form {
   position: relative;
   height: 50vh;
   display:flex;
-  width: 30vw;
+  width: 50vw;
   align-items: center;
   justify-content: center;
   left: 20vw;
@@ -216,6 +220,14 @@ form.drink-number {
   align-self:center;
   width: 20vw;
   height: 10vh;
+}
+
+.lg-text-box {
+  position: relative;
+  display: flex;
+  align-self:center;
+  width: 40vw;
+  height: 20vh;
 }
 
 
