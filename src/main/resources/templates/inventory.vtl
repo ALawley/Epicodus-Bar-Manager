@@ -7,6 +7,7 @@
              </header>
              <div class="partial-container">
                  <div class="mid1 inventory-table" >
+                   <!-- TODO: Need to make form functional -->
                      <table>
                    <thead>
                      <tr>
@@ -17,14 +18,13 @@
                      </tr>
                    </thead>
                     <tbody>
+                      <form action="inventory/update" method="post">
                       #foreach($type in $types)
                       #if($type.getAllOf().size() > 0)
                       #foreach($item in $type.getAllOf())
                       <tr>
-    <!-- TODO: Need to make form functional -->
-                        <form action="inventory/update/$item.getId()" method="post">
                           <td>
-                            <span><input type="text" value="$item.getAmount() oz"/></span>
+                            <span><input name="amount$item.getId()" type="number" step="any" value="$item.getAmount()"/>oz</span>
                           </td>
                           <td>
                           <span>$item.getTypeName()</span>
@@ -47,7 +47,64 @@
                     </tbody>
                   </table>
                 </form>
-                  <img rel="conversion" src="/img/conversion-holder.jpg"/>
+                <h2>Conversions</h2>
+                <table class="table">
+     <tr>
+       <th>
+         <span>oz</span>
+       </th>
+       <th>
+         <span>mL</span>
+       </th>
+       <th>
+         <span>L</span>
+       </th>
+     </tr>
+     <tr>
+       <td>
+         <span>1</span>
+       </td>
+       <td>
+         <span>29.57</span>
+       </td>
+       <td>
+         <span>.0296</span>
+       </td>
+     </tr>
+     <tr>
+       <td>
+         <span>25.36</span>
+       </td>
+       <td>
+         <span>750</span>
+       </td>
+       <td>
+         <span>.75</span>
+       </td>
+     </tr>
+     <tr>
+       <td>
+         <span>33.81</span>
+       </td>
+       <td>
+         <span>1000</span>
+       </td>
+       <td>
+         <span>1</span>
+       </td>
+     </tr>
+     <tr>
+       <td>
+         <span>50.72</span>
+       </td>
+       <td>
+         <span>1500</span>
+       </td>
+       <td>
+         <span>1.5</span>
+       </td>
+     </tr>
+   </table>
                   </div>
                 </div>
 
