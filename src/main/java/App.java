@@ -119,6 +119,7 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Recipe recipe = Recipe.find(Integer.parseInt(request.params(":id")));
       model.put("recipe", recipe);
+      model.put("types", Type.all());
       model.put("template", "templates/planner.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -160,7 +161,8 @@ public class App {
 
     post("/planner/:id/confirm", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      Recipe recipe = Recipe.find(Integer.parseInt(request.params(":id")));
+      int recipeId = Integer.parseInt(request.params(":id"));
+      Recipe recipe = Recipe.find(recipeId);
       Integer servings = Integer.parseInt(request.queryParams("servingNumber"));
       Integer maxServings = Integer.parseInt(request.queryParams("maxservings"));
       System.out.println("max servings: " + maxServings);
@@ -195,7 +197,8 @@ public class App {
         }
         model.put("types", Type.all());
         model.put("recipes", Recipe.all());
-        model.put("template", "templates/recipes.vtl");
+        model.put("recipe", recipe);
+        model.put("template", "templates/planner.vtl");
         return new ModelAndView(model, layout);
       }
     }, new VelocityTemplateEngine());

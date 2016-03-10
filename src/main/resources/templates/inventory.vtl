@@ -22,7 +22,7 @@
                       #foreach($item in $type.getAllOf())
                       <tr>
                         <td>
-                          <span>$item.getAmount() oz</span>
+                          <span><input type="text" value="$item.getAmount() oz"/></span>
                         </td>
                         <td>
                         <span>$item.getTypeName()</span>
@@ -39,7 +39,7 @@
                       #end
                     </tbody>
                   </table>
-                  <img rel="conversion" src="img/conversion-holder.jpg"/>
+                  <img rel="conversion" src="/img/conversion-holder.jpg"/>
                   </div>
                 </div>
 
@@ -58,24 +58,37 @@
                         </div>
                     </div> -->
 
-               <div class="mid3">
+
           <!-- TODO: the form location needs to be adjusted - Alissa-->
-                 <form action="/item/added" method="post">
-                   <label>Type</label>
-                   <select type="text" name="typeId" id="typeId">
-                     #foreach ($type in $types)
-                     <option value="$type.getId()" id="typeIdOption">$type.getType()</option>
-                     #end
-                   </select>
-                   <label>Name</label>
-                   <input required id="name" type="text" name="name" placeholder="Maker's Mark">
-                   <label>Bottle Price</label>
-                   <input required id="price" type="text" name="price" placeholder="39.99">
-                   <label>Amount On Hand (oz)</label>
-                   <input required id="amount" type="text" name="amount" placeholder="48.92">
-                   <button type="submit" class="btn btn-success" id="addItem">Add</button>
+                 <form action="/item/added" method="post" class="inventory-input">
+                   <div class="encompass">
+                     <div class="dropdown-btn small">
+                       <ul class="small">
+                           <li class='has-sub'><a href='#'><span>Products</span></a>
+                              <ul>
+                                 <li><a href='#'><span>Product 1</span></a></li>
+                                 <li><a href='#'><span>Product 2</span></a></li>
+                                 <li class='last'><a href='#'><span>Product 3</span></a></li>
+                              </ul>
+                           </li>
+                       </ul>
+                       <label>Type</label>
+                       <select type="text" name="typeId" id="typeId">
+                         #foreach ($type in $types)
+                         <option value="$type.getId()" id="typeIdOption">$type.getType()</option>
+                         #end
+                       </select>
+                       <label>Name</label>
+                       <input required id="name" type="text" name="name" placeholder="Maker's Mark">
+                       <label>Bottle Price</label>
+                       <input required id="price" type="text" name="price" placeholder="39.99">
+                       <label>Amount On Hand (oz)</label>
+                       <input required id="amount" type="text" name="amount" placeholder="48.92">
+                       <button type="submit" id="addItem">Add</button>
+                     </div>
+                   </div>               
                  </form>
-              </div>
+
               <footer class="footer">
                 <div class="footer-content">
                     <ul>
