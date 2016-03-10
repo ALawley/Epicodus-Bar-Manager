@@ -125,6 +125,17 @@ public class Item {
     }
   }
 
+  public void decrementItem(double pourAmount) {
+    this.amount -= pourAmount;
+    String sql = "UPDATE items SET amount=:amount WHERE id=:id;";
+    try (Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+      .addParameter("id", id)
+      .addParameter("amount", amount)
+      .executeUpdate();
+    }
+  }
+
   //DELETE
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
@@ -132,17 +143,6 @@ public class Item {
         con.createQuery(sql)
           .addParameter("id", id)
           .executeUpdate();
-      }
-    }
-
-    public void decrementItem(double pourAmount) {
-      this.amount -= pourAmount;
-      String sql = "UPDATE items SET amount=:amount WHERE id=:id;";
-      try (Connection con = DB.sql2o.open()) {
-        con.createQuery(sql)
-        .addParameter("id", id)
-        .addParameter("amount", amount)
-        .executeUpdate();
       }
     }
   }
