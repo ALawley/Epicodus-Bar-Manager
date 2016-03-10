@@ -33,7 +33,7 @@
      <form action="/planner/$recipe.getId()/confirm" class="drink-number" method="post">
        <label for="servingNumber">How many servings?</label>
        <input type="number" name="servingNumber" required>
-       <button class="btn btn-success" type="submit" id="completeRecipe">Make it!</button>
+       <button class="sm-inv-btn" type="submit" id="completeRecipe">Make it!</button>
        #foreach($itemid in $itemIds)
          <input name="itemid" type=hidden value="$itemid">
        #end
@@ -47,7 +47,7 @@
 <footer class="footer">
   <div class="footer-content">
       <ul>
-        <li><div class="big-li">Bar-Manager</div></li>
+        <li><div class="big-inventory">Bar-Manager</div></li>
         <a href="/recipes"><li>Recipes</li></a>
         <a href="/inventory"><li>Inventory</li></a>
         <li>Search</li>

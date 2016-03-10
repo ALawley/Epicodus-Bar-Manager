@@ -12,7 +12,7 @@
       <li>$item.getAmount() oz - $item.getTypeName() - $item.getInfo()</li>
       #end
     </ul>
-    <a class="btn btn-success" href="/planner/recipe.getId()/update">Update drink!</a>
+    <a href="/recipes/recipe/update/$recipe.getId()">Update drink!</a>
 </div>
 <div class="well">
   <h2>Pick Your Poison</h2>
@@ -26,9 +26,8 @@
       </select>
       <br>
       #end
-    <button class="btn btn-success" type="submit" id="addIngredient">Make Drink</button>
+    <button type="submit" id="addIngredient">Make Drink</button>
   </form>
-  <a href="/recipes/recipe/update/$recipe.getId()">Update Recipe</a>
 </div>
 #if ($update)
 <form action="/recipes/recipe/update/$recipe.getId()" method="post" class="form-inline">

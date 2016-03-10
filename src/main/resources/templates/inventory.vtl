@@ -21,57 +21,39 @@
                       #if($type.getAllOf().size() > 0)
                       #foreach($item in $type.getAllOf())
                       <tr>
-                        <td>
-                          <span><input type="text" value="$item.getAmount() oz"/></span>
-                        </td>
-                        <td>
-                        <span>$item.getTypeName()</span>
-                        </td>
-                        <td>
-                          <span>$item.getName()</span>
-                        </td>
-                        <td>
-                          <span><span>$</span>$item.getPrice()</span>
-                        </td>
+    <!-- TODO: Need to make form functional -->
+                        <form action="inventory/update/$item.getId()" method="post">
+                          <td>
+                            <span><input type="text" value="$item.getAmount() oz"/></span>
+                          </td>
+                          <td>
+                          <span>$item.getTypeName()</span>
+                          </td>
+                          <td>
+                            <span>$item.getName()</span>
+                          </td>
+                          <td>
+                            <span><span>$</span>$item.getPrice()</span>
+                          </td>
                       </tr>
                       #end
                       #end
                       #end
+                      <tr>
+                        <td>
+                          <button type="submit" value="Submit" class="sm-inv-btn ex-pad">Update</button>
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
+                </form>
                   <img rel="conversion" src="/img/conversion-holder.jpg"/>
                   </div>
                 </div>
 
-                <!-- TODO: Not sure what is suppose to be displayed here
-                <div class="mid2 mid-inventory">
-                    <div id='cssmenu'>
-                        <ul>
-                           <li class='has-sub'><a href='#'><span>Products</span></a>
-                              <ul>
-                                 <li><a href='#'><span>Product 1</span></a></li>
-                                 <li><a href='#'><span>Product 2</span></a></li>
-                                 <li class='last'><a href='#'><span>Product 3</span></a></li>
-                              </ul>
-                           </li>
-                        </ul>
-                        </div>
-                    </div> -->
-
-
-          <!-- TODO: the form location needs to be adjusted - Alissa-->
                  <form action="/item/added" method="post" class="inventory-input">
                    <div class="encompass">
                      <div class="dropdown-btn small">
-                       <ul class="small">
-                           <li class='has-sub'><a href='#'><span>Products</span></a>
-                              <ul>
-                                 <li><a href='#'><span>Product 1</span></a></li>
-                                 <li><a href='#'><span>Product 2</span></a></li>
-                                 <li class='last'><a href='#'><span>Product 3</span></a></li>
-                              </ul>
-                           </li>
-                       </ul>
                        <label>Type</label>
                        <select type="text" name="typeId" id="typeId">
                          #foreach ($type in $types)
@@ -84,7 +66,7 @@
                        <input required id="price" type="text" name="price" placeholder="39.99">
                        <label>Amount On Hand (oz)</label>
                        <input required id="amount" type="text" name="amount" placeholder="48.92">
-                       <button type="submit" id="addItem">Add</button>
+                       <button type="submit" value="Submit" class="sm-inv-btn" id="addItem">Add</button>
                      </div>
                    </div>
                  </form>
@@ -92,10 +74,10 @@
               <footer class="footer">
                 <div class="footer-content">
                     <ul>
-                      <li><div class="big-li">Bar-Manager</div></li>
+                      <li><div class="big-inventory">Bar-Manager</div></li>
                       <a href="/recipes"><li>Recipes</li></a>
                       <a href="/inventory"><li>Inventory</li></a>
-                      <li>Search</li>
                     </ul>
                   </div>
               </footer>
+            </div>
