@@ -19,9 +19,9 @@
           </div>
         </header>
 
-      <div class="partial-container" "columns">
+      <div class="partial-container" >
 
-        <div class='dropdown-btn' class='recipe-list' >
+        <div class='dropdown-btn rec-list-btn' class='recipe-list' >
           <ul>
              <li class='has-sub'><a href='#'><span>Recipe List</span></a>
                   <ul>
@@ -38,30 +38,27 @@
             <form action="/recipes/new" method="post">
               <div class="recipe-entry">
 
-              <label for="name">Name:</label>
-              <input id="name" name="name" type="text" class="form-control" required>
-              <label for="creator">Created By:</label>
-              <input id="creator" name="creator" type="text" class="form-control">
-              <label for="preptime">Prep Time:</label>
-              <input id="preptime" name="preptime" type="text" class="form-control">
-              <label for="notes">Notes:</label>
-              <input id="notes" name="notes" type="text" class="form-control med-text-box">
+                <label for="name">Name:</label>
+                <input id="name" name="name" type="text" class="form-control" required>
+
+                <label for="creator">Created By:</label>
+                <input id="creator" name="creator" type="text" class="form-control">
+
+                <label for="preptime">Prep Time:</label>
+                <input id="preptime" name="preptime" type="text" class="form-control">
+
+              <!-- <div class="notes-text" style="display:flex;flex-direction:column;border:1px solid red;"> -->
+                <label for="notes">Notes:</label>
+                <input id="notes" name="notes" type="text" class="form-control med-text-box">
+              <!-- </div> -->
+
             </div>
           </form>
 
-             <form class="buildform" action="#" method="post">
+             <form class="buildform columns" action="#" method="post">
 
-            <div class="encompass">
-              <div class='dropdown-btn small' >
-                <ul class="small">
-                    <li class='has-sub'><a href='#'><span>Products</span></a>
-                       <ul>
-                           #foreach ($item in $items)
-                            <li><a href='#'><span value="$item.getId()">$item.getName()</span></a></li>
-                            #end
-                         </ul>
-                      </li>
-                   </ul>
+             <div class='dropdown-btn'>
+
                    <label for="type1">Ingredient Type</label>
                    <select name="type1" id="type1">
                      <option value="0" id="blank1">Select Ingredient Type:</option>
@@ -73,18 +70,10 @@
                  <input type="number" class="form-control" name="amount1" id="amount1">
                 <label for="info1">Info</label>
                 <input type="text" class="form-control" name="info1" id="info1">
-              </div>
+            </div>
 
             <div class='dropdown-btn small' >
-              <ul class="small">
-                  <li class='has-sub'><a href='#'><span>Products</span></a>
-                     <ul>
-                          #foreach ($item in $items)
-                           <li><a href='#'><span value="$item.getId()">$item.getName()</span></a></li>
-                           #end
-                        </ul>
-                     </li>
-                  </ul>
+
                   <label for="type2">Ingredient Type</label>
                   <select name="type2" id="type2">
                     <option value="0" id="blank2">Select Ingredient Type:</option>
@@ -99,15 +88,7 @@
            </div>
 
            <div class='dropdown-btn small' >
-             <ul class="small">
-                 <li class='has-sub'><a href='#'><span>Products</span></a>
-                    <ul>
-                         #foreach ($item in $items)
-                          <li><a href='#'><span value="$item.getId()">$item.getName()</span></a></li>
-                          #end
-                       </ul>
-                    </li>
-                 </ul>
+
                  <label for="type3">Ingredient Type</label>
                  <select name="type3" id="type3">
                    <option value="0" id="blank3">Select Ingredient Type:</option>
@@ -122,15 +103,7 @@
           </div>
 
           <div class='dropdown-btn small' >
-            <ul class="small">
-                <li class='has-sub'><a href='#'><span>Products</span></a>
-                   <ul>
-                        #foreach ($item in $items)
-                         <li><a href='#'><span value="$item.getId()">$item.getName()</span></a></li>
-                         #end
-                      </ul>
-                   </li>
-                </ul>
+
                 <label for="type4">Ingredient Type</label>
                 <select name="type4" id="type4">
                   <option value="0" id="blank4">Select Ingredient Type:</option>
@@ -145,15 +118,7 @@
          </div>
 
          <div class='dropdown-btn small' >
-           <ul class="small">
-               <li class='has-sub'><a href='#'><span>Products</span></a>
-                  <ul>
-                       #foreach ($item in $items)
-                        <li><a href='#'><span value="$item.getId()">$item.getName()</span></a></li>
-                        #end
-                     </ul>
-                  </li>
-               </ul>
+
                <label for="type5">Ingredient Type</label>
                <select name="type5" id="type5">
                  <option value="0" id="blank5">Select Ingredient Type:</option>
@@ -168,15 +133,7 @@
         </div>
 
         <div class='dropdown-btn small' >
-          <ul class="small">
-              <li class='has-sub'><a href='#'><span>Products</span></a>
-                 <ul>
-                      #foreach ($item in $items)
-                       <li><a href='#'><span value="$item.getId()">$item.getName()</span></a></li>
-                       #end
-                    </ul>
-                 </li>
-              </ul>
+
               <label for="type6">Ingredient Type</label>
               <select name="type6" id="type6">
                 <option value="0" id="blank6">Select Ingredient Type:</option>
@@ -191,15 +148,7 @@
        </div>
 
        <div class='dropdown-btn small' >
-         <ul class="small">
-             <li class='has-sub'><a href='#'><span>Products</span></a>
-                <ul>
-                     #foreach ($item in $items)
-                      <li><a href='#'><span value="$item.getId()">$item.getName()</span></a></li>
-                      #end
-                   </ul>
-                </li>
-             </ul>
+
              <label for="type1">Ingredient Type</label>
              <select name="type7" id="type7">
                <option value="0" id="blank7">Select Ingredient Type:</option>
@@ -214,15 +163,7 @@
       </div>
 
       <div class='dropdown-btn small' >
-        <ul class="small">
-            <li class='has-sub'><a href='#'><span>Products</span></a>
-               <ul>
-                    #foreach ($item in $items)
-                     <li><a href='#'><span value="$item.getId()">$item.getName()</span></a></li>
-                     #end
-                  </ul>
-               </li>
-            </ul>
+
             <label for="type8">Ingredient Type</label>
             <select name="type8" id="type8">
               <option value="0" id="blank8">Select Ingredient Type:</option>
@@ -237,10 +178,10 @@
        </div>
        <br>
          <label for="directions">Directions:</label>
-         <input id="directions" name="directions" type="text" class="form-control" required>
+         <input id="directions" name="directions" type="text" class="lg-text-box form-control" required>
          <button type="submit" class="btn btn-primary">Add recipe</button>
        </form>
-     </div>
+
       </div>
 <!-- END FORM -->
             <footer class="footer">
