@@ -3,7 +3,7 @@
 </div>
 <div class="well">
   <h1>$recipe.getName()</h1>
-  <h2>You can make $maxservings servings at $ $drinkcost per drink.</h2>
+  <h2>You can make $maxservings servings at $ $formatter.format($drinkcost) per drink.</h2>
   <h2>You need more $limitingItem.getName() to make more than that.</h2>
 </div>
 #if($notenough)

@@ -6,9 +6,11 @@ import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import java.util.Collections;
 import static spark.Spark.*;
+import java.text.DecimalFormat;
 
 public class App {
   public static void main(String[] args) {
+    DecimalFormat formatter = new DecimalFormat("#0.00");
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
 
@@ -57,6 +59,7 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Recipe recipe = Recipe.find(Integer.parseInt(request.params(":id")));
       model.put("recipe", recipe);
+      model.put("formatter", formatter);
       model.put("template", "templates/planner.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -65,6 +68,7 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
       model.put("types", Type.all());
       model.put("items", Item.all());
+      model.put("formatter", formatter);
       model.put("template", "templates/inventory.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -74,10 +78,11 @@ public class App {
       for (Item updateItem : Item.all()) {
         String formname = String.format("amount%d", updateItem.getId());
         double newAmount = Double.parseDouble(request.queryParams(formname));
-        updateItem.setAmount(newAmount);
+        updateItem.amountSet(newAmount);
       }
       model.put("types", Type.all());
       model.put("items", Item.all());
+      model.put("formatter", formatter);
       model.put("template", "templates/inventory.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -125,6 +130,7 @@ public class App {
       model.put("itemIds", itemIds);
       model.put("limitingItem", limitingItem);
       model.put("recipe", recipe);
+      model.put("formatter", formatter);
       model.put("template", "templates/planner-update.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -147,9 +153,10 @@ public class App {
         model.put("notenough", notEnough);
         model.put("maxservings", maxServings);
         model.put("drinkcost", price);
-        model.put("itemids", itemIds);
+        model.put("itemIds", itemIds);
         model.put("limitingItem", limitingItem);
         model.put("recipe", recipe);
+        model.put("formatter", formatter);
         model.put("template", "templates/planner-update.vtl");
         return new ModelAndView(model, layout);
       } else {
