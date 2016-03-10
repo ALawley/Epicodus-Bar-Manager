@@ -12,9 +12,9 @@
 
         <div class="partial-container">
 
-            <div id='cssmenu' class='recipe-list' >
-              <ul>
-                 <li class='has-sub'><a href='#'><span>Recipe List</span></a>
+          <div class='dropdown-btn' class='recipe-list' >
+            <ul>
+               <li class='has-sub'><a href='#'><span>Recipe List</span></a>
                     <ul>
                       #foreach ($recipe in $recipes)
                        <li><a href='/planner/$recipe.getId()'><span>$recipe.getName()</span></a></li>
@@ -37,11 +37,11 @@
                 <input id="preptime" name="preptime" type="text" class="form-control">
               <!-- </form> -->
 
-               <div class="mid3 flex-inventory small-ish">
-                   <div id='cssmenu' class='menu-inventory small' >
-                     <ul class="small">
-                        <li class='has-sub'><a href='#'><span>Products</span></a>
-                           <ul>
+              <div class="encompass">
+                <div class='dropdown-btn small' >
+                  <ul class="small">
+                      <li class='has-sub'><a href='#'><span>Products</span></a>
+                         <ul>
                              #foreach ($item in $items)
                               <li><a href='#'><span value="$item.getId()">$item.getName()</span></a></li>
                               #end
@@ -62,11 +62,10 @@
                   <input type="text" class="form-control" name="info1" id="info1">
               </div>
 
-              <div class="mid3 flex-inventory small-ish">
-                  <div id='cssmenu' class='menu-inventory small' >
-                    <ul class="small">
-                       <li class='has-sub'><a href='#'><span>Products</span></a>
-                          <ul>
+              <div class='dropdown-btn small' >
+                <ul class="small">
+                    <li class='has-sub'><a href='#'><span>Products</span></a>
+                       <ul>
                             #foreach ($item in $items)
                              <li><a href='#'><span value="$item.getId()">$item.getName()</span></a></li>
                              #end
@@ -87,11 +86,10 @@
                  <input type="text" class="form-control" name="info2" id="info2">
              </div>
 
-             <div class="mid3 flex-inventory small-ish">
-                 <div id='cssmenu' class='menu-inventory small' >
-                   <ul class="small">
-                      <li class='has-sub'><a href='#'><span>Products</span></a>
-                         <ul>
+             <div class='dropdown-btn small' >
+               <ul class="small">
+                   <li class='has-sub'><a href='#'><span>Products</span></a>
+                      <ul>
                            #foreach ($item in $items)
                             <li><a href='#'><span value="$item.getId()">$item.getName()</span></a></li>
                             #end
@@ -112,11 +110,10 @@
                 <input type="text" class="form-control" name="info3" id="info3">
             </div>
 
-            <div class="mid3 flex-inventory small-ish">
-                <div id='cssmenu' class='menu-inventory small' >
-                  <ul class="small">
-                     <li class='has-sub'><a href='#'><span>Products</span></a>
-                        <ul>
+            <div class='dropdown-btn small' >
+              <ul class="small">
+                  <li class='has-sub'><a href='#'><span>Products</span></a>
+                     <ul>
                           #foreach ($item in $items)
                            <li><a href='#'><span value="$item.getId()">$item.getName()</span></a></li>
                            #end
@@ -137,11 +134,10 @@
                <input type="text" class="form-control" name="info4" id="info4">
            </div>
 
-           <div class="mid3 flex-inventory small-ish">
-               <div id='cssmenu' class='menu-inventory small' >
-                 <ul class="small">
-                    <li class='has-sub'><a href='#'><span>Products</span></a>
-                       <ul>
+           <div class='dropdown-btn small' >
+             <ul class="small">
+                 <li class='has-sub'><a href='#'><span>Products</span></a>
+                    <ul>
                          #foreach ($item in $items)
                           <li><a href='#'><span value="$item.getId()">$item.getName()</span></a></li>
                           #end
@@ -162,11 +158,10 @@
               <input type="text" class="form-control" name="info5" id="info5">
           </div>
 
-          <div class="mid3 flex-inventory small-ish">
-              <div id='cssmenu' class='menu-inventory small' >
-                <ul class="small">
-                   <li class='has-sub'><a href='#'><span>Products</span></a>
-                      <ul>
+          <div class='dropdown-btn small' >
+            <ul class="small">
+                <li class='has-sub'><a href='#'><span>Products</span></a>
+                   <ul>
                         #foreach ($item in $items)
                          <li><a href='#'><span value="$item.getId()">$item.getName()</span></a></li>
                          #end
@@ -187,11 +182,10 @@
              <input type="text" class="form-control" name="info6" id="info6">
          </div>
 
-         <div class="mid3 flex-inventory small-ish">
-             <div id='cssmenu' class='menu-inventory small' >
-               <ul class="small">
-                  <li class='has-sub'><a href='#'><span>Products</span></a>
-                     <ul>
+         <div class='dropdown-btn small' >
+           <ul class="small">
+               <li class='has-sub'><a href='#'><span>Products</span></a>
+                  <ul>
                        #foreach ($item in $items)
                         <li><a href='#'><span value="$item.getId()">$item.getName()</span></a></li>
                         #end
@@ -212,11 +206,10 @@
             <input type="text" class="form-control" name="info7" id="info7">
         </div>
 
-        <div class="mid3 flex-inventory small-ish">
-            <div id='cssmenu' class='menu-inventory small' >
-              <ul class="small">
-                 <li class='has-sub'><a href='#'><span>Products</span></a>
-                    <ul>
+        <div class='dropdown-btn small' >
+          <ul class="small">
+              <li class='has-sub'><a href='#'><span>Products</span></a>
+                 <ul>
                       #foreach ($item in $items)
                        <li><a href='#'><span value="$item.getId()">$item.getName()</span></a></li>
                        #end
@@ -239,9 +232,9 @@
            <label for="directions">Directions:</label>
            <input id="directions" name="directions" type="text" class="form-control" required>
            <button type="submit" class="btn btn-primary">Add recipe</button>
+          </div>
          </form>
        </div>
-
         </div>
               <footer class="footer">
                 <div class="footer-content">
