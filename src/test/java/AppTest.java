@@ -58,16 +58,20 @@ public class AppTest extends FluentTest {
   }
 
   // update Ingredient to Recipe
-  // @Test
-  // public void updateIngredientTest() {
-  //   Ingredient testIngredient = new Ingredient (3, 3.5, "Tanqueray");
-  //   testIngredient.save();
-  //   String ingredientpage = String.format("http://localhost:4567/ingredient/%d", testIngredient.getId());
-  //   goTo(ingredientpage);
-  //   fill("#updateIngredient").with(4, 3.5, "Tanqueray");
-  //   submit(".updateIngredient");
-  //   assertThat(pageSource()).contains(4, 3.5, "Tanqueray");
-  // }
+
+
+  @Test
+  public void updateIngredientTest() {
+    Recipe myRecipe = new Recipe("Gin and tonic", "good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
+    myRecipe.save();
+    Ingredient testIngredient = new Ingredient (3, 3.5, "Tanqueray");
+    testIngredient.save();
+    String ingredientpage = String.format("http://localhost:4567/planner/%d", testIngredient.getId());
+    goTo(ingredientpage);
+    fill("#updateIngredient").with("Tequilla");
+    submit(".updateIngredient");
+    assertThat(pageSource()).contains("Tequilla");
+  }
 
   //  delete Ingredient from Recipe
   // @Test
