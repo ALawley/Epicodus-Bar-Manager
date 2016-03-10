@@ -13,6 +13,11 @@
   justify-content: flex-end;
 }
 
+.landing-ul {
+  padding-left: 60vw;
+  padding-top: 1vw;
+}
+
 .header-content li {
   display: inline-flex;
   justify-content: space-around;
@@ -22,12 +27,4 @@
 .header-content li:hover {
 color: #FFFFFF;
 cursor: pointer; cursor: hand;
-}
-
-.header-content li:first-child {
-  cursor: default;
-}
-
-.header-content li:first-child:hover {
-  color: #D910E8;
 }

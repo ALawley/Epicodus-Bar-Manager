@@ -29,6 +29,8 @@
 
 .dropdown-btn {
   display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   border: 0px;
   margin: 0px;
@@ -147,14 +149,22 @@ form {
   bottom: 10vh;
 }
 
-form.buildform {
+.buildform {
   position: relative;
   height: 50vh;
   display:flex;
-  width: 60vw;
-  left:16.25vw;
+  width: 30vw;
   align-items: center;
   justify-content: center;
+  left: 20vw;
+  bottom: 15vh;
+}
+
+label {
+  position: relative;
+  display: flex;
+  padding: 1vw;
+  align-items: baseline;
 }
 
 .inventory-input {
@@ -170,12 +180,13 @@ form.buildform {
 .recipe-entry {
   position: relative;
   height: 20vh;
-  width: 50vw;
+  width: 70vw;
+  right: 30vw;
+  top: 3vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 5vw;
-  right: 25vw;
+
 }
 
 form.drink-number {
@@ -197,4 +208,78 @@ form.drink-number {
 .encompass {
   display: flex;
   flex-direction: column;
+}
+
+.med-text-box {
+  position: relative;
+  display: flex;
+  align-self:center;
+  width: 20vw;
+  height: 10vh;
+}
+
+
+//////////////////////Submit Recipe Button//////////////////////
+
+.btn {
+  background: #ff9933;
+  background-image: -webkit-linear-gradient(top, #ff9933, #cc6600);
+  background-image: -moz-linear-gradient(top, #ff9933, #cc6600);
+  background-image: -ms-linear-gradient(top, #ff9933, #cc6600);
+  background-image: -o-linear-gradient(top, #ff9933, #cc6600);
+  background-image: linear-gradient(to bottom, #ff9933, #cc6600);
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 40px 10px 40px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #FFC57E;
+  background-image: -webkit-linear-gradient(top, #FFC57E, #FF9D26);
+  background-image: -moz-linear-gradient(top, #FFC57E, #FF9D26);
+  background-image: -ms-linear-gradient(top, #FFC57E, #FF9D26);
+  background-image: -o-linear-gradient(top, #FFC57E, #FF9D26);
+  background-image: linear-gradient(to bottom, #FFC57E, #FF9D26);
+  text-decoration: none;
+}
+
+
+// ///////////////////Small Inventory Submit Button//////////////////////
+
+.sm-inv-btn {
+  background: #ff9933;
+  background-image: -webkit-linear-gradient(top, #ff9933, #cc6600);
+  background-image: -moz-linear-gradient(top, #ff9933, #cc6600);
+  background-image: -ms-linear-gradient(top, #ff9933, #cc6600);
+  background-image: -o-linear-gradient(top, #ff9933, #cc6600);
+  background-image: linear-gradient(to bottom, #ff9933, #cc6600);
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 0px 20px 0px 20px;
+  text-decoration: none;
+}
+
+.sm-inv-btn:hover {
+  background: #FFC57E;
+  background-image: -webkit-linear-gradient(top, #FFC57E, #FF9D26);
+  background-image: -moz-linear-gradient(top, #FFC57E, #FF9D26);
+  background-image: -ms-linear-gradient(top, #FFC57E, #FF9D26);
+  background-image: -o-linear-gradient(top, #FFC57E, #FF9D26);
+  background-image: linear-gradient(to bottom, #FFC57E, #FF9D26);
+  text-decoration: none;
+}
+
+.ex-mar {
+  margin: .5vw;
+  padding: .5vw;
+
 }
