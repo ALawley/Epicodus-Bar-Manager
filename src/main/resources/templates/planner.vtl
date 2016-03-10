@@ -12,6 +12,7 @@
       <li>$formatter.format($item.getAmount()) oz - $item.getTypeName() - $item.getInfo()</li>
       #end
     </ul>
+  <h4>Directions: $recipe.getDirections()</h4>
     #if ($update)
     #else
     <a class="btn btn-success" href="/planner/$recipe.getId()/update">Update drink!</a>
