@@ -1,5 +1,3 @@
-//WAITING FOR THE FORM TO BE ONE COMPLETE FROM NOT SEGREGATED
-
         <div class="container">
 
           <img rel="main" src="img/mainimg3.jpg"/>
@@ -25,8 +23,10 @@
                  </li>
               </ul>
               </div>
+    <!-- FORM START -->
+              <form action="/recipes/new" method="post">
+                <div class="recipe-entry">
 
-              <form action="/recipes/new" method="post" class="recipe-entry">
                 <label for="name">Name:</label>
                 <input id="name" name="name" type="text" class="form-control" required>
                 <label for="notes">Notes:</label>
@@ -35,7 +35,7 @@
                 <input id="creator" name="creator" type="text" class="form-control">
                 <label for="preptime">Prep Time:</label>
                 <input id="preptime" name="preptime" type="text" class="form-control">
-              <!-- </form> -->
+              </div>
 
               <div class="encompass">
                 <div class='dropdown-btn small' >
@@ -48,7 +48,6 @@
                            </ul>
                         </li>
                      </ul>
-                     </div>
                      <label for="type1">Ingredient Type</label>
                      <select name="type1" id="type1">
                        <option value="0" id="blank1">Select Ingredient Type:</option>
@@ -60,7 +59,7 @@
                    <input type="number" class="form-control" name="amount1" id="amount1">
                   <label for="info1">Info</label>
                   <input type="text" class="form-control" name="info1" id="info1">
-              </div>
+                </div>
 
               <div class='dropdown-btn small' >
                 <ul class="small">
@@ -72,7 +71,6 @@
                           </ul>
                        </li>
                     </ul>
-                    </div>
                     <label for="type2">Ingredient Type</label>
                     <select name="type2" id="type2">
                       <option value="0" id="blank2">Select Ingredient Type:</option>
@@ -96,7 +94,6 @@
                          </ul>
                       </li>
                    </ul>
-                   </div>
                    <label for="type3">Ingredient Type</label>
                    <select name="type3" id="type3">
                      <option value="0" id="blank3">Select Ingredient Type:</option>
@@ -120,7 +117,6 @@
                         </ul>
                      </li>
                   </ul>
-                  </div>
                   <label for="type4">Ingredient Type</label>
                   <select name="type4" id="type4">
                     <option value="0" id="blank4">Select Ingredient Type:</option>
@@ -144,7 +140,6 @@
                        </ul>
                     </li>
                  </ul>
-                 </div>
                  <label for="type5">Ingredient Type</label>
                  <select name="type5" id="type5">
                    <option value="0" id="blank5">Select Ingredient Type:</option>
@@ -168,7 +163,6 @@
                       </ul>
                    </li>
                 </ul>
-                </div>
                 <label for="type6">Ingredient Type</label>
                 <select name="type6" id="type6">
                   <option value="0" id="blank6">Select Ingredient Type:</option>
@@ -192,7 +186,6 @@
                      </ul>
                   </li>
                </ul>
-               </div>
                <label for="type1">Ingredient Type</label>
                <select name="type7" id="type7">
                  <option value="0" id="blank7">Select Ingredient Type:</option>
@@ -216,7 +209,6 @@
                     </ul>
                  </li>
               </ul>
-              </div>
               <label for="type8">Ingredient Type</label>
               <select name="type8" id="type8">
                 <option value="0" id="blank8">Select Ingredient Type:</option>
@@ -228,14 +220,15 @@
             <input type="number" class="form-control" name="amount8" id="amount8">
            <label for="info8">Info</label>
            <input type="text" class="form-control" name="info8" id="info8">
-
+         </div>
+         <br>
            <label for="directions">Directions:</label>
            <input id="directions" name="directions" type="text" class="form-control" required>
            <button type="submit" class="btn btn-primary">Add recipe</button>
-          </div>
          </form>
        </div>
         </div>
+  <!-- END FORM -->
               <footer class="footer">
                 <div class="footer-content">
                     <ul>
