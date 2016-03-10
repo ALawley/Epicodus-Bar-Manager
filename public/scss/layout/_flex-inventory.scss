@@ -148,35 +148,8 @@ img[rel="conversion"] {
 .mid3.flex-inventory {
   position: relative;
   width: 100%;
-  align-items: center;
-  justify-content: center;
   top: 60vh;
-}
-
-form {
-  position: relative;
-  display: flex;
-  width: 40vw;
-  left: 50vw;
-  bottom: 10vh;
-}
-
-form.buildform {
-  height: 3vh;
-  display:flex;
-  width: 60vw;
-  left:16.25vw;
-  bottom: 40vh;
-}
-
-form.recipe-entry{
-  width: 50vw;
-  height: 20vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  left: 25vw;
-  top: 5vw;
+  height: 40vh;
 }
 
 /*////////////////////BEGIN GALLERY PAGE/////////////////////*/
