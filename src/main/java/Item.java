@@ -8,14 +8,14 @@ public class Item {
   private int type_id;
   private double amount;
   private double price;
-  private double pricePerOz;
+  private double priceperoz;
 
   public Item(String name, int type_id, double amount, double price) {
     this.name = name;
     this.type_id = type_id;
     this.amount = amount;
     this.price = price;
-    this.pricePerOz = price/amount;
+    this.priceperoz = price/amount;
   }
 
   public int getId() {
@@ -39,7 +39,7 @@ public class Item {
   }
 
   public double getPricePerOz() {
-    return pricePerOz;
+    return priceperoz;
   }
 
   public String getTypeName() {
@@ -62,6 +62,7 @@ public class Item {
         this.getId() == newItem.getId() &&
         this.getTypeId() == newItem.getTypeId() &&
         this.getAmount() == newItem.getAmount() &&
+        this.getPricePerOz() == newItem.getPricePerOz() &&
         this.getPrice() == newItem.getPrice();
     }
   }
@@ -75,7 +76,7 @@ public class Item {
       .addParameter("type_id", type_id)
       .addParameter("amount", amount)
       .addParameter("price", price)
-      .addParameter("priceperoz", pricePerOz)
+      .addParameter("priceperoz", priceperoz)
       .executeUpdate()
       .getKey();
     }
@@ -100,13 +101,25 @@ public class Item {
 
   //UPDATE
   public void update(String newName, int newTypeId, double newAmount, double newPrice) {
-    String sql = "UPDATE items SET name = :name, type_id = :type_id, amount = :amount, price = :price WHERE id = :id";
+    double newPricePerOz = newPrice/newAmount;
+    String sql = "UPDATE items SET name = :name, type_id = :type_id, amount = :amount, price = :price, priceperoz = :priceperoz WHERE id = :id";
     try(Connection con = DB.sql2o.open()) {
       con.createQuery(sql)
         .addParameter("name", newName)
         .addParameter("type_id", newTypeId)
         .addParameter("amount", newAmount)
         .addParameter("price", newPrice)
+        .addParameter("priceperoz", newPricePerOz)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
+
+  public void setAmount(double newAmount) {
+    String sql = "UPDATE items SET amount = :amount WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+        .addParameter("amount", newAmount)
         .addParameter("id", id)
         .executeUpdate();
     }

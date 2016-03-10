@@ -4,42 +4,49 @@
 <div class="row">
   <div class="col-sm-8">
     <h1>Inventory</h1>
-    <table class="table">
-      <tr>
-        <th>
-          <span>Amount</span>
-        </th>
-        <th>
-          <span>Type</span>
-        </th>
-        <th>
-          <span>Name</span>
-        </th>
-        <th>
-          <span>Price</span>
-        </th>
-      </tr>
-      #foreach($type in $types)
-      #if($type.getAllOf().size() > 0)
-      #foreach($item in $type.getAllOf())
-      <tr>
-        <td>
-          <span>$item.getAmount() <span>oz</span></span>
-        </td>
-        <td>
-          <a href="/item/$item.getTypeId()"><span>$item.getTypeName()</span></a>
-        </td>
-        <td>
-          <a href="/item/$item.getId()"><span>$item.getName()</span></a>
-        </td>
-        <td>
-          <span><span>$</span>$item.getPrice()</span>
-        </td>
-      </tr>
-      #end
-      #end
-      #end
-    </table>
+    <form action="/inventory/update" method="post">
+      <table class="table">
+        <tr>
+          <th>
+            <span>Amount</span>
+          </th>
+          <th>
+            <span>Type</span>
+          </th>
+          <th>
+            <span>Name</span>
+          </th>
+          <th>
+            <span>Price</span>
+          </th>
+        </tr>
+          #foreach($type in $types)
+          #if($type.getAllOf().size() > 0)
+          #foreach($item in $type.getAllOf())
+          <tr>
+            <td>
+              <span><input type="number" step="any" value="$item.getAmount()" id="amount$item.getId()" name="amount$item.getId()"> <span>oz</span></span>
+            </td>
+            <td>
+              <span>$item.getTypeName()</span>
+            </td>
+            <td>
+              <span>$item.getName()</span>
+            </td>
+            <td>
+              <span><span>$</span>$item.getPrice()</span>
+            </td>
+          </tr>
+          #end
+          #end
+          #end
+          <tr>
+            <td>
+              <button type="submit" class="btn btn-info">Update stock</button>
+            </td>
+          </tr>
+      </table>
+    </form>
   </div>
   <div class="col-sm-4">
     <h3>Conversion</h3>
