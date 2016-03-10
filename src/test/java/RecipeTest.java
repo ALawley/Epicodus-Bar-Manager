@@ -40,7 +40,7 @@ public class RecipeTest {
   public void updateRecipe_changesOldValueToNewValue() {
     Recipe recipeOne = new Recipe("Gin and tonic","good", "Rob Lowe", "5 minutes", "add gin and tonic over ice");
     recipeOne.save();
-    recipeOne.updateRecipe("Tom Collins","good", 5, "Adam West", "6 minutes", "serve in Collins glass");
+    recipeOne.updateRecipe("Tom Collins","good", "Adam West", "6 minutes", "serve in Collins glass");
     assertEquals("Tom Collins", recipeOne.getName());
   }
 
