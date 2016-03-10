@@ -25,9 +25,9 @@
   text-decoration: none;
 }
 
-/* #F93 */
-/* #C60 */
-#cssmenu {
+///////////////DropDown Styling/////////////////////
+
+.dropdown-btn {
   display: flex;
   border: none;
   border: 0px;
@@ -47,7 +47,14 @@
   height: 3.5vh;
 }
 
-#cssmenu ul {
+.recipe-list {
+  width: 10vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown-btn ul {
   background: #ff9933;
   height: 35px;
   list-style: none;
@@ -59,11 +66,11 @@
 }
 
 
-#cssmenu li {
+.dropdown-btn li {
   float: left;
   padding: 0px 0px 0px 10px;
 }
-#cssmenu li a {
+.dropdown-btn li a {
   color: #000;
   display: block;
   font-weight: normal;
@@ -73,7 +80,7 @@
   text-align: center;
   text-decoration: none;
 }
-#cssmenu li a:hover {
+.dropdown-btn li a:hover {
   background: #cc6600;
   color: #FFFFFF;
   text-decoration: none;
@@ -81,12 +88,12 @@
   -moz-box-shadow: inset 0px 0px 7px 2px rgba(0, 0, 0, 0.3);
   box-shadow: inset 0px 0px 7px 2px rgba(0, 0, 0, 0.3);
 }
-#cssmenu ul li:hover a {
+.dropdown-btn ul li:hover a {
   background: #cc6600;
   color: #FFFFFF;
   text-decoration: none;
 }
-#cssmenu li ul {
+.dropdown-btn li ul {
   display: none;
   height: auto;
   padding: 0px;
@@ -96,10 +103,10 @@
   width: 200px;
   z-index: 200;
 }
-#cssmenu li:hover ul {
+.dropdown-btn li:hover ul {
   display: block;
 }
-#cssmenu li li {
+.dropdown-btn li li {
   display: block;
   float: none;
   margin: 0px;
@@ -109,10 +116,10 @@
   /*this is where the rounded corners for the dropdown disappears*/
 
 }
-#cssmenu li:hover li a {
+.dropdown-btn li:hover li a {
   background: none;
 }
-#cssmenu li ul a {
+.dropdown-btn li ul a {
   display: block;
   height: 50px;
   font-size: 12px;
@@ -121,8 +128,8 @@
   padding: 0px 10px 0px 15px;
   text-align: left;
 }
-#cssmenu li ul a:hover,
-#cssmenu li ul li:hover a {
+.dropdown-btn li ul a:hover,
+.dropdown-btn li ul li:hover a {
   border: 0px;
   color: #FFFFFF;
   text-decoration: none;
@@ -130,4 +137,64 @@
   -webkit-box-shadow: inset 0px 0px 7px 2px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: inset 0px 0px 7px 2px rgba(0, 0, 0, 0.3);
   box-shadow: inset 0px 0px 7px 2px rgba(0, 0, 0, 0.3);
+}
+
+form {
+  position: relative;
+  display: flex;
+  width: 40vw;
+  left: 50vw;
+  bottom: 10vh;
+}
+
+form.buildform {
+  position: relative;
+  height: 50vh;
+  display:flex;
+  width: 60vw;
+  left:16.25vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.inventory-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  width: 60vw;
+
+}
+
+.recipe-entry {
+  position: relative;
+  height: 20vh;
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 5vw;
+  right: 25vw;
+}
+
+form.drink-number {
+  position: relative;
+  height: 5vh;
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 30vh;
+}
+
+.menu-inventory {
+  width: 20vw;
+  display: flex;
+  flex-direction: row;
+}
+
+.encompass {
+  display: flex;
+  flex-direction: column;
 }

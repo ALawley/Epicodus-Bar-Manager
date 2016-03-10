@@ -130,8 +130,31 @@ img[rel="conversion"] {
 .mid3.flex-inventory {
   position: relative;
   width: 100%;
-  top: 60vh;
-  height: 40vh; }
+  align-items: center;
+  justify-content: center; }
+
+form {
+  position: relative;
+  display: flex;
+  width: 40vw;
+  left: 50vw;
+  bottom: 10vh; }
+
+form.buildform {
+  height: 3vh;
+  display: flex;
+  width: 60vw;
+  left: 16.25vw;
+  bottom: 40vh; }
+
+form.recipe-entry {
+  width: 50vw;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 50vh;
+  left: 0; }
 
 /*////////////////////BEGIN GALLERY PAGE/////////////////////*/
 .container2 {
@@ -491,7 +514,9 @@ img[rel="img6"]:hover {
   background-image: linear-gradient(to bottom, #f7e891, #fae257);
   text-decoration: none; }
 
-.dropdown-btn {
+/* #F93 */
+/* #C60 */
+#cssmenu {
   display: flex;
   border: none;
   border: 0px;
@@ -509,13 +534,7 @@ img[rel="img6"]:hover {
 .small-ish {
   height: 3.5vh; }
 
-.recipe-list {
-  width: 10vw;
-  display: flex;
-  align-items: center;
-  justify-content: center; }
-
-.dropdown-btn ul {
+#cssmenu ul {
   background: #ff9933;
   height: 35px;
   list-style: none;
@@ -525,11 +544,11 @@ img[rel="img6"]:hover {
   -moz-box-shadow: inset 0px 16px 0px 0px rgba(255, 255, 255, 0.1);
   box-shadow: inset 0px 16px 0px 0px rgba(255, 255, 255, 0.1); }
 
-.dropdown-btn li {
+#cssmenu li {
   float: left;
   padding: 0px 0px 0px 10px; }
 
-.dropdown-btn li a {
+#cssmenu li a {
   color: #000;
   display: block;
   font-weight: normal;
@@ -539,7 +558,7 @@ img[rel="img6"]:hover {
   text-align: center;
   text-decoration: none; }
 
-.dropdown-btn li a:hover {
+#cssmenu li a:hover {
   background: #cc6600;
   color: #FFFFFF;
   text-decoration: none;
@@ -547,12 +566,12 @@ img[rel="img6"]:hover {
   -moz-box-shadow: inset 0px 0px 7px 2px rgba(0, 0, 0, 0.3);
   box-shadow: inset 0px 0px 7px 2px rgba(0, 0, 0, 0.3); }
 
-.dropdown-btn ul li:hover a {
+#cssmenu ul li:hover a {
   background: #cc6600;
   color: #FFFFFF;
   text-decoration: none; }
 
-.dropdown-btn li ul {
+#cssmenu li ul {
   display: none;
   height: auto;
   padding: 0px;
@@ -562,10 +581,10 @@ img[rel="img6"]:hover {
   width: 200px;
   z-index: 200; }
 
-.dropdown-btn li:hover ul {
+#cssmenu li:hover ul {
   display: block; }
 
-.dropdown-btn li li {
+#cssmenu li li {
   display: block;
   float: none;
   margin: 0px;
@@ -574,10 +593,10 @@ img[rel="img6"]:hover {
   background: #ff9933;
   /*this is where the rounded corners for the dropdown disappears*/ }
 
-.dropdown-btn li:hover li a {
+#cssmenu li:hover li a {
   background: none; }
 
-.dropdown-btn li ul a {
+#cssmenu li ul a {
   display: block;
   height: 50px;
   font-size: 12px;
@@ -586,8 +605,8 @@ img[rel="img6"]:hover {
   padding: 0px 10px 0px 15px;
   text-align: left; }
 
-.dropdown-btn li ul a:hover,
-.dropdown-btn li ul li:hover a {
+#cssmenu li ul a:hover,
+#cssmenu li ul li:hover a {
   border: 0px;
   color: #FFFFFF;
   text-decoration: none;
@@ -595,58 +614,6 @@ img[rel="img6"]:hover {
   -webkit-box-shadow: inset 0px 0px 7px 2px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: inset 0px 0px 7px 2px rgba(0, 0, 0, 0.3);
   box-shadow: inset 0px 0px 7px 2px rgba(0, 0, 0, 0.3); }
-
-form {
-  position: relative;
-  display: flex;
-  width: 40vw;
-  left: 50vw;
-  bottom: 10vh; }
-
-form.buildform {
-  position: relative;
-  height: 50vh;
-  display: flex;
-  width: 60vw;
-  left: 16.25vw;
-  align-items: center;
-  justify-content: center; }
-
-.inventory-input {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  left: 0;
-  width: 60vw; }
-
-.recipe-entry {
-  position: relative;
-  height: 20vh;
-  width: 50vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: 5vw;
-  right: 25vw; }
-
-form.drink-number {
-  position: relative;
-  height: 5vh;
-  width: 50vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: 30vh; }
-
-.menu-inventory {
-  width: 20vw;
-  display: flex;
-  flex-direction: row; }
-
-.encompass {
-  display: flex;
-  flex-direction: column; }
 
 h3 {
   font-size: 24px;
@@ -656,23 +623,6 @@ h1 {
   font-size: 86px;
   font-family: "Sacramento", cursive;
   color: #42280D; }
-
-h2 {
-  font-size: 42px;
-  font-family: "Sacramento", cursive;
-  color: #42280D; }
-
-.drink-name {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  top: 10vh; }
-
-.servings {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  top: 15vh; }
 
 li {
   font-family: 'Alice',serif;

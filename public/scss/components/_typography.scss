@@ -21,6 +21,26 @@ h1 {
   color: $dark-brown;
 }
 
+h2 {
+  font-size: 42px;
+  font-family: $font-prim;
+  color: $dark-brown;
+}
+
+.drink-name {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top:10vh;
+}
+
+.servings {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top: 15vh;
+}
+
 li {
 font-family:  'Alice',serif;
 font-weight: bold;
