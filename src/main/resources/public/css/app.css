@@ -1,0 +1,105 @@
+
+/*******GENERAL********/
+body {
+  background-image: url(/img/mainimg3.jpg);
+  overflow-x: hidden;
+}
+/*******BOTH PAGES********/
+h1,
+  h2,
+    h4,
+      .dataPresented {
+  font-family: 'Sacramento', cursive;
+}
+
+h1,
+  h2,
+    h3,
+    #update-h4 {
+      text-align: center;
+}
+
+h1 {
+  font-size: 5.7em;
+}
+
+.well {
+  background-color: #ffeac6;
+  border-radius: 0px;
+  border: none;
+}
+
+h5,
+  li,
+    h3,
+    label {
+    font-family: 'Alice';
+  }
+  .row {
+    text-align: center;
+  }
+  li {
+    list-style: none;
+  }
+/*******PLANNER********/
+.content {
+  margin-left: 35%;
+}
+.btn-style,
+ #btn-style {
+  color: #eee;
+  background-color: #333;
+}
+#btn-style {
+  float: right;
+  margin-right: 45%;
+}
+.btn-style:hover {
+  color: #faa31e;
+}
+.btn-style {
+  width: 260px;
+}
+.form-container {
+  margin-left: 15%;
+}
+#updaterecipe {
+  margin-left: 35%;
+}
+.directions-area {
+  margin-left: 20%;
+}
+
+.label-number {
+  font-family: 'Sacramento', cursive;
+  font-size: 1.6em;
+}
+/*******PLANNER UPDATE********/
+.spacer {
+  padding-top: 30px;
+}
+.navbar {
+  background-color: #02d9d9;
+  height: 30px;
+  border-radius: 0px;
+}
+.navbar li {
+  display: inline-block;
+  margin-left: 10px;
+  color: #333;
+  padding-bottom: 10px;
+}
+.navbar li:first-child {
+  margin-left: 50px;
+}
+.navbar li:hover {
+  color: #fff;
+}
+#servingForm {
+  margin-top: -5%;
+  text-align: center;
+  height: 70px;
+}
+#btn-inventory {
+  margin-left: 35%;
+}

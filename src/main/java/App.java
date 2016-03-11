@@ -13,6 +13,7 @@ public class App {
     DecimalFormat formatter = new DecimalFormat("#0.00");
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
+    String layoutTwo = "templates/layouttwo.vtl";
 
     get("/", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
@@ -62,7 +63,7 @@ public class App {
       model.put("recipe", recipe);
       model.put("formatter", formatter);
       model.put("template", "templates/planner.vtl");
-      return new ModelAndView(model, layout);
+      return new ModelAndView(model, layoutTwo);
     }, new VelocityTemplateEngine());
 
     get("planner/:id/update", (request, response) -> {
@@ -74,7 +75,7 @@ public class App {
       model.put("formatter", formatter);
       model.put("types", Type.all());
       model.put("template", "templates/planner.vtl");
-      return new ModelAndView(model, layout);
+      return new ModelAndView(model, layoutTwo);
     }, new VelocityTemplateEngine());
 
     post("planner/:id/update", (request, response) -> {
@@ -140,7 +141,7 @@ public class App {
       model.put("recipe", recipe);
       model.put("formatter", formatter);
       model.put("template", "templates/planner-update.vtl");
-      return new ModelAndView(model, layout);
+      return new ModelAndView(model, layoutTwo);
     }, new VelocityTemplateEngine());
 
     post("/planner/:id/confirm", (request, response) -> {
@@ -166,7 +167,7 @@ public class App {
         model.put("recipe", recipe);
         model.put("formatter", formatter);
         model.put("template", "templates/planner-update.vtl");
-        return new ModelAndView(model, layout);
+        return new ModelAndView(model, layoutTwo);
       } else {
         ArrayList<Item> drinkIngredients = new ArrayList<Item>();
 
