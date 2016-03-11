@@ -123,6 +123,7 @@ public class Item {
         .addParameter("id", id)
         .executeUpdate();
     }
+    System.out.println("Argh");
   }
 
   public void decrementItem(double pourAmount) {
