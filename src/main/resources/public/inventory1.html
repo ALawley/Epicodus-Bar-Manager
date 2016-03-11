@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width">
     <link href='https://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Alice' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/application.css">
-    <title>Bar-Inventory</title>
+    <link rel="stylesheet" href="application.css">
+    <title>Bar-Inventory 1</title>
   </head>
     <body>
 
@@ -19,6 +19,8 @@
            <div class="partial-container">
                <div class="mid1 inventory-table" >
                    <table>
+
+
                  <thead>
                    <tr>
                        <th>Amount</th>
@@ -27,11 +29,16 @@
                        <th>Price</th>
                    </tr>
                  </thead>
+
                   <tbody>
+
+                    <!-- This is appearing in page? How do we make it disappear? -->
+
                     #foreach($type in $types)
                     #if($type.getAllOf().size() > 0)
                     #foreach($item in $type.getAllOf())
                     <tr>
+                      <!-- INPUT BOXES LEFT OUT OF VTL -->
                       <td>
                         <span>$item.getAmount() oz</span>
                       </td>
@@ -42,6 +49,7 @@
                         <span>$item.getName()</span>
                       </td>
                       <td>
+                        <!-- SUBMIT BUTTON MISSING FROM VTL -->
                         <span><span>$</span>$item.getPrice()</span>
                       </td>
                     </tr>
@@ -54,6 +62,8 @@
                 </div>
               </div>
               <div class="mid2 mid-inventory">
+
+                <!-- VTL NOT ADDED -->
 
                   <div id='cssmenu'>
                       <ul>
@@ -75,6 +85,8 @@
                    <option value="$type.getId()" id="typeIdOption">$type.getType()</option>
                    #end
                  </select>
+
+                 <!-- NO INPUTS AGAIN -->
                  <label>Name</label>
                  <input required id="name" type="text" name="name" placeholder="Maker's Mark">
                  <label>Bottle Price</label>

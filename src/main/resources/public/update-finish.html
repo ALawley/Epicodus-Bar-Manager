@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Alice' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="application.css">
+    <meta name="viewport" content="width=device-width">
+    <title>Recipe-Update</title>
+  </head>
+    <body>
+
+      <div class="container">
+<img rel="main" src="img/mainimg3.jpg"/>
+<header class="header">
+  <div class="header-content center-inflex">
+    <h1>Planner Update</h1>
+  </div>
+</header>
+
+<div class="partial-container">
+
+   <h2 class="drink-name">$recipe.getName()</h2>
+
+   <h3 class="servings update-text-space">You can make $maxservings servings, at a cost of $ $drinkcost per drink. Don't forget an extra one for me, I'm definitely coming over!</h3>
+
+   <form action="/planner/$recipe.getId()/confirm" class="drink-number update-number-input" method="post">
+     <label for="servingNumber">How many servings?</label>
+     <input type="number" name="servingNumber" required>
+     <button class="sm-inv-btn" type="submit" id="completeRecipe">Make it!</button>
+     #foreach($itemid in $itemIds)
+       <input name="itemid" type=hidden value="$itemid">
+     #end
+     <input name="maxservings" type="hidden"
+      value="$maxservings">
+     <input name="limitingItem" type="hidden" value="$limitingItem.getId()">
+     <input name="price" type="hidden" value="$drinkcost">
+   </form>
+
+
+
+
+   <!-- <h3 class="servings">You need more $limitingItem.getName() to make more than that.</h3> -->
+
+   <div class="no-show">#if($notenough)</div>
+
+   <!--TODO: Too large of a spacing between text and the button - Alissa -->
+
+
+     <h3 class="hidden-update hidden-update-h3">Hey, you don't have enough ingredients!</h3>
+     <h3 class="hidden-update">Go and buy more $limitingItem.getName() to make these.</h3>
+     <br>
+     <a class="btn btn-primary hidden-update-btn" href="/inventory">Update Inventory</a>
+
+
+
+
+ </div>
+#end
+   <!-- #if($notenough)
+     <h4>Or Make Fewer</h4>
+   #else
+     <h4>Confirm Make</h4>
+   #end -->
+
+<footer class="footer">
+<div class="footer-content">
+    <ul>
+      <li><div class="big-inventory">Bar-Manager</div></li>
+      <a href="/inventory"><li><div class="two">Inventory</div></li></a>
+      <a href="/recipes"><li><div class="two">Recipes</div></li></a>
+    </ul>
+  </div>
+</footer>
+</div>
+
+
+
+
+    </body>
+</html>

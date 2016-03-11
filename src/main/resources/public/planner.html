@@ -3,7 +3,7 @@
   <head>
     <link href='https://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Alice' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="application.css">
+    <link rel="stylesheet" href="css/application.css">
     <meta name="viewport" content="width=device-width">
     <title>Planner</title>
   </head>
@@ -51,7 +51,6 @@
       <li>$formatter.format($item.getAmount()) oz - $item.getTypeName() - $item.getInfo()</li>
       #end
     </ul>
-
   <h4>Directions: $recipe.getDirections()</h4>
     #if ($update)
     #else
@@ -77,7 +76,7 @@
     <input type="number" class="form-control" name="amount1" id="amount1">
     <label for="type1">Ingredient Type</label>
     <select name="type1" id="type1">
-      <!-- <option value="0" id="blank1">Select Ingredient Type:</option> --> -->
+      <!-- <option value="0" id="blank1">Select Ingredient Type:</option> -->
       <option value="0" id="blank1"> -- select an option -- </option>
       #foreach($type in $types)
       <option value="$type.getId()" id="ing1type$type.getId()">$type.getType()</option>
@@ -92,7 +91,7 @@
     <input type="number" class="form-control" name="amount2" id="amount2">
     <label for="type2">Ingredient Type</label>
     <select name="type2" id="type2">
-      <!-- <option value="0" id="blank2">Select Ingredient Type:</option> --> -->
+      <!-- <option value="0" id="blank2">Select Ingredient Type:</option> -->
       <option value="0" id="blank2"> -- select an option -- </option>
       #foreach($type in $types)
       <option value="$type.getId()" id="ing2type$type.getId()">$type.getType()</option>
@@ -208,7 +207,7 @@
       #foreach($item in $ingredient.getType().getAllOf())
       <option value="$item.getId()" id="$ingredient.getId()use$item.getId()">$item.getName()</option>
       #end
-    </select> -->
+    </select>
     <br>
     #end
     <button class="btn btn-success" type="submit" id="makedrink">Make Drink</button>
