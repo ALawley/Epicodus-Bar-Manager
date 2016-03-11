@@ -206,6 +206,12 @@ ALTER TABLE ONLY recipes ALTER COLUMN id SET DEFAULT nextval('recipes_id_seq'::r
 --
 
 COPY ingredients (id, type_id, recipe_id, amount, info) FROM stdin;
+21	2	6	2	London Dry
+22	12	6	6	Tonic Water
+23	11	6	0.5	Lime Juice
+24	1	7	2	Rye Whiskey
+25	8	7	1	Campari
+26	14	7	0.125	Angostura
 \.
 
 
@@ -213,7 +219,7 @@ COPY ingredients (id, type_id, recipe_id, amount, info) FROM stdin;
 -- Name: ingredients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('ingredients_id_seq', 14, true);
+SELECT pg_catalog.setval('ingredients_id_seq', 26, true);
 
 
 --
@@ -226,11 +232,15 @@ COPY item_types (id, type) FROM stdin;
 3	Vodka
 4	Rum
 5	Tequila
-6	Wine
-7	Beer
-8	Brandy
-9	Scotch
-10	Liqueur
+6	Brandy
+7	Vermouth
+8	Herbal Liqueur
+9	Fruit Liqueur
+10	Other Liqueurs
+11	Juice
+12	Soda
+13	Simple Syrup
+14	Bitters
 \.
 
 
@@ -238,7 +248,7 @@ COPY item_types (id, type) FROM stdin;
 -- Name: item_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('item_types_id_seq', 10, true);
+SELECT pg_catalog.setval('item_types_id_seq', 14, true);
 
 
 --
@@ -246,20 +256,23 @@ SELECT pg_catalog.setval('item_types_id_seq', 10, true);
 --
 
 COPY items (id, name, type_id, amount, price, priceperoz) FROM stdin;
-11	Johnnie Walker Black Label	1	33.81	49.9699999999999989	1.477965
-12	Johnnie Walker Blue Label	1	25.36	199.969999999999999	7.885252
-13	Johnnie Walker Green Label	9	25.36	59.9699999999999989	2.364747
-14	Smirnoff No.21	3	59.17	20.9899999999999984	0.35474
-16	Grey Goose	3	59.17	59.990000000000002	0.986331
-17	Grey Goose La Poire	3	59.17	59.990000000000002	0.986331
-20	Roca Patron Silver	5	25.36	59.990000000000002	2.364747
-21	Patron Tequila Gran Patron Platinum	5	25.36	199.990000000000009	7.886041
-19	Captain Morgan White Rum	4	25.36	16.9899999999999984	0.669953
-18	Original Spiced Rum Captain Morgan	4	25.36	13.9900000000000002	0.551656
-15	Smirnoff Raspberry	3	25.36	13.9900000000000002	0.551656
-22	Jose Cuervo Especial Gold	5	59.17	29.9699999999999989	0.506507
-23	Jose Cuervo Especial Silver	5	25.36	19.9899999999999984	0.788249
-24	Fireball Cinnamon Whiskey	10	25.36	19.9899999999999984	0.788249
+21	Campari	8	25.36	22	0.867507886435331
+17	Fernet Branca	8	25.36	33	1.301261829653
+14	St. Germain	8	25.36	36	1.41955835962145
+15	Cointreau	9	25.36	32	1.26182965299685
+11	Lemon Juice	11	12	3	0.25
+10	Lime Juice	11	16	4	0.25
+13	Fever Tree Tonic	12	33.81	8	0.236616385684709
+12	Plain Simple Syrup	13	16	1	0.0625
+22	Angostura	14	10.14	12	1.18343195266272
+7	Bulleit	1	25.36	26	1.02523659305994
+19	Maker's Mark	1	25.36	36	1.41955835962145
+6	Aviation	2	2.36	32	1.26182965299685
+20	Tanqueray	2	50.72	32	0.630914826498423
+8	Smirnoff	3	50.72	33	0.650630914826498
+9	Patron	5	25.36	59	2.32649842271293
+16	Carpano Antica	7	25.36	26	1.02523659305994
+18	Martini & Rossi - Dry	7	25.36	14	0.55205047318612
 \.
 
 
@@ -267,7 +280,7 @@ COPY items (id, name, type_id, amount, price, priceperoz) FROM stdin;
 -- Name: items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('items_id_seq', 24, true);
+SELECT pg_catalog.setval('items_id_seq', 22, true);
 
 
 --
@@ -275,6 +288,8 @@ SELECT pg_catalog.setval('items_id_seq', 24, true);
 --
 
 COPY recipes (id, name, notes, rating, creator, prep_time, directions) FROM stdin;
+6	Gin & Tonic	Great on a hot summer day	\N	An Englishman	3 minutes	Stir ingredients together and serve into a chilled glass with lots of ice and a lime wedge to garnish.
+7	Bitter Manhattan	Substituting Campari for Vermouth lessens the sweetness. Make sure you use a whiskey that can stand up to it.	\N	Anna	5 minutes	Stir the whiskey and campari with ice, strain into a chilled glass and add 2 dashes bitters.
 \.
 
 
@@ -282,7 +297,7 @@ COPY recipes (id, name, notes, rating, creator, prep_time, directions) FROM stdi
 -- Name: recipes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('recipes_id_seq', 5, true);
+SELECT pg_catalog.setval('recipes_id_seq', 7, true);
 
 
 --
