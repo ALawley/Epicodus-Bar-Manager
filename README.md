@@ -1,6 +1,6 @@
 # Bar Manager
 
-#### _Epicodus Group Project: March 11th, 2016
+#### _Epicodus Group Project: March 11th, 2016_
 
 #### By _**Anna Lawley, Alissa Paluska, Polina Nenchev and Wren Withers**_
 
@@ -13,7 +13,20 @@ This is a bar manager application that will allow the user to pick the recipe of
 * _Clone this repository_
 * _Install the [Java SDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and [Java SRE](http://www.java.com/en/)._
 * _[Install gradle](http://codetutr.com/2013/03/23/how-to-install-gradle/)_
-* _Open a terminal, navigate to the root of the cloned directory, and enter "gradle run"._
+* _Open a terminal and run Postgres_
+```
+$ postgres
+```
+* _Open a new tab in terminal and create the `hair_salon` database:_
+```
+$ psql
+$ CREATE DATABASE band_venues;
+$ psql bar_manager < bar_manager.sql
+```
+* _Navigate back to the directory where this repository has been cloned and run gradle:_
+```
+$ gradle run
+```
 * _Open localhost:4567 in a browser._
 
 
