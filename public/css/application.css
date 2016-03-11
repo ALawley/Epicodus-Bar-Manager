@@ -199,6 +199,13 @@ td {
   cursor: pointer;
   cursor: hand; }
 
+.footer-tall {
+  height: 6.5vh; }
+
+.footer-left {
+  right: 21vw;
+  top: 11vh; }
+
 .header-content {
   position: relative;
   flex-wrap: wrap;
@@ -210,7 +217,8 @@ td {
   right: 0;
   bottom: 0;
   list-style-type: none;
-  justify-content: flex-end; }
+  justify-content: flex-end;
+  text-decoration: none; }
 
 .landing-ul {
   padding-left: 60vw;
@@ -259,10 +267,11 @@ td {
   border: 0px;
   margin: 0px;
   padding: 0px;
+  padding-bottom: 1vh;
   font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: bold;
-  width: 8vw;
+  width: 100%;
   bottom: 10vw; }
 
 .small {
@@ -358,6 +367,9 @@ td {
   -moz-box-shadow: inset 0px 0px 7px 2px rgba(0, 0, 0, 0.3);
   box-shadow: inset 0px 0px 7px 2px rgba(0, 0, 0, 0.3); }
 
+.rec-list-btn {
+  width: 10vw; }
+
 form {
   position: relative;
   display: flex;
@@ -369,11 +381,11 @@ form {
   position: relative;
   height: 50vh;
   display: flex;
-  width: 30vw;
+  width: 50vw;
   align-items: center;
   justify-content: center;
-  left: 20vw;
-  bottom: 15vh; }
+  right: 90vw;
+  top: 20vh; }
 
 label {
   position: relative;
@@ -423,6 +435,13 @@ form.drink-number {
   align-self: center;
   width: 20vw;
   height: 10vh; }
+
+.lg-text-box {
+  position: relative;
+  display: flex;
+  align-self: center;
+  width: 40vw;
+  height: 20vh; }
 
 .btn {
   background: #ff9933;
@@ -513,7 +532,7 @@ li {
   font-weight: normal;
   justify-content: center;
   font-size: 46px;
-  width: 30vw;
+  width: 10vw;
   font-family: "Sacramento", cursive;
   padding-left: 5vw;
   padding-right: 60vw; }
@@ -525,6 +544,26 @@ li {
   width: 30vw;
   font-family: "Sacramento", cursive;
   padding-left: 5vw; }
+
+.two {
+  font-weight: normal;
+  justify-content: center;
+  font-size: 32px;
+  width: 5vw;
+  font-family: "Sacramento", cursive;
+  padding-left: 5vw;
+  text-decoration: none; }
+
+.three {
+  font-weight: normal;
+  font-size: 28px;
+  width: 20vw;
+  font-family: "Sacramento", cursive;
+  padding-right: 50vw;
+  text-decoration: none; }
+
+a:link {
+  text-decoration: none; }
 
 .center-inflex {
   display: flex;

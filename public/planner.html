@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Alice' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/application.css">
+    <meta name="viewport" content="width=device-width">
+    <title>Planner</title>
+  </head>
+    <body>
+
+      <div class="container">
+
+        <img rel="main" src="img/mainimg3.jpg"/>
+
+
+        <header class="header">
+          <div class="header-content center-inflex">
+            <h1>Party Planner</h1>
+          </div>
+        </header>
+
+      <div class="partial-container" >
+
+      <div class="well">
+        <div class='dropdown-btn rec-list-btn' class='recipe-list' >
+          <ul>
+             <li class='has-sub'><a href='#'><span>Recipe List</span></a>
+                  <ul>
+                    #foreach ($recipe in $recipes)
+                     <li><a href='/planner/$recipe.getId()'><span>$recipe.getName()</span></a></li>
+                    #end
+                     <!-- <li class='last'><a href='#'><span>Product 3</span></a></li>
+                    CANT APPLY LAST CLASS (Alissa)-->
+                  </ul>
+               </li>
+            </ul>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+        <h2>Created By: $recipe.getCreator()</h2>
+        <h3>Duration: $recipe.getPrepTime()</h3>
+        <h3>$recipe.getNotes()</h3>
+
+          <ul>
+            #foreach ($item in $recipe.getIngredients())
+            <li>$item.getAmount() oz - $item.getTypeName() - $item.getInfo()</li>
+            #end
+          </ul>
+
+          <a class="btn btn-success" href="/planner/recipe.getId()/update">Update drink!</a>
+
+      </div>
+
+      <div class="well">
+        <h2>Pick Your Poison</h2>
+         <form action="$recipe.getId()/make" method="get">
+          #foreach ($ingredient in $recipe.getIngredients())
+            <label>$ingredient.getAmount() oz. $ingredient.getTypeName() - $ingredient.getInfo()</label>
+            <select type="text" name="ingredientStated" id="choose$ingredient.getId()">
+              #foreach($item in $ingredient.getType().getAllOf())
+                <option value="$item.getId()" id="$ingredient.getId()use$item.getId()">$item.getName()</option>
+              #end
+            </select>
+            <br>
+          #end
+          <button class="btn btn-success" type="submit" id="addIngredient">Make Drink</button>
+        </form>
+      </div>
+
+
+        <div class='dropdown-btn rec-list-btn' class='recipe-list' >
+          <ul>
+             <li class='has-sub'><a href='#'><span>Recipe List</span></a>
+                  <ul>
+                    #foreach ($recipe in $recipes)
+                     <li><a href='/planner/$recipe.getId()'><span>$recipe.getName()</span></a></li>
+                    #end
+                     <!-- <li class='last'><a href='#'><span>Product 3</span></a></li>
+                    CANT APPLY LAST CLASS (Alissa)-->
+                  </ul>
+               </li>
+            </ul>
+            </div>
+          </div>
+
+            <footer class="footer footer-tall">
+              <div class="footer-content footer-tall">
+                  <ul>
+                    <li><div class= "three">Bar-Manager</div></li>
+                    <a href="/recipes"><li>Recipes</li></a>
+                    <a href="/inventory"><li>Inventory</li></a>
+                  </ul>
+                </div>
+            </footer>
+
+          </div>
+
+
+    </body>
+</html>
