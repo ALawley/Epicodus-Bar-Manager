@@ -167,7 +167,33 @@ th {
 td {
   padding: .5vw; }
 
-/*////////////////////BEGIN GALLERY PAGE/////////////////////*/
+  .update-text-space {
+    height: 15vh;
+  }
+
+  .hidden-update {
+    position: relative;
+    top: 20vh;
+    left: 35vw;
+    width: 50vw;
+  }
+
+  .hidden-update-btn {
+    position: relative;
+    top: 20vh;
+    left: 45vw;
+  }
+
+  .hidden-update-h3 {
+    position: relative;
+    top: 20vh;
+    left: 40vw;
+    width: 50vw;
+  }
+
+
+  /*///////////////////////Footer//////////////////*/
+
 .footer {
   order: 1;
   position: relative;
@@ -206,6 +232,10 @@ td {
   right: 21vw;
   top: 11vh; }
 
+
+  /*///////////////////////Header////////////////////////*/
+
+
 .header-content {
   position: relative;
   flex-wrap: wrap;
@@ -224,6 +254,11 @@ td {
   padding-left: 60vw;
   padding-top: 1vw; }
 
+.landing-li {
+  padding-right: 4vw;
+  padding-top:1.5vw;
+}
+
 .header-content li {
   display: inline-flex;
   justify-content: space-around;
@@ -234,30 +269,35 @@ td {
   cursor: pointer;
   cursor: hand; }
 
-.button {
-  background: #fcd703;
-  background-image: -webkit-linear-gradient(top, #fcd703, #e6c50c);
-  background-image: -moz-linear-gradient(top, #fcd703, #e6c50c);
-  background-image: -ms-linear-gradient(top, #fcd703, #e6c50c);
-  background-image: -o-linear-gradient(top, #fcd703, #e6c50c);
-  background-image: linear-gradient(to bottom, #fcd703, #e6c50c);
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
+  /*/////////////////////////Buttons//////////////////*/
+
+.btn {
+  background: #ff9933;
+  background-image: -webkit-linear-gradient(top, #ff9933, #cc6600);
+  background-image: -moz-linear-gradient(top, #ff9933, #cc6600);
+  background-image: -ms-linear-gradient(top, #ff9933, #cc6600);
+  background-image: -o-linear-gradient(top, #ff9933, #cc6600);
+  background-image: linear-gradient(to bottom, #ff9933, #cc6600);
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
   font-family: Arial;
-  color: #878787;
-  font-size: 26px;
-  padding: 20px 40px 20px 40px;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 40px 10px 40px;
   text-decoration: none; }
 
-.button:hover {
-  background: #f7e891;
-  background-image: -webkit-linear-gradient(top, #f7e891, #fae257);
-  background-image: -moz-linear-gradient(top, #f7e891, #fae257);
-  background-image: -ms-linear-gradient(top, #f7e891, #fae257);
-  background-image: -o-linear-gradient(top, #f7e891, #fae257);
-  background-image: linear-gradient(to bottom, #f7e891, #fae257);
+.btn:hover {
+  background: #FFC57E;
+  background-image: -webkit-linear-gradient(top, #FFC57E, #FF9D26);
+  background-image: -moz-linear-gradient(top, #FFC57E, #FF9D26);
+  background-image: -ms-linear-gradient(top, #FFC57E, #FF9D26);
+  background-image: -o-linear-gradient(top, #FFC57E, #FF9D26);
+  background-image: linear-gradient(to bottom, #FFC57E, #FF9D26);
   text-decoration: none; }
+
+
+  /*////////////////////Dropdown/////////////////*/
 
 .dropdown-btn {
   display: flex;
@@ -370,6 +410,9 @@ td {
 .rec-list-btn {
   width: 10vw; }
 
+
+  /*////////////////////////////Forms/////////////////////////*/
+
 form {
   position: relative;
   display: flex;
@@ -418,7 +461,7 @@ form.drink-number {
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 30vh; }
+  top: 8vh; }
 
 .menu-inventory {
   width: 20vw;
@@ -468,6 +511,8 @@ form.drink-number {
   background-image: linear-gradient(to bottom, #FFC57E, #FF9D26);
   text-decoration: none; }
 
+/*/////////////////Small Inventory Page Submit Button/////////////////*/
+
 .sm-inv-btn {
   background: #ff9933;
   background-image: -webkit-linear-gradient(top, #ff9933, #cc6600);
@@ -496,6 +541,9 @@ form.drink-number {
 .ex-mar {
   margin: .5vw;
   padding: .5vw; }
+
+
+  /*///////////////////////Typography///////////////////////*/
 
 h3 {
   font-size: 24px;
@@ -565,8 +613,8 @@ li {
 a:link {
   text-decoration: none; }
 
-.center-inflex {
-  display: flex;
-  justify-content: center; }
+  .no-show {
+    display: none;
+  }
 
 /*# sourceMappingURL=application.css.map */
