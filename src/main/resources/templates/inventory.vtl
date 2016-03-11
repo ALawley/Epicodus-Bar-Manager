@@ -1,129 +1,140 @@
-<div class="jumbotron">
-  <h1>Bar Inventory</h1>
-</div>
-<div class="row">
-  <div class="col-sm-8">
-    <h1>Inventory</h1>
-    <form action="/inventory/update" method="post">
-      <table class="table">
-        <tr>
-          <th>
-            <span>Amount</span>
-          </th>
-          <th>
-            <span>Type</span>
-          </th>
-          <th>
-            <span>Name</span>
-          </th>
-          <th>
-            <span>Price</span>
-          </th>
-        </tr>
-          #foreach($type in $types)
-          #if($type.getAllOf().size() > 0)
-          #foreach($item in $type.getAllOf())
-          <tr>
-            <td>
-              <span><input type="number" step="any" value="$formatter.format($item.getAmount())" id="amount$item.getId()" name="amount$item.getId()"> <span>oz</span></span>
-            </td>
-            <td>
-              <span>$item.getTypeName()</span>
-            </td>
-            <td>
-              <span>$item.getName()</span>
-            </td>
-            <td>
-              <span><span>$</span>$formatter.format($item.getPrice())</span>
-            </td>
-          </tr>
-          #end
-          #end
-          #end
-          <tr>
-            <td>
-              <button type="submit" class="btn btn-info" class= "updateIngredient">Update stock</button>
-            </td>
-          </tr>
-      </table>
-    </form>
-  </div>
-  <div class="col-sm-4">
-    <h3>Conversion</h3>
-    <table class="table">
-      <tr>
-        <th>
-          <span>oz</span>
-        </th>
-        <th>
-          <span>mL</span>
-        </th>
-        <th>
-          <span>L</span>
-        </th>
-      </tr>
-      <tr>
-        <td>
-          <span>1</span>
-        </td>
-        <td>
-          <span>29.57</span>
-        </td>
-        <td>
-          <span>.0296</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>25.36</span>
-        </td>
-        <td>
-          <span>750</span>
-        </td>
-        <td>
-          <span>.75</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>33.81</span>
-        </td>
-        <td>
-          <span>1000</span>
-        </td>
-        <td>
-          <span>1</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>50.72</span>
-        </td>
-        <td>
-          <span>1500</span>
-        </td>
-        <td>
-          <span>1.5</span>
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>
-<div class="well">
-  <h2>Add New Item</h2>
-  <form action="/item/added" method="post">
-    <label>Type</label>
-    <select type="text" name="typeId" id="typeId">
-      #foreach ($type in $types)
-      <option value="$type.getId()" id="typeIdOption">$type.getType()</option>
-      #end
-    </select>
-    <label>Name</label>
-    <input required id="name" type="text" name="name" placeholder="Maker's Mark">
-    <label>Bottle Price</label>
-    <input required id="price" type="text" name="price" placeholder="39.99">
-    <label>Amount On Hand (oz)</label>
-    <input required id="amount" type="text" name="amount" placeholder="48.92">
-    <button type="submit" class="btn btn-success" id="addItem">Add</button>
-  </form>
-</div>
+<div class="container">
+         <img rel="main" src="/img/mainimg3.jpg"/>
+             <header class="header">
+               <div class="header-content center-inflex">
+                   <h1>Inventory</h1>
+               </div>
+             </header>
+             <div class="partial-container">
+                 <div class="mid1 inventory-table" >
+                   <!-- TODO: Need to make form functional -->
+                     <table>
+                   <thead>
+                     <tr>
+                         <th>Amount</th>
+                         <th>Type</th>
+                         <th>Name</th>
+                         <th>Price</th>
+                     </tr>
+                   </thead>
+                    <tbody>
+                      <form action="/inventory/update" method="post">
+                      #foreach($type in $types)
+                      #if($type.getAllOf().size() > 0)
+                      #foreach($item in $type.getAllOf())
+                      <tr>
+                          <td>
+                            <span><input name="amount$item.getId()" type="number" step="any" value="$formatter.format($item.getAmount())"/>oz</span>
+                          </td>
+                          <td>
+                          <span>$item.getTypeName()</span>
+                          </td>
+                          <td>
+                            <span>$item.getName()</span>
+                          </td>
+                          <td>
+                            <span><span>$</span>$formatter.format($item.getPrice())</span>
+                          </td>
+                      </tr>
+                      #end
+                      #end
+                      #end
+                      <tr>
+                        <td>
+                          <button type="submit" value="Submit" class="sm-inv-btn ex-pad">Update</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </form>
+                <h2>Conversions</h2>
+                <table class="table">
+     <tr>
+       <th>
+         <span>oz</span>
+       </th>
+       <th>
+         <span>mL</span>
+       </th>
+       <th>
+         <span>L</span>
+       </th>
+     </tr>
+     <tr>
+       <td>
+         <span>1</span>
+       </td>
+       <td>
+         <span>29.57</span>
+       </td>
+       <td>
+         <span>.0296</span>
+       </td>
+     </tr>
+     <tr>
+       <td>
+         <span>25.36</span>
+       </td>
+       <td>
+         <span>750</span>
+       </td>
+       <td>
+         <span>.75</span>
+       </td>
+     </tr>
+     <tr>
+       <td>
+         <span>33.81</span>
+       </td>
+       <td>
+         <span>1000</span>
+       </td>
+       <td>
+         <span>1</span>
+       </td>
+     </tr>
+     <tr>
+       <td>
+         <span>50.72</span>
+       </td>
+       <td>
+         <span>1500</span>
+       </td>
+       <td>
+         <span>1.5</span>
+       </td>
+     </tr>
+   </table>
+                  </div>
+                </div>
+
+                 <form action="/item/added" method="post" class="inventory-input">
+                   <div class="encompass">
+                     <div class="dropdown-btn small">
+                       <label>Type</label>
+                       <select type="text" name="typeId" id="typeId">
+                         #foreach ($type in $types)
+                         <option value="$type.getId()" id="typeIdOption">$type.getType()</option>
+                         #end
+                       </select>
+                       <label>Name</label>
+                       <input required id="name" type="text" name="name" placeholder="Maker's Mark">
+                       <label>Bottle Price</label>
+                       <input required id="price" type="text" name="price" placeholder="39.99">
+                       <label>Amount On Hand (oz)</label>
+                       <input required id="amount" type="text" name="amount" placeholder="48.92">
+                       <button type="submit" value="Submit" class="sm-inv-btn" id="addItem">Add</button>
+                     </div>
+                   </div>
+                 </form>
+
+              <footer class="footer">
+                <div class="footer-content">
+                    <ul>
+                      <li><div class="big-inventory">Bar-Manager</div></li>
+                      <a href="/recipes"><li>Recipes</li></a>
+                      <a href="/inventory"><li>Inventory</li></a>
+                    </ul>
+                  </div>
+              </footer>
+            </div>
