@@ -1,55 +1,43 @@
 <div class="container">
-  <img rel="main" src="/img/mainimg3.jpg"/>
-  <header class="header">
-    <div class="header-content center-inflex">
-      <h1>Planner Update</h1>
-    </div>
-  </header>
+<h1>Planner Update</h1>
+<div class="well">
+  <h2>$recipe.getName()</h2>
 
-<div class="partial-container">
-
-     <h2 class="drink-name">$recipe.getName()</h2>
-
-     <h3 class="servings">You can make $maxservings servings, at a cost of $ $drinkcost per drink. Don't forget an extra one for me, I'm definitely coming over!</h3>
-     <h3 class="servings">You need more $limitingItem.getName() to make more than that.</h3>
-
-     #if($notenough)
-
-     <!--TODO: Too large of a spacing between text and the button - Alissa -->
-     <div class="partial-container">
-       <h3>Hey, you don't have enough ingredients!</h3>
-       <h3>Go and buy more $limitingItem.getName() to make these.</h3>
-       <br>
-       <a class="btn btn-primary" href="/inventory">Update Inventory</a>
-     </div>
+  <h3>You can make <span class="dataPresented">$maxservings</span> servings, at a cost of <span>$</span><span class="dataPresented">$drinkcost</span> per drink.</h3>
+  <h4 id="update-h4">Don't forget an extra one for me, I'm definitely coming over!</h4>
+  <h3>You need more <span class="dataPresented">$limitingItem.getName()</span> to make more than that.</h3>
+  #if($notenough)
+  <h2>Hey, you don't have enough ingredients!</h2>
+  <h3>Go and buy more <span class="dataPresented">$limitingItem.getName()</span> to make these.</h3>
+  <br>
+  <a id="btn-inventory" class="btn btn-style" href="/inventory">Update Inventory</a>
+  #end
+  #if($notenough)
+  <h2>Or Make Fewer</h2>
+  #else
+  <h2>Confirm Make</h2>
+  #end
+</div>
+ <div id="servingForm" class="well">
+   <form action="/planner/$recipe.getId()/confirm" class="drink-number" method="post">
+     <label for="servingNumber">How many servings?</label>
+     <input type="number" name="servingNumber" required>
+     <button class="btn btn-style" type="submit" id="completeRecipe">Make it!</button>
+     #foreach($itemid in $itemIds)
+     <input name="itemid" type=hidden value="$itemid">
      #end
-
-     #if($notenough)
-       <h4>Or Make Fewer</h4>
-     #else
-       <h4>Confirm Make</h4>
-     #end
-
-     <form action="/planner/$recipe.getId()/confirm" class="drink-number" method="post">
-       <label for="servingNumber">How many servings?</label>
-       <input type="number" name="servingNumber" required>
-       <button class="sm-inv-btn" type="submit" id="completeRecipe">Make it!</button>
-       #foreach($itemid in $itemIds)
-         <input name="itemid" type=hidden value="$itemid">
-       #end
-       <input name="maxservings" type="hidden"
-        value="$maxservings">
-       <input name="limitingItem" type="hidden" value="$limitingItem.getId()">
-       <input name="price" type="hidden" value="$drinkcost">
-     </form>
-  </div>
+     <input name="maxservings" type="hidden"
+     value="$maxservings">
+     <input name="limitingItem" type="hidden" value="$limitingItem.getId()">
+     <input name="price" type="hidden" value="$drinkcost">
+   </form>
  </div>
-<footer class="footer">
-  <div class="footer-content">
+</div>
+<div class="spacer"></div>
+<div class="nav navbar navbar-fixed-bottom">
       <ul>
-        <li><div class="big-inventory">Bar-Manager</div></li>
-        <a href="/inventory"><li><div class="two">Inventory</div></li></a>
-        <a href="/recipes"><li><div class="two">Recipes</div></li></a>
+      <li><h2>Bar-Manager</h2></li>
+        <a href="/inventory"><li><h4>Inventory</h4></li></a>
+        <a href="/recipes"><li><h4>Recipes</h4></li></a>
       </ul>
-    </div>
-</footer>
+</div>
