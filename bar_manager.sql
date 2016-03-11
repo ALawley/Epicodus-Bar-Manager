@@ -206,6 +206,28 @@ ALTER TABLE ONLY recipes ALTER COLUMN id SET DEFAULT nextval('recipes_id_seq'::r
 --
 
 COPY ingredients (id, type_id, recipe_id, amount, info) FROM stdin;
+15	4	9	1.5	light
+16	12	9	0.75	fresh 
+17	14	9	0.25	
+18	4	10	2	light rum
+19	4	10	2	dark rum
+20	16	10	2	passion juice
+21	12	10	0.25	fresh
+22	14	10	0.25	
+23	2	11	2	
+24	17	11	4	
+25	12	11	0.5	
+26	1	12	2	blended
+27	12	12	0.5	
+28	6	13	0.75	red wine
+29	12	13	0.25	
+30	5	8	3	
+31	12	8	2	freshly squeezed
+32	14	8	1	
+33	10	8	1	
+34	1	6	1	
+35	10	6	1	
+36	18	6	4	
 \.
 
 
@@ -213,7 +235,7 @@ COPY ingredients (id, type_id, recipe_id, amount, info) FROM stdin;
 -- Name: ingredients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('ingredients_id_seq', 14, true);
+SELECT pg_catalog.setval('ingredients_id_seq', 36, true);
 
 
 --
@@ -231,6 +253,14 @@ COPY item_types (id, type) FROM stdin;
 8	Brandy
 9	Scotch
 10	Liqueur
+11	Juice
+12	Lime Juice
+13	Orange Juice
+14	Simply Siryp
+15	Coke
+16	Fruit Juice
+17	Tonic
+18	Cranberry Juice
 \.
 
 
@@ -238,7 +268,7 @@ COPY item_types (id, type) FROM stdin;
 -- Name: item_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('item_types_id_seq', 10, true);
+SELECT pg_catalog.setval('item_types_id_seq', 18, true);
 
 
 --
@@ -246,7 +276,6 @@ SELECT pg_catalog.setval('item_types_id_seq', 10, true);
 --
 
 COPY items (id, name, type_id, amount, price, priceperoz) FROM stdin;
-11	Johnnie Walker Black Label	1	33.81	49.9699999999999989	1.477965
 12	Johnnie Walker Blue Label	1	25.36	199.969999999999999	7.885252
 13	Johnnie Walker Green Label	9	25.36	59.9699999999999989	2.364747
 14	Smirnoff No.21	3	59.17	20.9899999999999984	0.35474
@@ -260,6 +289,14 @@ COPY items (id, name, type_id, amount, price, priceperoz) FROM stdin;
 22	Jose Cuervo Especial Gold	5	59.17	29.9699999999999989	0.506507
 23	Jose Cuervo Especial Silver	5	25.36	19.9899999999999984	0.788249
 24	Fireball Cinnamon Whiskey	10	25.36	19.9899999999999984	0.788249
+25	Rhum Barbancourt	4	25.36	19.9899999999999984	0.788249
+26	Bacardi Classic Cocktails Pina Colada Rum	4	59.17	17.9899999999999984	0.304039
+27	Boulard Calvados	8	25.36	30	1.182965
+28	Louis Royer Cognac Extra Grand Champagne	8	23.66	395	16.694844
+29	Tanqueray London Dry Gin	2	25.36	20	0.788644
+30	The Botanist	2	25.36	39.990000000000002	1.576893
+31	Santa Cristina	6	25.36	12	0.473186
+11	Johnnie Walker Black Label	1	27.81	49.9699999999999989	1.477965
 \.
 
 
@@ -267,7 +304,7 @@ COPY items (id, name, type_id, amount, price, priceperoz) FROM stdin;
 -- Name: items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('items_id_seq', 24, true);
+SELECT pg_catalog.setval('items_id_seq', 31, true);
 
 
 --
@@ -275,6 +312,14 @@ SELECT pg_catalog.setval('items_id_seq', 24, true);
 --
 
 COPY recipes (id, name, notes, rating, creator, prep_time, directions) FROM stdin;
+7	Jack on Rocks	good	4	idrink.com	4 minutes	Jack on Rocks is made from whiskey and ice
+9	Daiquiri	easy to make	\N	Sharron Graham	3 minutes	1.Pour the rum, lime juice and sugar syrup into a cocktail shaker with ice cubes. Shake well. Strain into a chilled cocktail glass and enjoy!
+10	Hurricane	two types of rum	\N	Tarick Foteh 	5 minutes	Pour lime juice into cocktail shaker over ice. Pour the remaining ingredients into the shaker. Shake well. Strain into a hurricane glass. Garnish with a cherry and an orange slice.
+11	Gin and Tonic	"Nothing says summer like the good ol' G&T!"	\N	Cubby	3 minutes	Place the ice cubes in a tall, narrow glass with the ice coming near the top. Pour gin, tonic water, and lime juice over the ice. Stir well with a long-necked spoon. Garnish with lime wedge, and serve immediately.
+12	Whiskey Sour		\N	Kenn Wilson	5 minutes	Add whiskey and lime juice. Shake with ice. Strain into ice-filled old-fashioned glass to serve on the rocks.
+13	Red Hot Summer		\N	www.velvetpalate.com	2 minutes	Combine ingredients in a glass filled with ice. Stir and garnish as desired.
+8	Margarita	delicious and easy 	5	epicurious.com	6	Combine tequilla, and lime juice in cocktail shaker filled with ice.Shake and strain drink into glass and serve
+6	Red Snapper	easy	13	CUK	1	Fill a tall glass with ice. Pour in the whiskey and amaretto, then fill to the top with cranberry juice. Stir and enjoy.
 \.
 
 
@@ -282,7 +327,7 @@ COPY recipes (id, name, notes, rating, creator, prep_time, directions) FROM stdi
 -- Name: recipes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('recipes_id_seq', 5, true);
+SELECT pg_catalog.setval('recipes_id_seq', 13, true);
 
 
 --
