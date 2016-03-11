@@ -1,19 +1,24 @@
-<div class="jumbotron">
-  <h1>Planner</h1>
-</div>
-<div class="well">
-  <h1>$recipe.getName()</h1>
-  <h2>Created By: $recipe.getCreator()</h2>
-  <h3>Duration: $recipe.getPrepTime()</h3>
-  <h3>$recipe.getNotes()</h3>
 
+  <h1>Planner</h1>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h1>$recipe.getName()</h1>
+    <h2>Created By: $recipe.getCreator()</h2>
+    <h3>Duration: $recipe.getPrepTime()</h3>
+    <h3>$recipe.getNotes()</h3>
+  </div>
+  <div class="col-sm-6">
     <ul>
       #foreach ($item in $recipe.getIngredients())
       <li>$item.getAmount() oz - $item.getTypeName() - $item.getInfo()</li>
       #end
     </ul>
-    <a href="/recipes/recipe/update/$recipe.getId()">Update drink!</a>
+  </div>
 </div>
+
+<a href="/recipes/recipe/update/$recipe.getId()">Update drink!</a>
+
 <div class="well">
   <h2>Pick Your Poison</h2>
   <form action="/planner/$recipe.getId()/make" method="get">
